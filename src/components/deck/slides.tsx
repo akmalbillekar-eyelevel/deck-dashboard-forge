@@ -5,6 +5,7 @@ import {
   PieChart, Pie, Cell,
 } from "recharts";
 import { Tween } from "./Tween";
+import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck } from "lucide-react";
 import { images, logos } from "@/lib/deck-data";
 
 /* ---------- Shared atoms ---------- */
@@ -354,42 +355,82 @@ export function S04() {
     <>
       <SlideHeader tag="04 · TNPPL · Opportunity"
         title="Own a Tamil Nadu Pickleball franchise."
-        sub="TNPPL Season 2 · Jawaharlal Nehru Indoor Stadium, Chennai. Organised by TNPA — affiliated with IPA, GPF, SDAT, SAI, Ministry of Youth Affairs & Sports."
+        sub="Tamil Nadu Pickleball Premier League (TNPPL) — Season 2 · Jawaharlal Nehru Indoor Stadium, Chennai (Venue Confirmed)."
         logoKey="tnppl" logoLabel="TNPPL"
       />
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-6">
+        <div className="col-span-7 flex flex-col gap-5">
           <div>
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Season 1 — proof</div>
-            <div className="grid grid-cols-4 gap-6">
-              <Stat label="Teams" value="16" />
-              <Stat label="Players" value="160" />
-              <Stat label="Daily footfall" value="~1,000" />
-              <Stat label="Prize pool" value="₹7L" />
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">About the league</div>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+              {[
+                { Icon: Landmark, t: "Organised by TNPA", s: "Tamil Nadu Pickleball Association — official state governing body." },
+                { Icon: ShieldCheck, t: "IPA affiliated", s: "Indian Pickleball Association — national federation." },
+                { Icon: Globe2, t: "Global Pickleball Federation", s: "International federation affiliation." },
+                { Icon: Trophy, t: "SDAT & SAI backed", s: "Sports Development Authority of Tamil Nadu · Sports Authority of India." },
+                { Icon: BadgeCheck, t: "Government recognised", s: "Ministry of Youth Affairs & Sports, Government of India." },
+                { Icon: Building2, t: "Confirmed venue", s: "Jawaharlal Nehru Indoor Stadium, Chennai." },
+              ].map(({ Icon, t, s }) => (
+                <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div>
+                    <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-[12px] text-muted-foreground italic mt-3">
+              Not a startup event. A fully governed, nationally credible league with institutional backing at every level.
             </div>
           </div>
-          <div className="border-t thin-rule pt-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Season 2 — upgrade</div>
-            <div className="grid grid-cols-4 gap-6">
-              <Stat label="Franchise teams" value="12" />
-              <Stat label="Players" value="168" />
-              <Stat label="Prize pool" value="₹30L" sub="4× S1" />
-              <Stat label="Projected reach" value="50L+" sub="9-channel campaign" />
+
+          <div className="border-t thin-rule pt-4">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Season 1 vs Season 2</div>
+            <div className="border thin-rule rounded-md overflow-hidden">
+              <div className="grid grid-cols-12 text-[10px] uppercase tracking-[0.16em] text-muted-foreground py-2 px-4 border-b thin-rule bg-muted/40">
+                <div className="col-span-4">Metric</div>
+                <div className="col-span-4">Season 1</div>
+                <div className="col-span-4">Season 2</div>
+              </div>
+              {[
+                ["Teams", "16 teams", "12 franchise teams"],
+                ["Players", "160 players", "168 players across the state"],
+                ["Prize pool", "₹7 Lakhs", "₹30 Lakhs (4× growth)"],
+                ["Venue", "—", "JN Indoor Stadium, Chennai"],
+                ["Daily footfall", "~1,000 / day", "50 Lakh+ projected campaign reach"],
+                ["Sponsors", "MGM Healthcare, BoomCars, Indian Bank, TexValley", "Open for Season 2"],
+                ["VIP presence", "Sharath Kamal · IAS CEO of SDAT", "—"],
+                ["Marketing", "—", "9-channel campaign · 90 days"],
+                ["Channels", "—", "Outdoor · Print · Radio · Digital · YouTube Live · PR · Influencers"],
+              ].map((row, i) => (
+                <div key={row[0]} className={`grid grid-cols-12 py-2 px-4 text-[12px] tabular ${i % 2 ? "bg-muted/20" : ""} border-b thin-rule last:border-b-0`}>
+                  <div className="col-span-4 text-muted-foreground uppercase tracking-[0.12em] text-[10px] mt-0.5">{row[0]}</div>
+                  <div className="col-span-4 text-ink/80">{row[1]}</div>
+                  <div className="col-span-4 text-ink font-medium">{row[2]}</div>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="border-t thin-rule pt-6 text-[15px] text-muted-foreground max-w-[760px]">
-            Sponsors include MGM Healthcare, Indian Bank, BoomCars and TexValley. Sharath Kamal and the IAS SDAT CEO attended Season 1. Your brand rides every channel of the Season 2 campaign.
           </div>
         </div>
+
         <div className="col-span-5 border thin-rule rounded-md overflow-hidden flex flex-col">
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
             <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
           </div>
-          <div className="p-6 flex-1 flex flex-col justify-between">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue</div>
-            <div className="text-[26px] font-medium tracking-tight mt-1">JN Indoor Stadium, Chennai</div>
-            <div className="text-[14px] text-muted-foreground mt-2">Fully governed. Affiliated with IPA, GPF, SDAT, SAI, Ministry of Youth Affairs & Sports.</div>
+          <div className="p-6 flex flex-col gap-4 flex-1">
+            <div>
+              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue · Confirmed</div>
+              <div className="text-[26px] font-medium tracking-tight mt-1 leading-tight">Jawaharlal Nehru<br/>Indoor Stadium, Chennai</div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 border-t thin-rule pt-4">
+              <Stat label="Prize pool" value="₹30L" sub="4× S1" />
+              <Stat label="Reach" value="50L+" sub="9-ch · 90 days" />
+            </div>
+            <div className="border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
+              Your franchise brand rides every channel of this campaign from <span className="font-medium">Day 1</span>.
+            </div>
           </div>
         </div>
       </Grid12>
