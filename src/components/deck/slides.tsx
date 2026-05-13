@@ -1106,79 +1106,87 @@ export function S12() {
   return (
     <>
       <SlideHeader tag="12 · Paddle City Open · Opportunity"
-        title="Take pickleball to the people."
-        sub="A weekend recreational tournament — doubles, all skill levels. Four cities, two events each, eight events annually. Existing courts; no infrastructure required."
+        title="Take Pickleball to the People."
+        sub="A weekend recreational tournament circuit — 4 cities · 8 events per year · doubles · all skill levels."
         logoKey="paddle" logoLabel="Paddle City Open"
       />
-      <AboutGrid
-        label="About the tournament"
-        items={[
-          { Icon: CalendarDays, t: "Weekend format", s: "Saturday–Sunday — doubles play across all skill levels." },
-          { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — 2 events each per year." },
-          { Icon: Repeat, t: "8 events / year", s: "Recurring city circuit from Year 1 onward." },
-          { Icon: Building2, t: "Asset-light", s: "Existing courts. Zero infrastructure cost — operationally lean." },
-          { Icon: Users, t: "Recreational base", s: "Casual players + community — broadest reach across the portfolio." },
-          { Icon: Sparkles, t: "Sponsorship upside", s: "Entry fees cover ops; sponsorship revenue is pure margin." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-7 border thin-rule rounded-md p-6 flex flex-col">
-          <div className="flex items-center justify-between mb-3">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Circuit — 2026</div>
-            <div className="text-[12px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities"}</div>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
+            <p className="text-[15px] text-muted-foreground leading-relaxed">
+              A weekend recreational pickleball tournament open to all skill levels — beginner, intermediate, and pro-am. Doubles format. Anyone can register and play. Think amateur open golf day — but for pickleball. Social, competitive, accessible.
+            </p>
           </div>
-          <div className="relative flex-1 bg-[color:var(--paper)] border thin-rule rounded">
-            {/* abstract India outline using svg */}
-            <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-              <path
-                d="M 35 18 L 50 12 L 62 18 L 70 30 L 78 42 L 82 55 L 80 70 L 70 82 L 58 88 L 48 82 L 38 78 L 30 65 L 24 50 L 22 35 Z"
-                fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="0.4" strokeDasharray="0.8 0.8"/>
-            </svg>
-            {/* connecting lines */}
-            <svg className="absolute inset-0 w-full h-full">
-              {cityNodes.map((c, i) => {
-                const next = cityNodes[(i + 1) % cityNodes.length];
-                return (
-                  <line key={i}
-                    x1={`${c.x * 100}%`} y1={`${c.y * 100}%`}
-                    x2={`${next.x * 100}%`} y2={`${next.y * 100}%`}
-                    stroke="currentColor" strokeOpacity={active === i || active === (i+1)%cityNodes.length ? 0.6 : 0.18}
-                    strokeWidth={1} strokeDasharray="4 4"/>
-                );
-              })}
-            </svg>
-            {cityNodes.map((c, i) => (
-              <button key={c.name}
-                onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                style={{ left: `${c.x * 100}%`, top: `${c.y * 100}%` }}>
-                <motion.div
-                  className="rounded-full bg-foreground"
-                  animate={{ scale: active === i ? 1.5 : 1 }}
-                  transition={{ duration: 0.15 }}
-                  style={{ width: 12, height: 12 }}
-                />
-                <div className={`absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap text-[14px] tabular ${active === i ? "text-ink" : "text-muted-foreground"}`}>
-                  {c.name} · {c.events} events
-                </div>
-              </button>
-            ))}
+          <div className="border thin-rule rounded-md p-5 flex flex-col">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">The 4-city circuit</div>
+              <div className="text-[12px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities · Sat–Sun"}</div>
+            </div>
+            <div className="relative h-[260px] bg-[color:var(--paper)] border thin-rule rounded">
+              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                <path
+                  d="M 35 18 L 50 12 L 62 18 L 70 30 L 78 42 L 82 55 L 80 70 L 70 82 L 58 88 L 48 82 L 38 78 L 30 65 L 24 50 L 22 35 Z"
+                  fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="0.4" strokeDasharray="0.8 0.8"/>
+              </svg>
+              <svg className="absolute inset-0 w-full h-full">
+                {cityNodes.map((c, i) => {
+                  const next = cityNodes[(i + 1) % cityNodes.length];
+                  return (
+                    <line key={i}
+                      x1={`${c.x * 100}%`} y1={`${c.y * 100}%`}
+                      x2={`${next.x * 100}%`} y2={`${next.y * 100}%`}
+                      stroke="currentColor" strokeOpacity={active === i || active === (i+1)%cityNodes.length ? 0.6 : 0.18}
+                      strokeWidth={1} strokeDasharray="4 4"/>
+                  );
+                })}
+              </svg>
+              {cityNodes.map((c, i) => (
+                <button key={c.name}
+                  onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 group"
+                  style={{ left: `${c.x * 100}%`, top: `${c.y * 100}%` }}>
+                  <motion.div
+                    className="rounded-full bg-foreground"
+                    animate={{ scale: active === i ? 1.5 : 1 }}
+                    transition={{ duration: 0.15 }}
+                    style={{ width: 10, height: 10 }}
+                  />
+                  <div className={`absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap text-[12px] tabular ${active === i ? "text-ink" : "text-muted-foreground"}`}>
+                    {c.name} · {c.events} events
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="text-[12px] text-muted-foreground mt-3">
+              2 events per city · 8 events annually · Sat–Sun · existing courts — no infrastructure ownership.
+            </div>
           </div>
         </div>
-        <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden h-[280px]">
-            <img src={images.paddle} alt="Paddle City Open" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
-          </div>
-          <div className="border thin-rule rounded-md p-5 grid grid-cols-2 gap-5">
-            <Stat label="Format" value="Doubles" />
-            <Stat label="Skill levels" value="All" />
-            <Stat label="Days / event" value="Sat–Sun" />
-            <Stat label="Pairs floor" value="150" sub="conservative" />
-          </div>
-          <div className="text-[14px] text-muted-foreground">
-            Entry fees nearly cover operating costs. Sponsorship is pure upside. Bangalore and Mumbai can hit 200–250+ pairs.
-          </div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <TakeawayList
+            title="What participants get"
+            items={[
+              { Icon: Trophy, t: "Competitive play.", s: "All skill categories — beginner to pro-am." },
+              { Icon: Sparkles, t: "Prize money.", s: "Worth competing for." },
+              { Icon: CalendarDays, t: "Annual calendar.", s: "Recurring circuit to plan around." },
+            ]}
+          />
+          <TakeawayList
+            title="What sponsors get"
+            items={[
+              { Icon: Users, t: "Premium audience.", s: "Active · urban · health-conscious adults." },
+              { Icon: Repeat, t: "8 touchpoints / yr.", s: "Across 4 cities — full national footprint." },
+              { Icon: Briefcase, t: "Affordable inventory.", s: "High visibility · low CPM." },
+            ]}
+          />
+          <TakeawayList
+            title="Why the model is clean"
+            items={[
+              { Icon: Building2, t: "No owned courts.", s: "Venue is a rental line item." },
+              { Icon: TrendingUp, t: "Fees ≈ opex.", s: "Sponsorship is pure upside. 150 pairs is the floor — BLR & MUM hit 200–250+." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
