@@ -42,6 +42,27 @@ function Grid12({ children }: { children: React.ReactNode }) {
   return <div className="grid grid-cols-12 gap-8 flex-1 min-h-0">{children}</div>;
 }
 
+type AboutItem = { Icon: typeof Landmark; t: string; s: string };
+function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: AboutItem[]; footer?: string; cols?: 2 | 3 }) {
+  return (
+    <div className="mb-6">
+      <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
+      <div className={`grid ${cols === 3 ? "grid-cols-3" : "grid-cols-2"} gap-x-6 gap-y-3`}>
+        {items.map(({ Icon, t, s }) => (
+          <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+            <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+            <div className="min-w-0">
+              <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
+              <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {footer && <div className="text-[12px] text-muted-foreground italic mt-3">{footer}</div>}
+    </div>
+  );
+}
+
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div>
