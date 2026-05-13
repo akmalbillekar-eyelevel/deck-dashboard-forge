@@ -1073,9 +1073,9 @@ export function S12() {
   const [active, setActive] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="12 · Paddle City Open · Opportunity"
-        title="Take Pickleball to the People."
-        sub="A weekend recreational tournament circuit — 4 cities · 8 events per year · doubles · all skill levels."
+      <SlideHeader tag="12 · Opportunity 05 · Paddle City Open"
+        title="Take Paddle to the People."
+        sub="A weekend recreational paddle tournament circuit — 4 cities · 8 events per year."
         logoKey="paddle" logoLabel="Paddle City Open"
       />
       <Grid12>
@@ -1083,7 +1083,7 @@ export function S12() {
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
             <p className="text-[15px] text-muted-foreground leading-relaxed">
-              A weekend recreational pickleball tournament open to all skill levels — beginner, intermediate, and pro-am. Doubles format. Anyone can register and play. Think amateur open golf day — but for pickleball. Social, competitive, accessible.
+              A weekend recreational pickleball tournament open to all skill levels — beginner, intermediate, and pro-am. Doubles format. Played with a paddle. Anyone can register and play. Think amateur open golf day — but for pickleball. Social, competitive, and accessible.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5 flex flex-col">
