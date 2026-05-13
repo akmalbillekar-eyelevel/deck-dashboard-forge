@@ -97,7 +97,6 @@ export function S01() {
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
-        <div className="text-[18px] tracking-[0.2em] uppercase text-muted-foreground mb-8">The Playbook</div>
         <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
           The S For Sport<br/>Playbook.
         </h1>
