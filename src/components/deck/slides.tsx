@@ -92,20 +92,20 @@ export function S01() {
   return (
     <div className="flex flex-col h-full justify-between">
       <div className="flex items-center justify-between">
-        <SectorTag>S For Sport — Investor Memorandum</SectorTag>
+        <SectorTag>S For Sport — Diversification Memorandum</SectorTag>
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
         <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
-          The S For Sport<br/>Playbook.
+          Diversifying<br/>S For Sport.
         </h1>
         <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
-          Every League. Every Arena. Every City.
+          Six plays. One brand. Spread the bet across leagues, venues, grassroots & events.
         </p>
       </div>
       <div className="flex items-end justify-between text-[14px] tabular">
         <div className="grid grid-cols-3 gap-12">
-          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Investments</div><div className="mt-1 text-[28px] font-medium">06</div></div>
+          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Diversified plays</div><div className="mt-1 text-[28px] font-medium">06</div></div>
           <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Capital range</div><div className="mt-1 text-[28px] font-medium">₹16L – ₹16Cr</div></div>
           <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Horizon</div><div className="mt-1 text-[28px] font-medium">3–5 years</div></div>
         </div>
@@ -144,17 +144,17 @@ export function S02() {
     { Icon: CalendarDays, t: "Events", s: "Paddle City Open" },
   ];
   const why = [
-    { Icon: TrendingUp, n: "10–50×", t: "Asset returns", s: "Cricket · kabaddi · football precedent." },
-    { Icon: Sparkles, n: "1×", t: "Sport × Stardom", s: "SRK + KKR template — no one better placed." },
-    { Icon: Handshake, n: "∞", t: "Network moat", s: "Rolodex you cannot buy." },
+    { Icon: TrendingUp, n: "4", t: "Asset classes", s: "Leagues, venues, grassroots, events — never one bet." },
+    { Icon: Sparkles, n: "6", t: "Independent plays", s: "Each stands alone. Together they de-risk the brand." },
+    { Icon: Handshake, n: "1", t: "Brand compounding", s: "Every play feeds S For Sport's flywheel." },
   ];
   return (
     <>
       <header className="mb-8">
         <SectorTag>The Thesis</SectorTag>
-        <AnimatedHeadline text="It isn't one league. It's the entire ecosystem." />
+        <AnimatedHeadline text="Don't bet S For Sport on one league. Diversify it." />
         <p className="mt-4 text-[22px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
-          Leagues. Venues. Grassroots. Events. Each one compounds the other.
+          Spread the brand across leagues, venues, grassroots and events. Each play compounds the others.
         </p>
       </header>
 
@@ -214,7 +214,7 @@ export function S02() {
             ))}
           </div>
           <div className="mt-auto border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
-            One ecosystem. One owner at the centre. <span className="font-medium">That is S For Sport.</span>
+            Diversification is the moat. <span className="font-medium">That is how S For Sport wins.</span>
           </div>
         </div>
       </Grid12>
@@ -234,10 +234,10 @@ const portfolio = [
 ];
 
 const connections: { Icon: typeof Sparkles; k: string; v: string }[] = [
-  { Icon: GraduationCap, k: "Grassroots", v: "Schools build the player base." },
-  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds community." },
-  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise audience." },
-  { Icon: Building2, k: "Infrastructure", v: "A for Arena hosts everything." },
+  { Icon: GraduationCap, k: "Grassroots", v: "Schools & colleges feed the pipeline." },
+  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds reach." },
+  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise the audience." },
+  { Icon: Building2, k: "Venues", v: "A for Arena anchors it all." },
 ];
 
 export function S03() {
@@ -246,8 +246,8 @@ export function S03() {
     <>
       <SlideHeader
         tag="Portfolio Overview"
-        title="One ecosystem. Every angle covered."
-        sub="Each opportunity stands alone. Together, they build something no single investor has built in Indian sports."
+        title="Six ways to diversify S For Sport."
+        sub="Four asset classes. Six independent plays. One brand getting bigger from every direction."
       />
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
@@ -273,7 +273,7 @@ export function S03() {
       </div>
 
       <div className="mt-8">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they connect</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they diversify the brand</div>
         <div className="grid grid-cols-4 gap-5">
           {connections.map(({ Icon, k, v }) => (
             <div key={k} className="border thin-rule rounded-md p-5 flex flex-col gap-2">
@@ -1380,7 +1380,7 @@ const next = [
 export function S16() {
   return useMemo(() => (
     <>
-      <SlideHeader tag="16 · Next Steps" title="Let's talk about what you want to build." />
+      <SlideHeader tag="16 · Next Steps" title="Pick the plays that diversify S For Sport first." />
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-4 border-b thin-rule">
           <div className="col-span-4">Opportunity</div>
