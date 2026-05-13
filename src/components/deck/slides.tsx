@@ -107,35 +107,54 @@ export function S02() {
     <>
       <SlideHeader
         tag="The Thesis"
-        title="You already made the first move. Now build the full ecosystem."
-        sub="Bengaluru Jawans winning WPBL Season 1 was the proof of concept. What follows is six plays designed to compound each other."
+        title="The opportunity isn't one league. It's the entire ecosystem."
+        sub="Leagues. Venues. Grassroots. Events. Each one compounds the other."
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
+          <p className="text-[18px] leading-[1.55] text-muted-foreground max-w-[760px] border-t thin-rule pt-6">
+            Bengaluru Jawans winning WPBL Season 1 was proof of concept. This portfolio is the expansion — not deeper into one sport, but wider across the sports and entertainment landscape being built in India right now.
+          </p>
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mt-2">Why Now</div>
           {[
-            ["First mover", "Pickleball in India is where cricket was in 1990. The franchises priced today set the floor for a decade."],
-            ["Precedent", "MLP franchise values grew 65× in four years. India trails the US curve by 3–5 years."],
-            ["Network", "Atlee's access — Bollywood, cricket, Tamil cinema — is what no other investor brings to the table."],
+            ["India's sports economy is at an inflection point.", "Every sport that built franchise value here — cricket, kabaddi, football — was dismissed early. First movers are now holding assets worth 10–50×. That window is open again."],
+            ["Entertainment and sport are converging.", "Shah Rukh Khan didn't just own KKR — he built a brand that amplified everything else. The same model applies here, and no one is better positioned to run it."],
+            ["The network is the real asset.", "Infrastructure can be built. Capital can be raised. The ability to bring Shah Rukh Khan, Allu Arjun, Vijay, and Deepika to the table cannot be bought."],
           ].map(([h, b], i) => (
-            <div key={h} className="flex gap-6 border-t thin-rule pt-6">
+            <div key={h as string} className="flex gap-6 border-t thin-rule pt-5">
               <div className="text-[13px] tabular text-muted-foreground w-10">0{i + 1}</div>
               <div>
-                <div className="text-[24px] font-medium tracking-tight">{h}</div>
-                <div className="text-[17px] text-muted-foreground mt-2 max-w-[640px]">{b}</div>
+                <div className="text-[20px] font-medium tracking-tight leading-tight">{h}</div>
+                <div className="text-[15px] text-muted-foreground mt-2 max-w-[640px] leading-relaxed">{b}</div>
               </div>
             </div>
           ))}
+          <div className="border-t thin-rule pt-5 mt-2">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">The Logic</div>
+            <p className="text-[16px] text-muted-foreground leading-relaxed max-w-[720px]">
+              Each opportunity here works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S4 Sports.</span>
+            </p>
+          </div>
         </div>
         <div className="col-span-5 border thin-rule rounded-md p-8 flex flex-col">
           <div className="flex items-center justify-between">
             <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">League Valuation Index</div>
             <div className="text-[12px] tabular text-muted-foreground">2020 – 2024</div>
           </div>
-          <div className="grid grid-cols-2 gap-6 mt-6">
-            <Stat label="MLP franchise" value="65×" sub="$200K → $13M" />
-            <Stat label="CCL season" value="₹50 Cr" sub="14 seasons" />
-            <Stat label="WPBL prize" value="4×" sub="in one year" />
-            <Stat label="US players" value="36.5M" sub="active 2024" />
+          <div className="mt-6 border-t thin-rule">
+            {[
+              { label: "MLP franchise value", detail: "$200K → $13M in 4 years", value: "65×" },
+              { label: "CCL", detail: "₹50 Cr annual ad revenue · 14 seasons", value: "₹50 Cr" },
+              { label: "WPBL prize pool", detail: "Growth in one year", value: "4×" },
+            ].map((r) => (
+              <div key={r.label} className="grid grid-cols-12 items-baseline py-5 border-b thin-rule">
+                <div className="col-span-8">
+                  <div className="text-[15px] font-medium tracking-tight text-ink">{r.label}</div>
+                  <div className="text-[12px] text-muted-foreground mt-1">{r.detail}</div>
+                </div>
+                <div className="col-span-4 text-right text-[28px] font-medium tabular tracking-tight">{r.value}</div>
+              </div>
+            ))}
           </div>
           <div className="flex-1 min-h-0 mt-6">
             <ResponsiveContainer>
