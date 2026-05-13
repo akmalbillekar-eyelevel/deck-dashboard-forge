@@ -571,6 +571,19 @@ export function S06() {
         sub="CPL Season 1 · October 2026. Organised by All Things Pickleball — creators of WPPL, Queen of the Court, and the Masters format."
         logoKey="cpl" logoLabel="CPL"
       />
+      <AboutGrid
+        label="About the league"
+        items={[
+          { Icon: Star, t: "Organised by ATP", s: "All Things Pickleball — creators of WPPL, Queen of the Court & the Masters format." },
+          { Icon: Trophy, t: "IPL-style format", s: "6 franchise teams · 10–11 day season window." },
+          { Icon: CalendarDays, t: "Season 1 · Oct 2026", s: "Founding edition — first-ever Celebrity Pickleball League in India." },
+          { Icon: Users, t: "Your team", s: "You as Captain · 2–3 invited celebrities · 1 ATP-provided pro." },
+          { Icon: ShieldCheck, t: "End-to-end run by ATP", s: "League ops, broadcast, production handled. You bring brand & network." },
+          { Icon: Sparkles, t: "Founding price", s: "₹30L · one-time. This price never exists again." },
+        ]}
+        footer="Six founding slots nationwide. Once gone, the entry price compounds against established franchise value."
+      />
+
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden">
           <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
