@@ -1182,49 +1182,60 @@ export function S12() {
 /* ---------- 13 Paddle City Open ROI ---------- */
 
 export function S13() {
-  const events = ["Event 1", "Event 4", "Event 8"];
-  const base = [-2, 18, 40];
-  const [pinned, setPinned] = useState<number | null>(null);
-  const ticket = 72;
-  const recovery = base.map((v) => v * (ticket / 72));
-  const moic = 1 + (ticket / 72) * 0.55;
-  const irr = 55 + (ticket - 72) * 0.25;
-  const coc = 0.55 + (ticket - 72) * 0.005;
   return (
     <>
       <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
         title="Low risk. Real returns."
-        sub="₹9L per event · 8 events Year 1 = ₹72L. Per-event revenue ₹14L → ₹1.12 Cr annually. Net ~₹40L Year 1. Break-even after event 5–6."
+        sub="₹9L per event · 8 events Year 1 = ₹72L. Net ~₹40L Year 1. Break-even after event 5–6."
       />
+      <KpiStrip items={[
+        { label: "Total Year-1 in", value: "₹72L", sub: "₹9L × 8 events", strong: true },
+        { label: "Per-event revenue", value: "₹14L", sub: "fees + sponsorship + F&B" },
+        { label: "Year-1 net", value: "~₹40L", sub: "after all costs" },
+        { label: "Break-even", value: "Event 5–6", sub: "cumulative" },
+      ]}/>
       <Grid12>
-        <div className="col-span-8 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Cumulative net by event — heat strip</div>
-              <div className="text-[12px] text-muted-foreground tabular">₹L</div>
-            </div>
-            <div className="px-5 pt-4"><Sparkline values={recovery.map((v) => Math.max(0.1, v))} focus={pinned} /></div>
-            <HeatStrip years={events} values={recovery.map((v) => Math.max(0.1, Math.abs(v)))} pinned={pinned} onPin={setPinned} />
-          </div>
-          <div className="grid grid-cols-5 gap-4">
-            {[["Venue","₹2.25L"],["Branding","₹1.5L"],["Staff","₹1.5L"],["Prize","₹3L"],["Digital","₹0.5L"]].map(([k,v])=>(
-              <div key={k} className="border thin-rule rounded-md p-4">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{k}</div>
-                <div className="text-[24px] font-medium tabular mt-1">{v}</div>
-              </div>
-            ))}
-          </div>
-          <div className="text-[15px] text-muted-foreground">Year 2: title sponsorship alone hits ₹8–10L/event → annual net jumps to ₹70–80L.</div>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <InvestTable
+            title="Per-event expenses (₹9L)"
+            rows={[
+              { k: "Venue", v: "₹2.25L" },
+              { k: "Prize pool", v: "₹3L" },
+              { k: "Branding", v: "₹1.5L" },
+              { k: "Staff", v: "₹1.5L" },
+              { k: "Digital", v: "₹0.5L" },
+              { k: "Total per event × 8", v: "₹72L", strong: true },
+            ]}
+          />
+          <ReturnsTable
+            title="Per-event economics"
+            cols={["Line item", "Min", "Max"]}
+            rows={[
+              { k: "Entry fees (150–250 pairs)", a: "₹4L", b: "₹5L" },
+              { k: "Sponsorship", a: "₹3L", b: "₹5L" },
+              { k: "F&B + merch", a: "₹1L", b: "₹2L" },
+              { k: "Revenue per event", a: "₹8L", b: "₹14L", total: true },
+              { k: "Net (vs ₹9L cost)", a: "(₹1L)", b: "₹5L", total: true },
+            ]}
+          />
         </div>
-        <div className="col-span-4 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — Year 1</div>
-            <div className="mt-5 space-y-5">
-              <div className="flex items-end justify-between"><span className="text-[14px] text-muted-foreground">MOIC</span><Tween value={moic} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">IRR</span><Tween value={irr} format={(v) => `${v.toFixed(1)}%`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">Cash-on-cash</span><Tween value={coc} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-            </div>
-          </div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <HorizonPicker
+            label="Cumulative net — pick an event"
+            points={[
+              { label: "Event 1", value: -2, sub: "Launch — first event runs at a small loss." },
+              { label: "Event 4", value: 18, sub: "Sponsorship momentum kicks in." },
+              { label: "Event 8", value: 40, sub: "Year closes profitable." },
+            ]}
+          />
+          <TakeawayList
+            title="Year 2 upside"
+            items={[
+              { Icon: TrendingUp, t: "Title sponsorship.", s: "Hits ₹8–10L/event → annual net jumps to ₹70–80L." },
+              { Icon: Sparkles, t: "Sponsorship is upside.", s: "Entry fees alone cover operating costs." },
+              { Icon: MapPin, t: "City scale.", s: "Bangalore & Mumbai can hit 200–250+ pairs." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
