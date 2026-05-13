@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell,
 } from "recharts";
 import { Tween } from "./Tween";
-import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck } from "lucide-react";
+import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck, Star, Users, Sparkles, CalendarDays, MapPin, Repeat, Briefcase, Flag, GraduationCap, Award, Heart, Handshake, Layers, TrendingUp, Dumbbell } from "lucide-react";
 import { images, logos } from "@/lib/deck-data";
 
 /* ---------- Shared atoms ---------- */
@@ -40,6 +40,27 @@ function SlideHeader({ tag, title, sub, logoKey, logoLabel }: { tag: string; tit
 
 function Grid12({ children }: { children: React.ReactNode }) {
   return <div className="grid grid-cols-12 gap-8 flex-1 min-h-0">{children}</div>;
+}
+
+type AboutItem = { Icon: typeof Landmark; t: string; s: string };
+function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: AboutItem[]; footer?: string; cols?: 2 | 3 }) {
+  return (
+    <div className="mb-6">
+      <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
+      <div className={`grid ${cols === 3 ? "grid-cols-3" : "grid-cols-2"} gap-x-6 gap-y-3`}>
+        {items.map(({ Icon, t, s }) => (
+          <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+            <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+            <div className="min-w-0">
+              <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
+              <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {footer && <div className="text-[12px] text-muted-foreground italic mt-3">{footer}</div>}
+    </div>
+  );
 }
 
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
@@ -550,6 +571,19 @@ export function S06() {
         sub="CPL Season 1 · October 2026. Organised by All Things Pickleball — creators of WPPL, Queen of the Court, and the Masters format."
         logoKey="cpl" logoLabel="CPL"
       />
+      <AboutGrid
+        label="About the league"
+        items={[
+          { Icon: Star, t: "Organised by ATP", s: "All Things Pickleball — creators of WPPL, Queen of the Court & the Masters format." },
+          { Icon: Trophy, t: "IPL-style format", s: "6 franchise teams · 10–11 day season window." },
+          { Icon: CalendarDays, t: "Season 1 · Oct 2026", s: "Founding edition — first-ever Celebrity Pickleball League in India." },
+          { Icon: Users, t: "Your team", s: "You as Captain · 2–3 invited celebrities · 1 ATP-provided pro." },
+          { Icon: ShieldCheck, t: "End-to-end run by ATP", s: "League ops, broadcast, production handled. You bring brand & network." },
+          { Icon: Sparkles, t: "Founding price", s: "₹30L · one-time. This price never exists again." },
+        ]}
+        footer="Six founding slots nationwide. Once gone, the entry price compounds against established franchise value."
+      />
+
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden">
           <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
@@ -647,6 +681,18 @@ export function S08() {
         sub="Four cities. Recurring annual. Sponsorship-driven. Each city is an independent sports property — premium corporate demographic, asset-light, first-mover."
         logoKey="cppl" logoLabel="CPPL"
         />
+        <AboutGrid
+          label="About the league"
+          items={[
+            { Icon: Building2, t: "Corporate league IP", s: "India's first multi-city Corporate Pickleball League — own the format, not just an event." },
+            { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — each an independent property." },
+            { Icon: Repeat, t: "Recurring annual", s: "Sponsorship-driven format built for repeat revenue every year." },
+            { Icon: Briefcase, t: "Premium audience", s: "Targets corporate teams and decision-makers — high CPM demographic." },
+            { Icon: Sparkles, t: "Asset-light", s: "Uses existing courts. Zero infrastructure investment." },
+            { Icon: Flag, t: "First-mover", s: "Own the IP from Season 1 — the category-defining brand." },
+          ]}
+        />
+
         <Grid12>
           <div className="col-span-5 flex flex-col gap-5">
             <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
@@ -770,6 +816,18 @@ export function S10() {
         sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
         logoKey="school" logoLabel="Inter-School League"
       />
+      <AboutGrid
+        label="About the league"
+        items={[
+          { Icon: GraduationCap, t: "Schools & colleges", s: "Structured annual league across institutions in 4 cities." },
+          { Icon: Building2, t: "City leagues", s: "Four city events form the base of the player pipeline." },
+          { Icon: Trophy, t: "Regional finals", s: "Four regional rounds crown qualifiers from each city." },
+          { Icon: Award, t: "National championship", s: "One marquee final caps the season — the showcase event." },
+          { Icon: Sparkles, t: "Talent pipeline", s: "Feeds CPPL, Paddle City Open and the entire S4 ecosystem." },
+          { Icon: Heart, t: "CSR-friendly", s: "Unlocks education, FMCG, youth-wellness sponsors that won't touch pro sports." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
           <div className="border thin-rule rounded-md p-6">
@@ -870,6 +928,18 @@ export function S12() {
         sub="A weekend recreational tournament — doubles, all skill levels. Four cities, two events each, eight events annually. Existing courts; no infrastructure required."
         logoKey="paddle" logoLabel="Paddle City Open"
       />
+      <AboutGrid
+        label="About the tournament"
+        items={[
+          { Icon: CalendarDays, t: "Weekend format", s: "Saturday–Sunday — doubles play across all skill levels." },
+          { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — 2 events each per year." },
+          { Icon: Repeat, t: "8 events / year", s: "Recurring city circuit from Year 1 onward." },
+          { Icon: Building2, t: "Asset-light", s: "Existing courts. Zero infrastructure cost — operationally lean." },
+          { Icon: Users, t: "Recreational base", s: "Casual players + community — broadest reach across the portfolio." },
+          { Icon: Sparkles, t: "Sponsorship upside", s: "Entry fees cover ops; sponsorship revenue is pure margin." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-7 border thin-rule rounded-md p-6 flex flex-col">
           <div className="flex items-center justify-between mb-3">
@@ -1009,6 +1079,18 @@ export function S14() {
         sub="S4 Sports × Da One Sports · ~53,000 sq ft · Chennai ECR. S4 owns venue, infrastructure, memberships, F&B, events, sponsorship. Da One owns coaching."
         logoKey="arena" logoLabel="A for Arena"
       />
+      <AboutGrid
+        label="About the venue"
+        items={[
+          { Icon: MapPin, t: "Chennai ECR", s: "~53,000 sq ft on East Coast Road — premium catchment." },
+          { Icon: Handshake, t: "S4 × Da One Sports", s: "JV — S4 owns venue, memberships, F&B, events; Da One owns coaching." },
+          { Icon: Layers, t: "13 revenue streams", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
+          { Icon: Dumbbell, t: "Multi-sport", s: "Pool · football · basketball · pickleball · cricket · frisbee." },
+          { Icon: Award, t: "Premium gap", s: "Only multi-sport venue between Thiruvanmiyur & Mahabalipuram." },
+          { Icon: TrendingUp, t: "EBITDA Month 6–8", s: "Cash payback 30–36 months · asset value ₹40–55 Cr by Year 3." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
           <div className="aspect-[16/10] overflow-hidden bg-muted">
