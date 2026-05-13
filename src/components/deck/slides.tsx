@@ -18,18 +18,21 @@ function SectorTag({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SlideHeader({ tag, title, sub }: { tag: string; title: string; sub?: string }) {
+function SlideHeader({ tag, title, sub, logoKey, logoLabel }: { tag: string; title: string; sub?: string; logoKey?: string; logoLabel?: string }) {
   return (
-    <header className="mb-12">
-      <SectorTag>{tag}</SectorTag>
-      <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
-        {title}
-      </h1>
-      {sub && (
-        <p className="mt-4 max-w-[1100px] text-[22px] leading-[1.45] text-muted-foreground font-light">
-          {sub}
-        </p>
-      )}
+    <header className="mb-12 flex items-start justify-between gap-8">
+      <div className="flex-1 min-w-0">
+        <SectorTag>{tag}</SectorTag>
+        <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+          {title}
+        </h1>
+        {sub && (
+          <p className="mt-4 max-w-[1100px] text-[22px] leading-[1.45] text-muted-foreground font-light">
+            {sub}
+          </p>
+        )}
+      </div>
+      {logoKey && <LogoSlot logoKey={logoKey} label={logoLabel ?? logoKey} />}
     </header>
   );
 }
@@ -51,18 +54,18 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
   const src = logos[logoKey];
   return (
-    <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md border thin-rule p-2 flex items-center justify-center" style={{ minWidth: 96, minHeight: 72 }}>
+    <div className="shrink-0 bg-paper rounded-md border thin-rule p-3 flex items-center justify-center" style={{ minWidth: 140, minHeight: 96 }}>
       {src ? (
-        <img src={src} alt={`${label} logo`} className="h-16 w-auto block" />
+        <img src={src} alt={`${label} logo`} className="h-20 w-auto block" />
       ) : (
-        <div className="h-16 w-24 flex items-center justify-center text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
-          Logo
+        <div className="h-20 w-32 flex flex-col items-center justify-center gap-1 text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+          <span>Logo</span>
+          <span className="text-[9px] tracking-[0.14em] opacity-70">{label}</span>
         </div>
       )}
     </div>
   );
 }
-/* ---------- 01 Cover ---------- */
 
 export function S01() {
   return (
@@ -348,6 +351,7 @@ export function S04() {
       <SlideHeader tag="04 · TNPPL · Opportunity"
         title="Own a Tamil Nadu Pickleball franchise."
         sub="TNPPL Season 2 · Jawaharlal Nehru Indoor Stadium, Chennai. Organised by TNPA — affiliated with IPA, GPF, SDAT, SAI, Ministry of Youth Affairs & Sports."
+        logoKey="tnppl" logoLabel="TNPPL"
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
@@ -377,7 +381,6 @@ export function S04() {
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
             <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
-            <LogoSlot logoKey="tnppl" label="TNPPL" />
           </div>
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue</div>
@@ -481,11 +484,11 @@ export function S06() {
       <SlideHeader tag="06 · CPL · Opportunity"
         title="Be a founding owner of India's first Celebrity Pickleball League."
         sub="CPL Season 1 · October 2026. Organised by All Things Pickleball — creators of WPPL, Queen of the Court, and the Masters format."
+        logoKey="cpl" logoLabel="CPL"
       />
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md overflow-hidden relative">
+        <div className="col-span-6 border thin-rule rounded-md overflow-hidden">
           <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
-          <LogoSlot logoKey="cpl" label="CPL" />
         </div>
         <div className="col-span-6 flex flex-col gap-6">
           <div className="grid grid-cols-3 gap-6">
@@ -579,12 +582,12 @@ export function S08() {
       <SlideHeader tag="08 · CPPL · Opportunity"
         title="Own India's first Corporate Pickleball League IP."
         sub="Four cities. Recurring annual. Sponsorship-driven. Each city is an independent sports property — premium corporate demographic, asset-light, first-mover."
+        logoKey="cppl" logoLabel="CPPL"
         />
         <Grid12>
           <div className="col-span-5 flex flex-col gap-5">
-            <div className="border thin-rule rounded-md overflow-hidden h-[340px] relative">
+            <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
               <img src={images.cppl} alt="Corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-              <LogoSlot logoKey="cppl" label="CPPL" />
             </div>
             <div className="border thin-rule rounded-md p-5">
               <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Per city revenue</div>
@@ -703,6 +706,7 @@ export function S10() {
       <SlideHeader tag="10 · Inter-School League · Opportunity"
         title="Build the grassroots. Own the next generation."
         sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
+        logoKey="school" logoLabel="Inter-School League"
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
@@ -727,9 +731,8 @@ export function S10() {
             </p>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md overflow-hidden relative">
+        <div className="col-span-5 border thin-rule rounded-md overflow-hidden">
           <img src={images.school} alt="School league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-          <LogoSlot logoKey="school" label="Inter-School League" />
         </div>
       </Grid12>
     </>
@@ -804,6 +807,7 @@ export function S12() {
       <SlideHeader tag="12 · Paddle City Open · Opportunity"
         title="Take pickleball to the people."
         sub="A weekend recreational tournament — doubles, all skill levels. Four cities, two events each, eight events annually. Existing courts; no infrastructure required."
+        logoKey="paddle" logoLabel="Paddle City Open"
       />
       <Grid12>
         <div className="col-span-7 border thin-rule rounded-md p-6 flex flex-col">
@@ -850,9 +854,8 @@ export function S12() {
           </div>
         </div>
         <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden h-[280px] relative">
+          <div className="border thin-rule rounded-md overflow-hidden h-[280px]">
             <img src={images.paddle} alt="Paddle City Open" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
-            <LogoSlot logoKey="paddle" label="Paddle City Open" />
           </div>
           <div className="border thin-rule rounded-md p-5 grid grid-cols-2 gap-5">
             <Stat label="Format" value="Doubles" />
@@ -944,12 +947,12 @@ export function S14() {
       <SlideHeader tag="14 · A for Arena · Opportunity"
         title="Build the home of S4 Sports."
         sub="S4 Sports × Da One Sports · ~53,000 sq ft · Chennai ECR. S4 owns venue, infrastructure, memberships, F&B, events, sponsorship. Da One owns coaching."
+        logoKey="arena" logoLabel="A for Arena"
       />
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
-          <div className="aspect-[16/10] overflow-hidden bg-muted relative">
+          <div className="aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.arena} alt="A for Arena" className="w-full h-full object-cover grayscale-[0.15] saturate-50" loading="lazy"/>
-            <LogoSlot logoKey="arena" label="A for Arena" />
           </div>
           <div className="p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Inside</div>
