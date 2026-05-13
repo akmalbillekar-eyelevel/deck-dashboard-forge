@@ -1315,24 +1315,22 @@ export function S15() {
       ]}/>
       <Grid12>
         <div className="col-span-7 grid grid-cols-2 gap-4 min-h-0">
-          <ReturnsTable
-            title="Investment (₹)"
-            cols={["Item", "Amount"]}
+          <InvestTable
+            title="Investment"
             rows={[
-              { k: "10-Year Lease", a: "₹1.50 Cr" },
-              { k: "Setup Cost", a: "₹1.00 Cr" },
-              { k: "Total Investment", a: "₹2.50 Cr", total: true },
+              { k: "10-Year Lease", v: "₹1.50 Cr" },
+              { k: "Setup Cost", v: "₹1.00 Cr" },
+              { k: "Total Investment", v: "₹2.50 Cr" },
             ]}
           />
-          <ReturnsTable
+          <InvestTable
             title="Setup cost breakdown"
-            cols={["Item", "Amount"]}
             rows={[
-              { k: "Courts — PB(3), Paddle(1), Bad(3)", a: "₹60L" },
-              { k: "Civil, HVAC & Electrical", a: "₹26L" },
-              { k: "Café, Branding & Tech", a: "₹10L" },
-              { k: "Licences & Working Capital", a: "₹4L" },
-              { k: "Total", a: "₹1.00 Cr", total: true },
+              { k: "Courts — PB(3), Paddle(1), Bad(3)", v: "₹60L" },
+              { k: "Civil, HVAC & Electrical", v: "₹26L" },
+              { k: "Café, Branding & Tech", v: "₹10L" },
+              { k: "Licences & Working Capital", v: "₹4L" },
+              { k: "Total", v: "₹1.00 Cr" },
             ]}
           />
           <div className="col-span-2">
