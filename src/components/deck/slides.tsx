@@ -1304,55 +1304,65 @@ export function S15() {
   return (
     <>
       <SlideHeader tag="15 · A for Arena · Investment & Returns"
-        title="₹15 Cr in. ₹22 Cr revenue by Year 3."
-        sub="EBITDA positive Month 6–8 · Cash payback 30–36 months · Asset value ₹40–55 Cr by Year 3."
+        title="What You Build. What You Earn."
+        sub="₹2.5 Cr all-in · 10-year lease, zero monthly rent · ₹2.40 Cr EBITDA by Year 3."
       />
       <KpiStrip items={[
-        { label: "Capital in", value: "₹15 Cr", sub: "fully built", strong: true },
-        { label: "S For Sport equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
-        { label: "Yr 3 EBITDA", value: "₹10.58 Cr", sub: "47.9% margin" },
-        { label: "Yr 3 asset value", value: "₹40–55 Cr", sub: "4–5× EBITDA" },
+        { label: "Total investment", value: "₹2.50 Cr", sub: "lease + setup", strong: true },
+        { label: "Yr 1 revenue", value: "₹2.92 Cr", sub: "59% margin" },
+        { label: "Yr 3 EBITDA", value: "₹2.40 Cr", sub: "62% margin" },
+        { label: "Lease term", value: "10 years", sub: "no monthly rent" },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+        <div className="col-span-7 grid grid-cols-2 gap-4 min-h-0">
           <ReturnsTable
-            title="3-year P&L (₹ Cr)"
-            cols={["Line", "Year 1", "Year 3"]}
+            title="Investment (₹)"
+            cols={["Item", "Amount"]}
             rows={[
-              { k: "Revenue", a: "₹9.3", b: "₹22.1" },
-              { k: "Opex", a: "(₹7.49)", b: "(₹11.52)" },
-              { k: "EBITDA", a: "₹1.81", b: "₹10.58", total: true },
-              { k: "Margin", a: "19.5%", b: "47.9%" },
-              { k: "Year 2 EBITDA: ₹7.01 Cr · Margin 42.0%", a: "", b: "", note: true },
+              { k: "10-Year Lease", a: "₹1.50 Cr" },
+              { k: "Setup Cost", a: "₹1.00 Cr" },
+              { k: "Total Investment", a: "₹2.50 Cr", total: true },
             ]}
           />
-          <InvestTable
-            title="Funding stack (₹15 Cr)"
+          <ReturnsTable
+            title="Setup cost breakdown"
+            cols={["Item", "Amount"]}
             rows={[
-              { k: "S For Sport equity", v: "₹3.5–4.5 Cr" },
-              { k: "Da One sweat", v: "₹0.5–1 Cr" },
-              { k: "Founding memberships", v: "₹2.5–3.5 Cr" },
-              { k: "Title sponsor", v: "₹1.2–1.8 Cr" },
-              { k: "Term loan", v: "₹5–7 Cr" },
+              { k: "Courts — PB(3), Paddle(1), Bad(3)", a: "₹60L" },
+              { k: "Civil, HVAC & Electrical", a: "₹26L" },
+              { k: "Café, Branding & Tech", a: "₹10L" },
+              { k: "Licences & Working Capital", a: "₹4L" },
+              { k: "Total", a: "₹1.00 Cr", total: true },
             ]}
           />
+          <div className="col-span-2">
+            <ReturnsTable
+              title="Revenue & profit (₹ Cr)"
+              cols={["Line", "Year 1", "Year 3"]}
+              rows={[
+                { k: "Total Revenue", a: "₹2.92", b: "₹3.85" },
+                { k: "Operating Expenses", a: "(₹1.20)", b: "(₹1.45)" },
+                { k: "EBITDA", a: "₹1.72", b: "₹2.40", total: true },
+                { k: "Margin", a: "59%", b: "62%" },
+              ]}
+            />
+          </div>
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
             label="EBITDA — pick a year"
             points={[
-              { label: "Year 1", value: 181, sub: "EBITDA+ Month 6–8 · ramp." },
-              { label: "Year 2", value: 701, sub: "Memberships mature · F&B scales." },
-              { label: "Year 3", value: 1058, sub: "47.9% margin · steady-state." },
+              { label: "Year 1", value: 172, sub: "59% margin · ramp." },
+              { label: "Year 3", value: 240, sub: "62% margin · steady-state." },
             ]}
             format={(v) => `₹${(v/100).toFixed(2)} Cr`}
           />
           <TakeawayList
             title="Why this is the anchor asset"
             items={[
-              { Icon: Layers, t: "13 revenue streams.", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
-              { Icon: TrendingUp, t: "30–36 month payback.", s: "Cash recycles into the next venue." },
-              { Icon: Award, t: "Real asset on the books.", s: "Not an event budget — a sellable, financeable property." },
+              { Icon: Layers, t: "10-year lease.", s: "Zero monthly rent — lease prepaid up front." },
+              { Icon: TrendingUp, t: "Revenue compounds.", s: "Margin expands from 59% to 62% as memberships mature." },
+              { Icon: Award, t: "Flagship venue.", s: "S For Sport's permanent home — brand + cash flow asset." },
             ]}
           />
         </div>
