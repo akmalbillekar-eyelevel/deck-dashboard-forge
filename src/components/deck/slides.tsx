@@ -234,10 +234,10 @@ const portfolio = [
 ];
 
 const connections: { Icon: typeof Sparkles; k: string; v: string }[] = [
-  { Icon: GraduationCap, k: "Grassroots", v: "Schools build the player base." },
-  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds community." },
-  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise audience." },
-  { Icon: Building2, k: "Infrastructure", v: "A for Arena hosts everything." },
+  { Icon: GraduationCap, k: "Grassroots", v: "Schools & colleges feed the pipeline." },
+  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds reach." },
+  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise the audience." },
+  { Icon: Building2, k: "Venues", v: "A for Arena anchors it all." },
 ];
 
 export function S03() {
@@ -246,8 +246,8 @@ export function S03() {
     <>
       <SlideHeader
         tag="Portfolio Overview"
-        title="One ecosystem. Every angle covered."
-        sub="Each opportunity stands alone. Together, they build something no single investor has built in Indian sports."
+        title="Six ways to diversify S For Sport."
+        sub="Four asset classes. Six independent plays. One brand getting bigger from every direction."
       />
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
