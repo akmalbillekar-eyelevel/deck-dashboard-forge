@@ -93,13 +93,13 @@ export function S01() {
   return (
     <div className="flex flex-col h-full justify-between">
       <div className="flex items-center justify-between">
-        <SectorTag>S4 Sports — Investor Memorandum</SectorTag>
+        <SectorTag>S For Sport — Investor Memorandum</SectorTag>
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
         <div className="text-[18px] tracking-[0.2em] uppercase text-muted-foreground mb-8">The Playbook</div>
         <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
-          The S4 Sports<br/>Playbook.
+          The S For Sport<br/>Playbook.
         </h1>
         <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
           Every League. Every Arena. Every City.
@@ -157,7 +157,7 @@ export function S02() {
           <div className="border-t thin-rule pt-4 mt-1">
             <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">The Logic</div>
             <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[720px]">
-              Each opportunity in this deck works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S4 Sports.</span>
+              Each opportunity in this deck works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S For Sport.</span>
             </p>
           </div>
         </div>
@@ -596,7 +596,7 @@ export function S05() {
       <KpiStrip items={[
         { label: "Total entry", value: "₹31L", sub: "₹28L fee + ₹3L auction", strong: true },
         { label: "Per-season recovery", value: "₹7.5–23L", sub: "cash from 4 sources" },
-        { label: "Tenure", value: "3 yrs", sub: "S2 · S3 · S4" },
+        { label: "Tenure", value: "3 yrs", sub: "S2 · S3 · S For Sport" },
         { label: "Renewal", value: "+20%", sub: "preferential rate" },
       ]}/>
       <Grid12>
@@ -606,7 +606,7 @@ export function S05() {
             rows={[
               { k: "Franchise fee", v: "₹28L + GST" },
               { k: "Player auction budget", v: "₹3L (S2 only)" },
-              { k: "Tenure", v: "3 years (S2 · S3 · S4)" },
+              { k: "Tenure", v: "3 years (S2 · S3 · S For Sport)" },
               { k: "Total entry", v: "₹31L", strong: true },
             ]}
           />
@@ -1009,8 +1009,8 @@ export function S10() {
           <TakeawayList
             title="Why it matters beyond the numbers"
             items={[
-              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S4 brand advocates." },
-              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S4 Sports." },
+              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S For Sport brand advocates." },
+              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S For Sport." },
             ]}
           />
           <TakeawayList
@@ -1081,7 +1081,7 @@ export function S11() {
           <TakeawayList
             title="The strategic return"
             items={[
-              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S4 advocate for life." },
+              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S For Sport advocate for life." },
               { Icon: Heart, t: "CSR-friendly.", s: "Unlocks sponsors who won't touch pro sports." },
               { Icon: TrendingUp, t: "Decade-long upside.", s: "Real return is bigger than the financials suggest." },
             ]}
@@ -1289,7 +1289,7 @@ export function S14() {
     { i: "🛒", k: "Pro Shop" },
     { i: "🏥", k: "Physio & Recovery" },
     { i: "🏟️", k: "Spectator Gallery" },
-    { i: "🏠", k: "S4 Sports HQ" },
+    { i: "🏠", k: "S For Sport HQ" },
   ];
   const streams = [
     "Courts", "Pool", "Memberships", "Coaching Share", "Corporate Events",
@@ -1299,8 +1299,8 @@ export function S14() {
   return (
     <>
       <SlideHeader tag="14 · A for Arena · Opportunity"
-        title="Build the Home of S4 Sports."
-        sub="S4 Sports Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S4's permanent operating headquarters."
+        title="Build the Home of S For Sport."
+        sub="S For Sport Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S For Sport's permanent operating headquarters."
         logoKey="arena" logoLabel="A for Arena"
       />
       <Grid12>
@@ -1308,22 +1308,22 @@ export function S14() {
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">The concept</div>
             <p className="text-[14px] text-muted-foreground leading-relaxed">
-              S4 Sports and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S4 owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
+              S For Sport and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S For Sport owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The partnership</div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[13px]">
-              <div className="text-ink font-medium">S4 Sports</div>
+              <div className="text-ink font-medium">S For Sport</div>
               <div className="text-ink font-medium">Da One Sports</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Lease & infrastructure</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Coaching curriculum & coaches</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Court rentals</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">100% of coaching batch fees</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Memberships</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S4-collected coaching revenue</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S For Sport-collected coaching revenue</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">F&B · events · sponsorship · pro shop</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S4 HQ</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S For Sport HQ</div>
             </div>
           </div>
           <div className="border thin-rule rounded-md p-5">
@@ -1352,7 +1352,7 @@ export function S14() {
             items={[
               { Icon: MapPin, t: "No competition.", s: "No multi-sport + pool + events venue between Thiruvanmiyur & Mahabalipuram." },
               { Icon: Building2, t: "Premium corridor.", s: "Residential + IT belt — ideal membership & corporate demographic." },
-              { Icon: Award, t: "Home advantage.", s: "S4's home city — strongest brand recognition & network." },
+              { Icon: Award, t: "Home advantage.", s: "S For Sport's home city — strongest brand recognition & network." },
             ]}
           />
         </div>
@@ -1372,7 +1372,7 @@ export function S15() {
       />
       <KpiStrip items={[
         { label: "Capital in", value: "₹15 Cr", sub: "fully built", strong: true },
-        { label: "S4 equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
+        { label: "S For Sport equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
         { label: "Yr 3 EBITDA", value: "₹10.58 Cr", sub: "47.9% margin" },
         { label: "Yr 3 asset value", value: "₹40–55 Cr", sub: "4–5× EBITDA" },
       ]}/>
@@ -1392,7 +1392,7 @@ export function S15() {
           <InvestTable
             title="Funding stack (₹15 Cr)"
             rows={[
-              { k: "S4 equity", v: "₹3.5–4.5 Cr" },
+              { k: "S For Sport equity", v: "₹3.5–4.5 Cr" },
               { k: "Da One sweat", v: "₹0.5–1 Cr" },
               { k: "Founding memberships", v: "₹2.5–3.5 Cr" },
               { k: "Title sponsor", v: "₹1.2–1.8 Cr" },

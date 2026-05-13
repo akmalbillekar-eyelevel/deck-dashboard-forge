@@ -44,7 +44,7 @@ export const slideMeta: SlideMeta[] = [
   { number: "11", title: "Inter-School — Investment & ROI", notes: "Lowest entry (₹16L). Highest strategic return. ROI 150–275%. The real return is the pipeline." },
   { number: "12", title: "Paddle City Open — Opportunity", notes: "8 events / year, 4 cities, no owned courts. Entry fees nearly cover ops — sponsorship is upside." },
   { number: "13", title: "Paddle City Open — Investment & ROI", notes: "₹72L cost, ₹1.12 Cr revenue, ~55% ROI Year 1. Year 2 jumps to ₹70–80L net as title sponsorship matures." },
-  { number: "14", title: "A for Arena — Opportunity", notes: "The home of S4. 53,000 sq ft, ECR Chennai. 13 revenue streams. S4 owns venue + revenue, Da One owns coaching." },
-  { number: "15", title: "A for Arena — Investment & ROI", notes: "₹14–16 Cr capex, S4 actual equity ₹3.5–4.5 Cr. ₹10.58 Cr EBITDA by Y3. Asset value ₹40–55 Cr at 4–5× multiple." },
+  { number: "14", title: "A for Arena — Opportunity", notes: "The home of S For Sport. 53,000 sq ft, ECR Chennai. 13 revenue streams. S For Sport owns venue + revenue, Da One owns coaching." },
+  { number: "15", title: "A for Arena — Investment & ROI", notes: "₹14–16 Cr capex, S For Sport actual equity ₹3.5–4.5 Cr. ₹10.58 Cr EBITDA by Y3. Asset value ₹40–55 Cr at 4–5× multiple." },
   { number: "16", title: "Next Steps", notes: "Three concrete asks this week: TNPPL slot, CPL founding position, ECR site shortlisting." },
 ];
