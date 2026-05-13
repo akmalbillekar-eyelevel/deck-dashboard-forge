@@ -574,10 +574,9 @@ export function S04() {
 
 export function S05() {
   return (
-    <>
+    <div className="text-[1.15em] flex flex-col h-full">
       <SlideHeader tag="05 · TNPPL · Investment & Returns"
         title="What you put in. What you get back."
-        sub="₹31L total entry · 3-year tenure across Seasons 2, 3 & 4."
       />
       <KpiStrip items={[
         { label: "Total entry", value: "₹31L", sub: "₹28L fee + ₹3L auction", strong: true },
@@ -586,7 +585,7 @@ export function S05() {
         { label: "Renewal", value: "+20%", sub: "preferential rate" },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+        <div className="col-span-7 flex flex-col gap-5 min-h-0">
           <InvestTable
             title="Your investment"
             rows={[
@@ -608,7 +607,7 @@ export function S05() {
             ]}
           />
         </div>
-        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+        <div className="col-span-5 flex flex-col gap-5 min-h-0">
           <HorizonPicker
             label="Cash recovery — pick a season"
             points={[
@@ -627,7 +626,7 @@ export function S05() {
           />
         </div>
       </Grid12>
-    </>
+    </div>
   );
 }
 
