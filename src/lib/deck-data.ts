@@ -6,6 +6,7 @@ import slidePaddle from "@/assets/slide-paddle.jpg";
 import slideArena from "@/assets/slide-arena.jpg";
 import tnpplLogo from "@/assets/tnppl-logo.svg";
 import cplLogo from "@/assets/cpl-logo.png";
+import cpplLogo from "@/assets/cppl-logo.png";
 
 export const images = {
   tnppl: slideTnppl,
@@ -19,7 +20,7 @@ export const images = {
 export const logos: Record<string, string | undefined> = {
   tnppl: tnpplLogo,
   cpl: cplLogo,
-  cppl: undefined,
+  cppl: cpplLogo,
   school: undefined,
   paddle: undefined,
   arena: undefined,
