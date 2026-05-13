@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "S4 Sports — Investor Memorandum 2026" },
+      { title: "S For Sport — Investor Memorandum 2026" },
       { name: "description", content: "Six interlocking pickleball investment opportunities. Confidential investor deck for Director Atlee." },
     ],
   }),

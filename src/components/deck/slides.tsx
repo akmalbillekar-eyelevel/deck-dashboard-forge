@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart, Line, ResponsiveContainer, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip,
-  PieChart, Pie, Cell,
+  LineChart, Line, ResponsiveContainer,
 } from "recharts";
 import { Tween } from "./Tween";
 import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck, Star, Users, Sparkles, CalendarDays, MapPin, Repeat, Briefcase, Flag, GraduationCap, Award, Heart, Handshake, Layers, TrendingUp, Dumbbell } from "lucide-react";
@@ -93,13 +92,12 @@ export function S01() {
   return (
     <div className="flex flex-col h-full justify-between">
       <div className="flex items-center justify-between">
-        <SectorTag>S4 Sports — Investor Memorandum</SectorTag>
+        <SectorTag>S For Sport — Investor Memorandum</SectorTag>
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
-        <div className="text-[18px] tracking-[0.2em] uppercase text-muted-foreground mb-8">The Playbook</div>
         <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
-          The S4 Sports<br/>Playbook.
+          The S For Sport<br/>Playbook.
         </h1>
         <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
           Every League. Every Arena. Every City.
@@ -119,87 +117,104 @@ export function S01() {
 
 /* ---------- 02 Big Picture ---------- */
 
-const growthData = [
-  { year: 2020, mlp: 0.2, ccl: 12 },
-  { year: 2021, mlp: 1.1, ccl: 18 },
-  { year: 2022, mlp: 4.5, ccl: 28 },
-  { year: 2023, mlp: 9, ccl: 38 },
-  { year: 2024, mlp: 13, ccl: 50 },
-];
+
+function AnimatedHeadline({ text }: { text: string }) {
+  return (
+    <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+      {text.split("").map((ch, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: i * 0.012, ease: "easeOut" }}
+          style={{ display: "inline-block", whiteSpace: ch === " " ? "pre" : "normal" }}
+        >
+          {ch}
+        </motion.span>
+      ))}
+    </h1>
+  );
+}
 
 export function S02() {
+  const pillars = [
+    { Icon: Trophy, t: "Leagues", s: "TNPPL · CPL · CPPL" },
+    { Icon: Building2, t: "Venues", s: "A for Arena anchor" },
+    { Icon: GraduationCap, t: "Grassroots", s: "Schools & colleges" },
+    { Icon: CalendarDays, t: "Events", s: "Paddle City Open" },
+  ];
+  const why = [
+    { Icon: TrendingUp, n: "10–50×", t: "Asset returns", s: "Cricket · kabaddi · football precedent." },
+    { Icon: Sparkles, n: "1×", t: "Sport × Stardom", s: "SRK + KKR template — no one better placed." },
+    { Icon: Handshake, n: "∞", t: "Network moat", s: "Rolodex you cannot buy." },
+  ];
   return (
     <>
-      <SlideHeader
-        tag="The Thesis"
-        title="The opportunity isn't one league. It's the entire ecosystem."
-        sub="Leagues. Venues. Grassroots. Events. Each one compounds the other."
-      />
+      <header className="mb-8">
+        <SectorTag>The Thesis</SectorTag>
+        <AnimatedHeadline text="It isn't one league. It's the entire ecosystem." />
+        <p className="mt-4 text-[22px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
+          Leagues. Venues. Grassroots. Events. Each one compounds the other.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-4 gap-5 mb-7">
+        {pillars.map(({ Icon, t, s }, i) => (
+          <motion.div
+            key={t}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + i * 0.08 }}
+            className="border thin-rule rounded-md p-5 flex flex-col gap-2"
+          >
+            <Icon className="h-8 w-8 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
+            <div className="text-[22px] font-medium tracking-tight text-ink mt-1">{t}</div>
+            <div className="text-[13px] text-muted-foreground">{s}</div>
+          </motion.div>
+        ))}
+      </div>
+
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-5">
-          <p className="text-[17px] leading-[1.55] text-muted-foreground max-w-[760px] border-t thin-rule pt-5">
-            Bengaluru Jawans winning <span className="text-ink">World Pickleball League Season 1</span> was proof of concept. This portfolio is the expansion — not deeper into one sport, but wider across the sports and entertainment landscape being built in India right now.
-          </p>
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mt-1">Why the moment is now</div>
-          {[
-            ["India's sports economy is at an inflection point.", "Every sport that built franchise value here — cricket, kabaddi, football — was dismissed early. The investors who moved first are now holding assets worth 10–50×. That window is open again."],
-            ["Entertainment and sport are converging.", "Shah Rukh Khan didn't just own KKR — he built a brand that amplified everything else. The same model applies here, and no one is better positioned to run it."],
-            ["The network is the real asset.", "Infrastructure can be built. Capital can be raised. The ability to bring Shah Rukh Khan, Allu Arjun, Vijay, and Deepika to the table cannot be bought."],
-          ].map(([h, b], i) => (
-            <div key={h as string} className="flex gap-5 border-t thin-rule pt-4">
-              <div className="text-[12px] tabular text-muted-foreground w-8 mt-[2px]">0{i + 1}</div>
-              <div>
-                <div className="text-[18px] font-medium tracking-tight leading-tight">{h}</div>
-                <div className="text-[14px] text-muted-foreground mt-1.5 max-w-[640px] leading-relaxed">{b}</div>
+        <div className="col-span-7 flex flex-col gap-4">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">Why now</div>
+          {why.map(({ Icon, n, t, s }, i) => (
+            <motion.div
+              key={t}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7 + i * 0.1 }}
+              className="flex items-center gap-5 border-t thin-rule pt-4"
+            >
+              <Icon className="h-7 w-7 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+              <div className="text-[34px] tabular font-medium tracking-tight text-ink w-[140px]">{n}</div>
+              <div className="flex-1">
+                <div className="text-[18px] font-medium text-ink leading-tight">{t}</div>
+                <div className="text-[14px] text-muted-foreground mt-1">{s}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
-          <div className="border-t thin-rule pt-4 mt-1">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">The Logic</div>
-            <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[720px]">
-              Each opportunity in this deck works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S4 Sports.</span>
-            </p>
-          </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md p-7 flex flex-col">
-          <div className="flex items-center justify-between">
-            <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks — Why this trajectory is real</div>
-          </div>
-          <div className="mt-5 border-t thin-rule">
+        <div className="col-span-5 border thin-rule rounded-md p-6 flex flex-col">
+          <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks · what's possible</div>
+          <div className="mt-4 border-t thin-rule">
             {[
-              { code: "MLP", name: "Major League Pickleball", what: "Premier professional pickleball league in the USA", value: "65×", detail: "Franchise value $200K → $13M in 4 years" },
-              { code: "CCL", name: "Celebrity Cricket League", what: "India — Bollywood, Tamil & Telugu film stars", value: "₹50 Cr", detail: "Annual ad revenue after 14 seasons" },
-              { code: "ISL", name: "Indian Super League", what: "India's pro football league · launched 2014, 8 teams", value: "3×", detail: "Title sponsorship ₹51 Cr → ₹160 Cr in 6 years; revenue 2× in 5" },
-              { code: "UTT", name: "Ultimate Table Tennis", what: "India's pro table tennis league · launched 2017", value: "1.3×", detail: "JioStar 3-yr broadcast (2025); WTT investing $3–5M anchored on UTT" },
-            ].map((r) => (
-              <div key={r.code} className="grid grid-cols-12 items-baseline py-3.5 border-b thin-rule gap-3">
-                <div className="col-span-8">
-                  <div className="flex items-baseline gap-2">
-                    <div className="text-[11px] tabular tracking-[0.16em] uppercase text-muted-foreground">{r.code}</div>
-                    <div className="text-[14px] font-medium tracking-tight text-ink">{r.name}</div>
-                  </div>
-                  <div className="text-[11px] text-muted-foreground mt-1 leading-snug">{r.what}</div>
-                  <div className="text-[11px] text-ink/80 mt-1 leading-snug">{r.detail}</div>
+              { Icon: Trophy, code: "MLP", value: "65×", detail: "$200K → $13M (USA, 4 yrs)" },
+              { Icon: Star, code: "CCL", value: "₹50 Cr", detail: "Annual ad revenue · 14 seasons" },
+              { Icon: Flag, code: "ISL", value: "3×", detail: "Title sponsorship in 6 yrs" },
+              { Icon: Award, code: "UTT", value: "1.3×", detail: "JioStar 3-yr broadcast (2025)" },
+            ].map(({ Icon, code, value, detail }) => (
+              <div key={code} className="grid grid-cols-12 items-center py-3.5 border-b thin-rule gap-3">
+                <Icon className="h-5 w-5 text-[color:var(--slate-tone)] col-span-1" strokeWidth={1.5} />
+                <div className="col-span-7">
+                  <div className="text-[13px] tracking-[0.16em] uppercase text-muted-foreground">{code}</div>
+                  <div className="text-[12px] text-ink/80 mt-0.5">{detail}</div>
                 </div>
-                <div className="col-span-4 text-right text-[26px] font-medium tabular tracking-tight leading-none">{r.value}</div>
+                <div className="col-span-4 text-right text-[28px] font-medium tabular tracking-tight">{value}</div>
               </div>
             ))}
           </div>
-          <div className="flex-1 min-h-0 mt-4">
-            <ResponsiveContainer>
-              <AreaChart data={growthData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--slate-tone)" stopOpacity={0.35}/>
-                    <stop offset="100%" stopColor="var(--slate-tone)" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="year" tick={{ fontSize: 11, fill: "currentColor", opacity: 0.5 }} axisLine={false} tickLine={false}/>
-                <YAxis hide />
-                <Area type="monotone" dataKey="mlp" stroke="var(--slate-tone)" strokeWidth={1.5} fill="url(#g1)" />
-                <Line type="monotone" dataKey="ccl" stroke="var(--ink)" strokeWidth={1.25} dot={false}/>
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="mt-auto border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
+            One ecosystem. One owner at the centre. <span className="font-medium">That is S For Sport.</span>
           </div>
         </div>
       </Grid12>
@@ -218,11 +233,11 @@ const portfolio = [
   { n: "06", name: "A for Arena — Multi-Sport Club", cat: "Infrastructure", inv: "₹14–16 Cr", ret: "₹10.58 Cr EBITDA Year 3", roi: "Asset value ₹40–55 Cr", kind: "anchor" },
 ];
 
-const connections = [
-  ["Grassroots", "Inter-School League builds the player base and the next generation."],
-  ["Events", "Paddle City Open brings the community together across cities."],
-  ["Leagues", "TNPPL, CPL, CPPL monetise the audience at every level."],
-  ["Infrastructure", "A for Arena anchors and hosts everything under one roof."],
+const connections: { Icon: typeof Sparkles; k: string; v: string }[] = [
+  { Icon: GraduationCap, k: "Grassroots", v: "Schools build the player base." },
+  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds community." },
+  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise audience." },
+  { Icon: Building2, k: "Infrastructure", v: "A for Arena hosts everything." },
 ];
 
 export function S03() {
@@ -237,11 +252,8 @@ export function S03() {
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
           <div className="col-span-1">#</div>
-          <div className="col-span-4">Opportunity</div>
-          <div className="col-span-2">Category</div>
-          <div className="col-span-2">Investment</div>
-          <div className="col-span-2">Net return</div>
-          <div className="col-span-1 text-right">ROI</div>
+          <div className="col-span-7">Opportunity</div>
+          <div className="col-span-4">Category</div>
         </div>
         {portfolio.map((p) => (
           <div
@@ -251,48 +263,25 @@ export function S03() {
             className={`grid grid-cols-12 py-4 border-b thin-rule items-center magnetic ${hover === p.n ? "bg-muted/60" : ""}`}
           >
             <div className="col-span-1 tabular text-[15px] text-muted-foreground">{p.n}</div>
-            <div className="col-span-4 text-[20px] font-medium tracking-tight leading-tight">
+            <div className="col-span-7 text-[20px] font-medium tracking-tight leading-tight">
               {p.name}
               {p.kind === "anchor" && <span className="ml-3 text-[10px] uppercase tracking-[0.16em] text-[color:var(--sage-tone)]">Anchor</span>}
             </div>
-            <div className="col-span-2 text-[13px] text-muted-foreground">{p.cat}</div>
-            <div className="col-span-2 text-[16px] tabular">{p.inv}</div>
-            <div className="col-span-2 text-[14px] text-muted-foreground tabular">{p.ret}</div>
-            <div className="col-span-1 text-right text-[14px] tabular">{p.roi}</div>
+            <div className="col-span-4 text-[14px] text-muted-foreground">{p.cat}</div>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-8 mt-6">
-        <div className="col-span-7">
-          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-3">How they connect</div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-            {connections.map(([k, v]) => (
-              <div key={k} className="flex gap-3 border-t thin-rule pt-3">
-                <div className="text-[12px] uppercase tracking-[0.14em] text-ink w-[110px] shrink-0 mt-[2px]">{k}</div>
-                <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 text-[11px] text-muted-foreground italic">
-            CPPL: per city, scalable across 4 cities; team franchise fees collected upfront cover operating costs. A for Arena: infrastructure asset — measured by EBITDA and exit value, not percentage ROI.
-          </div>
-        </div>
-        <div className="col-span-5 border thin-rule rounded-md p-5">
-          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">The Range</div>
-          <div className="grid grid-cols-2 gap-6 mt-3">
-            <div>
-              <div className="text-[28px] font-medium tabular tracking-tight">₹16L</div>
-              <div className="text-[12px] text-muted-foreground mt-1">Entry play</div>
+      <div className="mt-8">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they connect</div>
+        <div className="grid grid-cols-4 gap-5">
+          {connections.map(({ Icon, k, v }) => (
+            <div key={k} className="border thin-rule rounded-md p-5 flex flex-col gap-2">
+              <Icon className="h-7 w-7 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
+              <div className="text-[18px] font-medium tracking-tight text-ink mt-1">{k}</div>
+              <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
             </div>
-            <div>
-              <div className="text-[28px] font-medium tabular tracking-tight">₹14–16 Cr</div>
-              <div className="text-[12px] text-muted-foreground mt-1">Anchor asset</div>
-            </div>
-          </div>
-          <div className="text-[13px] text-muted-foreground mt-3 leading-relaxed">
-            Quick launches. 18-month builds. Something for every timeline.
-          </div>
+          ))}
         </div>
       </div>
     </>
@@ -373,12 +362,12 @@ function TicketStepper({
 
 function KpiStrip({ items }: { items: { label: string; value: string; sub?: string; strong?: boolean }[] }) {
   return (
-    <div className="grid gap-3 mb-4" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
+    <div className="grid gap-3 mb-5" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
       {items.map((it) => (
-        <div key={it.label} className={`border thin-rule rounded-md p-4 ${it.strong ? "bg-foreground text-paper" : ""}`}>
-          <div className={`text-[10px] uppercase tracking-[0.16em] ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.label}</div>
-          <div className="text-[30px] font-medium tabular tracking-tight mt-1 leading-none">{it.value}</div>
-          {it.sub && <div className={`text-[11px] mt-1.5 ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.sub}</div>}
+        <div key={it.label} className={`border thin-rule rounded-md p-5 ${it.strong ? "bg-foreground text-paper" : ""}`}>
+          <div className={`text-[12px] uppercase tracking-[0.16em] ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.label}</div>
+          <div className="text-[38px] font-medium tabular tracking-tight mt-1.5 leading-none">{it.value}</div>
+          {it.sub && <div className={`text-[13px] mt-2 ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.sub}</div>}
         </div>
       ))}
     </div>
@@ -387,10 +376,10 @@ function KpiStrip({ items }: { items: { label: string; value: string; sub?: stri
 
 function InvestTable({ title, rows }: { title: string; rows: { k: string; v: string; strong?: boolean; muted?: boolean }[] }) {
   return (
-    <div className="border thin-rule rounded-md p-4">
-      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{title}</div>
+    <div className="border thin-rule rounded-md p-5">
+      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{title}</div>
       {rows.map((r) => (
-        <div key={r.k} className={`flex justify-between gap-4 border-t thin-rule py-2 text-[13px] ${r.strong ? "text-ink font-medium" : ""}`}>
+        <div key={r.k} className={`flex justify-between gap-4 border-t thin-rule py-2.5 text-[16px] ${r.strong ? "text-ink font-medium" : ""}`}>
           <span className={r.strong ? "" : "text-muted-foreground"}>{r.k}</span>
           <span className={`tabular text-right ${r.muted ? "text-muted-foreground" : ""}`}>{r.v}</span>
         </div>
@@ -408,17 +397,17 @@ function ReturnsTable({
 }) {
   return (
     <div className="border thin-rule rounded-md flex flex-col min-h-0">
-      <div className="px-4 py-2.5 border-b thin-rule text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{title}</div>
-      <div className="grid grid-cols-12 px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
+      <div className="px-5 py-3 border-b thin-rule text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{title}</div>
+      <div className="grid grid-cols-12 px-5 py-2.5 text-[12px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
         <div className="col-span-6">{cols[0]}</div>
         <div className="col-span-3 text-right">{cols[1]}</div>
         <div className="col-span-3 text-right">{cols[2]}</div>
       </div>
       {rows.map((r) => (
-        <div key={r.k} className={`grid grid-cols-12 px-4 py-2 text-[13px] border-t thin-rule ${r.total ? "bg-muted/25" : ""}`}>
+        <div key={r.k} className={`grid grid-cols-12 px-5 py-2.5 text-[16px] border-t thin-rule ${r.total ? "bg-muted/25" : ""}`}>
           <div className={`col-span-6 ${r.total ? "text-ink font-medium" : "text-muted-foreground"}`}>{r.k}</div>
           {r.note ? (
-            <div className="col-span-6 text-[12px] text-muted-foreground italic text-right">{r.a}</div>
+            <div className="col-span-6 text-[14px] text-muted-foreground italic text-right">{r.a}</div>
           ) : (
             <>
               <div className={`col-span-3 text-right tabular ${r.total ? "text-ink font-medium" : ""}`}>{r.a}</div>
@@ -441,18 +430,18 @@ function HorizonPicker({
   const [i, setI] = useState(points.length - 1);
   const max = Math.max(...points.map((p) => Math.abs(p.value)));
   return (
-    <div className="border thin-rule rounded-md p-5">
+    <div className="border thin-rule rounded-md p-6">
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{label}</div>
-        <div className="text-[10px] text-muted-foreground tabular">Hover or tap</div>
+        <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{label}</div>
+        <div className="text-[12px] text-muted-foreground tabular">Hover or tap</div>
       </div>
-      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{points[i].label}</div>
+      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{points[i].label}</div>
       <Tween
         value={points[i].value}
         format={(v) => format(v)}
-        className="block mt-1 text-[56px] font-medium tabular tracking-tight leading-none"
+        className="block mt-1.5 text-[64px] font-medium tabular tracking-tight leading-none"
       />
-      {points[i].sub && <div className="text-[12px] text-muted-foreground mt-2">{points[i].sub}</div>}
+      {points[i].sub && <div className="text-[14px] text-muted-foreground mt-2.5">{points[i].sub}</div>}
       <div className="mt-5 grid gap-2" style={{ gridTemplateColumns: `repeat(${points.length}, 1fr)` }}>
         {points.map((p, idx) => {
           const active = idx === i;
@@ -462,10 +451,10 @@ function HorizonPicker({
               key={p.label}
               onMouseEnter={() => setI(idx)}
               onClick={() => setI(idx)}
-              className={`magnetic border thin-rule rounded p-2 text-left transition-colors ${active ? "bg-foreground text-paper" : "hover:bg-muted/40"}`}
+              className={`magnetic border thin-rule rounded p-2.5 text-left transition-colors ${active ? "bg-foreground text-paper" : "hover:bg-muted/40"}`}
             >
-              <div className={`text-[10px] uppercase tracking-[0.14em] ${active ? "opacity-70" : "text-muted-foreground"}`}>{p.label}</div>
-              <div className="text-[14px] tabular mt-0.5">{format(p.value)}</div>
+              <div className={`text-[11px] uppercase tracking-[0.14em] ${active ? "opacity-70" : "text-muted-foreground"}`}>{p.label}</div>
+              <div className="text-[16px] tabular mt-1">{format(p.value)}</div>
               <div className={`mt-1.5 h-[3px] rounded-full ${active ? "bg-paper/70" : "bg-foreground/15"}`} style={{ transform: `scaleX(${w})`, transformOrigin: "left" }} />
             </button>
           );
@@ -477,15 +466,15 @@ function HorizonPicker({
 
 function TakeawayList({ title, items }: { title: string; items: { Icon: typeof Sparkles; t: string; s: string }[] }) {
   return (
-    <div className="border thin-rule rounded-md p-4">
-      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2.5">{title}</div>
-      <ul className="space-y-2">
+    <div className="border thin-rule rounded-md p-5">
+      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground mb-3">{title}</div>
+      <ul className="space-y-2.5">
         {items.map(({ Icon, t, s }) => (
-          <li key={t} className="flex gap-2.5 border-t thin-rule pt-2">
-            <Icon className="h-3.5 w-3.5 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+          <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+            <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
             <div className="min-w-0">
-              <span className="text-[13px] font-medium text-ink">{t}</span>{" "}
-              <span className="text-[12px] text-muted-foreground">{s}</span>
+              <span className="text-[15px] font-medium text-ink">{t}</span>{" "}
+              <span className="text-[14px] text-muted-foreground">{s}</span>
             </div>
           </li>
         ))}
@@ -543,12 +532,8 @@ export function S04() {
                 ["Teams", "16 teams", "12 franchise teams"],
                 ["Players", "160 players", "168 players across the state"],
                 ["Prize pool", "₹7 Lakhs", "₹30 Lakhs (4× growth)"],
-                ["Venue", "—", "JN Indoor Stadium, Chennai"],
-                ["Daily footfall", "~1,000 / day", "50 Lakh+ projected campaign reach"],
                 ["Sponsors", "MGM Healthcare, BoomCars, Indian Bank, TexValley", "Open for Season 2"],
                 ["VIP presence", "Sharath Kamal · IAS CEO of SDAT", "—"],
-                ["Marketing", "—", "9-channel campaign · 90 days"],
-                ["Channels", "—", "Outdoor · Print · Radio · Digital · YouTube Live · PR · Influencers"],
               ].map((row, i) => (
                 <div key={row[0]} className={`grid grid-cols-12 py-2 px-4 text-[12px] tabular ${i % 2 ? "bg-muted/20" : ""} border-b thin-rule last:border-b-0`}>
                   <div className="col-span-4 text-muted-foreground uppercase tracking-[0.12em] text-[10px] mt-0.5">{row[0]}</div>
@@ -591,7 +576,6 @@ export function S05() {
     <>
       <SlideHeader tag="05 · TNPPL · Investment & Returns"
         title="What you put in. What you get back."
-        sub="₹31L total entry · 3-year tenure across Seasons 2, 3 & 4."
       />
       <KpiStrip items={[
         { label: "Total entry", value: "₹31L", sub: "₹28L fee + ₹3L auction", strong: true },
@@ -600,7 +584,7 @@ export function S05() {
         { label: "Renewal", value: "+20%", sub: "preferential rate" },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+        <div className="col-span-7 flex flex-col gap-5 min-h-0">
           <InvestTable
             title="Your investment"
             rows={[
@@ -622,7 +606,7 @@ export function S05() {
             ]}
           />
         </div>
-        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+        <div className="col-span-5 flex flex-col gap-5 min-h-0">
           <HorizonPicker
             label="Cash recovery — pick a season"
             points={[
@@ -652,73 +636,73 @@ export function S06() {
     <>
       <SlideHeader tag="06 · CPL · Opportunity"
         title="Be a founding owner of India's first Celebrity Pickleball League."
-        sub="Celebrity Pickleball League (CPL) — Season 1 · October 2026."
+        sub="CPL — Season 1 · October 2026."
         logoKey="cpl" logoLabel="CPL"
       />
-      <AboutGrid
-        label="Who is behind CPL"
-        items={[
-          { Icon: Star, t: "Organised by ATP", s: "All Things Pickleball — India's most comprehensive pickleball ecosystem." },
-          { Icon: Trophy, t: "Format creators", s: "Queen of the Court · Masters · Aspiring Aces — proprietary play formats." },
-          { Icon: Sparkles, t: "WPPL organisers", s: "Built India's first Women's Premier Pickleball League." },
-          { Icon: Layers, t: "Unified platform", s: "Coaching · events · retail · infrastructure · content — all under one roof." },
-          { Icon: ShieldCheck, t: "Quality benchmark", s: "Sets the professionalism standard across Indian pickleball." },
-          { Icon: BadgeCheck, t: "End-to-end run by ATP", s: "Production, broadcast, operations and content — ATP handles all of it." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[260px]">
+        <div className="col-span-5 flex flex-col gap-4">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[280px]">
             <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
           </div>
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">What is CPL</div>
-            <p className="mt-2 text-[15px] leading-relaxed text-ink/90">
-              India's first <span className="font-medium">IPL-style celebrity pickleball league</span> — built for entertainment, content and national media coverage. Bollywood stars, cricketers and sports personalities compete across <span className="font-medium tabular">6 franchise teams</span>.
-            </p>
-            <div className="mt-4 grid grid-cols-3 gap-4 border-t thin-rule pt-4">
-              <Stat label="Founding slots" value="6" sub="nationwide" />
-              <Stat label="Teams" value="6" sub="franchise" />
-              <Stat label="Window" value="10–11d" sub="per season" />
-            </div>
+          <div className="border thin-rule rounded-md p-5 grid grid-cols-3 gap-4">
+            <Stat label="Founding slots" value="6" sub="nationwide" />
+            <Stat label="Teams" value="6" sub="franchise" />
+            <Stat label="Window" value="10–11d" sub="per season" />
           </div>
         </div>
 
-        <div className="col-span-7 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-3 border-b thin-rule text-[12px] uppercase tracking-[0.16em] text-muted-foreground">
-              Your team — how it works
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Who's behind CPL</div>
+            <div className="grid grid-cols-3 gap-x-5 gap-y-3">
+              {[
+                { Icon: Star, t: "ATP", s: "All Things Pickleball — India's ecosystem builder." },
+                { Icon: Trophy, t: "Format creators", s: "Queen of the Court · Masters · Aces." },
+                { Icon: Sparkles, t: "WPPL organisers", s: "India's first Women's Premier Pickleball League." },
+                { Icon: Layers, t: "Unified platform", s: "Coaching · events · retail · content." },
+                { Icon: ShieldCheck, t: "Quality benchmark", s: "Sets pro standards across India." },
+                { Icon: BadgeCheck, t: "End-to-end run", s: "Production · broadcast · ops · content." },
+              ].map(({ Icon, t, s }) => (
+                <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div>
+                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="grid grid-cols-12 px-5 py-2.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
-              <div className="col-span-4">Element</div>
-              <div className="col-span-8">Detail</div>
-            </div>
-            {[
-              ["Your role", "Captain — the face, the owner, the story."],
-              ["Your team", "You + 2–3 celebrities you invite + 1 professional player."],
-              ["Pro player", "Provided by ATP."],
-              ["Time commitment", "10–11 days per season."],
-            ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-12 px-5 py-3 text-[15px] border-t thin-rule">
-                <div className="col-span-4 text-muted-foreground">{k}</div>
-                <div className="col-span-8 text-ink">{v}</div>
-              </div>
-            ))}
           </div>
 
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The commercial opportunity</div>
-            <ul className="space-y-3">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Your team</div>
+            <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 text-[14px]">
               {[
-                ["Sponsors follow celebrity reach.", "The bigger your team, the higher your sponsorship value."],
-                ["10–11 days of content.", "Year-round monetisation — clips, reels, behind-the-scenes, brand integrations."],
-                ["Founding price ends with Season 1.", "Subsequent seasons are priced against established franchise value."],
-                ["Only 6 slots.", "Scarcity drives franchise appreciation from Season 2 onwards."],
-              ].map(([t, s]) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-3 first:border-t-0 first:pt-0">
-                  <Sparkles className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="text-[14px] leading-snug">
+                ["Your role", "Captain — face, owner, story."],
+                ["Your team", "You + 2–3 celebs + 1 pro."],
+                ["Pro player", "Provided by ATP."],
+                ["Time", "10–11 days / season."],
+              ].map(([k, v]) => (
+                <div key={k} className="flex gap-3 border-t thin-rule pt-2">
+                  <span className="text-muted-foreground w-[90px] shrink-0 text-[12px] uppercase tracking-[0.12em] mt-0.5">{k}</span>
+                  <span className="text-ink">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why founding matters</div>
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
+              {[
+                { Icon: Users, t: "Sponsors follow stars.", s: "Bigger team = bigger ticket." },
+                { Icon: Repeat, t: "10–11 days of content.", s: "Year-round monetisation." },
+                { Icon: Star, t: "Founding price ends S1.", s: "S2+ tracks franchise value." },
+                { Icon: Sparkles, t: "Only 6 slots.", s: "Scarcity drives appreciation." },
+              ].map(({ Icon, t, s }) => (
+                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="text-[13px] leading-snug">
                     <span className="text-ink font-medium">{t}</span>{" "}
                     <span className="text-muted-foreground">{s}</span>
                   </div>
@@ -796,13 +780,18 @@ export function S07() {
 
 export function S08() {
   const cities = [
-    { name: "Chennai", v: 80, tone: "var(--slate-tone)" },
-    { name: "Hyderabad", v: 75, tone: "var(--sand-tone)" },
-    { name: "Bangalore", v: 78, tone: "var(--sage-tone)" },
-    { name: "Mumbai", v: 82, tone: "var(--ink)" },
+    { name: "Chennai", v: 80 },
+    { name: "Hyderabad", v: 75 },
+    { name: "Bangalore", v: 78 },
+    { name: "Mumbai", v: 82 },
   ];
-  const [active, setActive] = useState<number | null>(null);
-  const total = cities.reduce((a, c) => a + c.v, 0);
+  const includes = [
+    { Icon: Users, t: "8–10 corporate franchise teams", s: "Companies buy in; players are their employees. Each team commits a multi-year captaincy and brand presence." },
+    { Icon: Briefcase, t: "Full sponsorship stack", s: "Title · Associates · F&B · Activations · Venue branding — every inventory slot monetised across the season." },
+    { Icon: ShieldCheck, t: "Professionally managed ops", s: "Production, refereeing, scheduling, broadcast — handled end-to-end by the central league office." },
+    { Icon: Handshake, t: "Premium corporate networking", s: "League weekends double as relationship infrastructure — CXOs, founders and HR heads in one room." },
+  ];
+  const [open, setOpen] = useState<number | null>(0);
   return (
     <>
       <SlideHeader tag="08 · CPPL · Opportunity"
@@ -811,90 +800,50 @@ export function S08() {
         logoKey="cppl" logoLabel="CPPL"
       />
 
-      <div className="mb-5 border thin-rule rounded-md p-5">
-        <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">What is CPPL</div>
-        <p className="text-[15px] leading-relaxed text-ink/90 max-w-[1200px]">
-          India's first <span className="font-medium">structured inter-corporate pickleball league</span>. Companies buy franchise teams and compete across a seasonal league format — every year, across four cities.
-          <span className="ml-2 text-muted-foreground">Chennai · Hyderabad · Bangalore · Mumbai.</span>
-        </p>
-      </div>
-
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md p-5 flex">
-          <div className="flex-1 relative min-h-[340px]">
-            <ResponsiveContainer>
-              <PieChart>
-                <Pie data={cities} dataKey="v" innerRadius={90} outerRadius={150} paddingAngle={2} stroke="var(--paper)" strokeWidth={3}
-                  onMouseEnter={(_, i) => setActive(i)} onMouseLeave={() => setActive(null)}>
-                  {cities.map((c, i) => (
-                    <Cell key={c.name} fill={c.tone} opacity={active === null || active === i ? 1 : 0.35}/>
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-center">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{active === null ? "Combined / yr" : cities[active].name}</div>
-                <div className="text-[36px] font-medium tabular mt-1">
-                  {active === null ? `₹${(total/100).toFixed(2)} Cr` : `₹${cities[active].v}L`}
-                </div>
-              </div>
-            </div>
+        <div className="col-span-6 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[300px]">
+            <img src={images.cppl} alt="CPPL corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
-          <div className="w-[220px] flex flex-col justify-center gap-3 pl-3">
-            <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1">Per-city revenue</div>
-            {cities.map((c, i) => (
-              <button key={c.name} onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                className={`flex items-center gap-3 text-left magnetic border-t thin-rule pt-2 ${active === i ? "" : "opacity-70"}`}>
-                <span className="h-3 w-3 rounded-sm" style={{ background: c.tone }}/>
-                <span className="text-[15px] flex-1">{c.name}</span>
-                <span className="text-[14px] tabular text-muted-foreground">₹{c.v}L</span>
-              </button>
-            ))}
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Per-city revenue · Year 1</div>
+            <div className="grid grid-cols-4 gap-3">
+              {cities.map((c) => (
+                <div key={c.name} className="border thin-rule rounded p-3">
+                  <div className="text-[12px] text-muted-foreground">{c.name}</div>
+                  <div className="text-[24px] tabular font-medium tracking-tight mt-0.5">₹{c.v}L</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="col-span-6 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">What each city includes</div>
-            <ul className="space-y-2.5">
-              {[
-                { Icon: Users, t: "8–10 corporate franchise teams", s: "Companies buy in; players are their employees." },
-                { Icon: Briefcase, t: "Full sponsorship stack", s: "Title · Associates · F&B · Activations · Venue branding." },
-                { Icon: ShieldCheck, t: "Professionally managed ops", s: "Production, refereeing, scheduling, broadcast — all run for you." },
-                { Icon: Handshake, t: "Premium corporate networking", s: "League weekends double as relationship infrastructure." },
-              ].map(({ Icon, t, s }) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
-                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="min-w-0">
-                    <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Why it works</div>
-            <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
-              {[
-                { Icon: Repeat, t: "Annual recurring revenue", s: "Not a one-time event — a yearly IP." },
-                { Icon: Briefcase, t: "Premium corporate audience", s: "Sponsor-friendly demographic." },
-                { Icon: Sparkles, t: "Asset-light", s: "No owned infrastructure required." },
-                { Icon: Flag, t: "No competition today", s: "First-mover in the corporate league space." },
-                { Icon: TrendingUp, t: "Add cities yearly", s: "Same model — scales without re-architecture." },
-              ].map(({ Icon, t, s }) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
-                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="min-w-0">
-                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[11px] text-muted-foreground leading-snug mt-0.5">{s}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="col-span-6 flex flex-col gap-3 min-h-0">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">What each city includes</div>
+          {includes.map(({ Icon, t, s }, i) => {
+            const isOpen = open === i;
+            return (
+              <button
+                key={t}
+                onClick={() => setOpen(isOpen ? null : i)}
+                className={`text-left border thin-rule rounded-md p-4 transition-colors ${isOpen ? "bg-muted/40" : "hover:bg-muted/20"}`}
+              >
+                <div className="flex items-center gap-3">
+                  <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="flex-1 text-[17px] font-medium text-ink leading-tight">{t}</div>
+                  <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+                </div>
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+                </motion.div>
+              </button>
+            );
+          })}
         </div>
       </Grid12>
     </>
@@ -907,8 +856,7 @@ export function S09() {
   return (
     <>
       <SlideHeader tag="09 · CPPL · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 03 · Investment Detail — per city economics, scaled across 4 cities."
+        title="₹38.5L in. ₹70–80L out. Per city. Every year."
       />
       <KpiStrip items={[
         { label: "Investment / city", value: "₹8–12L", sub: "founder contribution" },
@@ -964,108 +912,112 @@ export function S09() {
   );
 }
 
-/* ---------- 10 Inter-School Opportunity ---------- */
+/* ---------- 10 Intercollege Pickleball Tournament — Opportunity ---------- */
+
+function ExpandList({ items }: { items: { Icon: typeof Sparkles; t: string; s: string }[] }) {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="flex flex-col gap-3">
+      {items.map(({ Icon, t, s }, i) => {
+        const isOpen = open === i;
+        return (
+          <button
+            key={t}
+            onClick={() => setOpen(isOpen ? null : i)}
+            className={`text-left border thin-rule rounded-md p-4 transition-colors ${isOpen ? "bg-muted/40" : "hover:bg-muted/20"}`}
+          >
+            <div className="flex items-center gap-3">
+              <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+              <div className="flex-1 text-[16px] font-medium text-ink leading-tight">{t}</div>
+              <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+            </div>
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+            </motion.div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function S10() {
-  const cities = [
-    { k: "Chennai", v: "20+ schools & colleges" },
-    { k: "Bangalore", v: "20+ schools & colleges" },
-    { k: "Hyderabad", v: "20+ schools & colleges" },
-    { k: "Mumbai", v: "20+ schools & colleges" },
-  ];
-  const [hover, setHover] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="10 · Inter-School & College League · Opportunity"
-        title="Build the Grassroots. Own the Next Generation."
-        sub="India's first structured school & college pickleball league — 4 cities · annual · championship finals Sept–Oct 2026."
-        logoKey="school" logoLabel="Inter-School League"
+      <SlideHeader tag="10 · Intercollege Pickleball Tournament · Opportunity"
+        title="Intercollege Pickleball Tournament — Chennai & Bangalore."
+        sub="2-day event · 4-court venue · zero entry fees · sponsorship & CSR funded · in association with TNPA."
+        logoKey="school" logoLabel="Intercollege Tournament"
       />
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
-            <p className="text-[15px] text-muted-foreground leading-relaxed">
-              A structured annual pickleball league for schools and colleges across four major cities. Teams represent their institutions, compete through a seasonal league format, and culminate in a national championship.
-            </p>
-            <div className="text-[13px] text-ink mt-2 tabular">Chennai · Bangalore · Hyderabad · Mumbai</div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[280px] bg-muted flex items-center justify-center">
+            <img src={images.school} alt="Intercollege pickleball tournament" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">City targets — Year 1</div>
-            <div className="grid grid-cols-2 gap-2">
-              {cities.map((c, i) => (
-                <button key={c.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-                  className="text-left p-3 border thin-rule rounded-md transition-colors"
-                  style={{ backgroundColor: hover === i ? "color-mix(in oklch, var(--sage-tone) 25%, var(--paper))" : undefined }}>
-                  <div className="text-[15px] font-medium tracking-tight">{c.k}</div>
-                  <div className="text-[12px] text-muted-foreground tabular mt-0.5">{c.v}</div>
-                </button>
-              ))}
-            </div>
-            <div className="text-[12px] text-muted-foreground mt-3">Championship finals — September / October 2026.</div>
+          <div className="border thin-rule rounded-md p-5 grid grid-cols-3 gap-4">
+            <Stat label="Cities" value="2" sub="Chennai · BLR" />
+            <Stat label="Courts" value="4" sub="per venue" />
+            <Stat label="Days" value="2" sub="weekend event" />
           </div>
         </div>
-        <div className="col-span-5 flex flex-col gap-4 min-h-0">
-          <TakeawayList
-            title="Why it matters beyond the numbers"
-            items={[
-              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S4 brand advocates." },
-              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S4 Sports." },
-            ]}
-          />
-          <TakeawayList
-            title="Why it's commercially attractive"
-            items={[
-              { Icon: Heart, t: "New sponsor vertical.", s: "Education · FMCG · CSR · youth wellness." },
-              { Icon: Building2, t: "Brand-safe.", s: "Community-driven — ideal for institutional sponsors." },
-              { Icon: Trophy, t: "First-mover.", s: "First structured student pickleball league in India." },
-              { Icon: TrendingUp, t: "Scalable.", s: "100+ institutions by Year 2." },
-            ]}
-          />
+
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">How it works · click to expand</div>
+          <ExpandList items={[
+            { Icon: GraduationCap, t: "Colleges send 4-player teams", s: "Each participating college fields a team of 4 players. No college pays an entry fee — the tournament is free for institutions, removing every barrier to participation." },
+            { Icon: Handshake, t: "TNPA partnership", s: "Run in association with the Tamil Nadu Pickleball Association — instant credibility, technical officials, and an established player & coach network across both cities." },
+            { Icon: Briefcase, t: "Sponsorship & CSR funded", s: "100% of revenue comes from title sponsorship, category sponsors and corporate CSR funds — youth sport, education, fitness brands and CSR mandates all line up for grassroots tie-ups." },
+            { Icon: Trophy, t: "Medals & trophies, no cash prize", s: "Recognition over cash — medals, trophies and college bragging rights. Keeps the spirit collegiate, the costs disciplined, and the brand association clean for sponsors." },
+          ]}/>
         </div>
       </Grid12>
     </>
   );
 }
 
-/* ---------- 11 Inter-School ROI ---------- */
+/* ---------- 11 Intercollege Pickleball Tournament — Investment & Returns ---------- */
 
 export function S11() {
   return (
     <>
-      <SlideHeader tag="11 · Inter-School League · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 04 · Investment Detail — ₹4L per city · 4 cities · 150–275% Year 1 ROI."
+      <SlideHeader tag="11 · Intercollege Pickleball Tournament · Investment & Returns"
+        title="₹11L in. ₹20L sponsorship out. Per city."
       />
       <KpiStrip items={[
-        { label: "Investment / city", value: "₹4L", sub: "lowest entry in deck" },
-        { label: "Revenue / city", value: "₹10–15L", sub: "fees + sponsors" },
-        { label: "Net / city", value: "₹6–11L", sub: "Year 1" },
-        { label: "ROI", value: "150–275%", sub: "Year 1 alone", strong: true },
+        { label: "Sponsorship revenue", value: "₹20L", sub: "title + category + CSR" },
+        { label: "Total expenses", value: "₹11L", sub: "all-in event cost" },
+        { label: "Net profit / city", value: "₹9L", sub: "per 2-day event" },
+        { label: "ROI", value: "~82%", sub: "single edition", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <ReturnsTable
-            title="Per city — investment vs return"
-            cols={["Line", "Min", "Max"]}
+            title="Per city — economics"
+            cols={["Line", "Cost", "Revenue"]}
             rows={[
-              { k: "Investment", a: "₹4L", b: "₹4L" },
-              { k: "School / college entry fees", a: "₹8L", b: "₹10L" },
-              { k: "Title sponsor", a: "₹5L", b: "₹8L" },
-              { k: "Co-sponsors", a: "₹2L", b: "₹3L" },
-              { k: "Year 1 revenue", a: "₹10L", b: "₹15L", total: true },
-              { k: "Net profit", a: "₹6L", b: "₹11L", total: true },
-              { k: "ROI", a: "150%", b: "275%", total: true },
+              { k: "Venue (4 courts · 2 days)", a: "₹1.5L", b: "—" },
+              { k: "Marketing & outreach", a: "₹2.5L", b: "—" },
+              { k: "Setup & production", a: "₹2L", b: "—" },
+              { k: "Trophies & medals", a: "₹1L", b: "—" },
+              { k: "Misc · contingencies", a: "₹4L", b: "—" },
+              { k: "Sponsorship & CSR (title + category)", a: "—", b: "₹20L" },
+              { k: "Total per city", a: "₹11L", b: "₹20L", total: true },
+              { k: "Net profit", a: "₹9L", b: "₹9L", total: true },
             ]}
           />
           <ReturnsTable
             title="Scale it up"
-            cols={["Line", "1 city", "4 cities"]}
+            cols={["Line", "1 city", "2 cities"]}
             rows={[
-              { k: "Investment", a: "₹4L", b: "₹16L" },
-              { k: "Revenue", a: "₹10–15L", b: "₹40–60L" },
-              { k: "Net profit", a: "₹6–11L", b: "₹24–44L", total: true },
-              { k: "ROI", a: "150–275%", b: "150–275%", total: true },
+              { k: "Investment", a: "₹11L", b: "₹22L" },
+              { k: "Revenue", a: "₹20L", b: "₹40L" },
+              { k: "Net profit", a: "₹9L", b: "₹18L", total: true },
+              { k: "ROI", a: "~82%", b: "~82%", total: true },
             ]}
           />
         </div>
@@ -1073,17 +1025,17 @@ export function S11() {
           <HorizonPicker
             label="Net profit — pick scale"
             points={[
-              { label: "1 city", value: 9, sub: "₹6–11L net · ₹4L entry." },
-              { label: "4 cities", value: 34, sub: "₹24–44L net · ₹16L total entry." },
-              { label: "100+ inst. Y2", value: 70, sub: "Scale-out across institutions." },
+              { label: "Chennai only", value: 9, sub: "Single 2-day event · ₹11L outlay." },
+              { label: "Chennai + BLR", value: 18, sub: "Both cities · same playbook." },
+              { label: "Y2 · 4 cities", value: 36, sub: "Add Hyderabad + Mumbai once template is proven." },
             ]}
           />
           <TakeawayList
             title="The strategic return"
             items={[
-              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S4 advocate for life." },
+              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S For Sport advocate." },
               { Icon: Heart, t: "CSR-friendly.", s: "Unlocks sponsors who won't touch pro sports." },
-              { Icon: TrendingUp, t: "Decade-long upside.", s: "Real return is bigger than the financials suggest." },
+              { Icon: Handshake, t: "TNPA-backed.", s: "Credibility, officials & college network from day one." },
             ]}
           />
         </div>
@@ -1199,8 +1151,7 @@ export function S13() {
   return (
     <>
       <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 05 · Investment Detail — ₹9L per event · 8 events · ~55% Year 1 ROI."
+        title="₹9L per weekend. ₹14L back. 8 weekends a year."
       />
       <KpiStrip items={[
         { label: "Investment / event", value: "₹9L", sub: "all-in cost" },
@@ -1262,17 +1213,6 @@ export function S13() {
 
 /* ---------- 14 Arena Opportunity (waterfall) ---------- */
 
-const capitalDeploy = [
-  { k: "Lease deposit", v: 200 },
-  { k: "Fit-out", v: 380 },
-  { k: "Pool", v: 220 },
-  { k: "Surfaces", v: 150 },
-  { k: "HVAC", v: 120 },
-  { k: "Events hall", v: 130 },
-  { k: "Solar + tech", v: 110 },
-  { k: "Marketing", v: 90 },
-  { k: "Working capital", v: 100 },
-];
 
 export function S14() {
   const inside = [
@@ -1289,7 +1229,7 @@ export function S14() {
     { i: "🛒", k: "Pro Shop" },
     { i: "🏥", k: "Physio & Recovery" },
     { i: "🏟️", k: "Spectator Gallery" },
-    { i: "🏠", k: "S4 Sports HQ" },
+    { i: "🏠", k: "S For Sport HQ" },
   ];
   const streams = [
     "Courts", "Pool", "Memberships", "Coaching Share", "Corporate Events",
@@ -1299,8 +1239,8 @@ export function S14() {
   return (
     <>
       <SlideHeader tag="14 · A for Arena · Opportunity"
-        title="Build the Home of S4 Sports."
-        sub="S4 Sports Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S4's permanent operating headquarters."
+        title="Build the Home of S For Sport."
+        sub="S For Sport Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S For Sport's permanent operating headquarters."
         logoKey="arena" logoLabel="A for Arena"
       />
       <Grid12>
@@ -1308,22 +1248,22 @@ export function S14() {
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">The concept</div>
             <p className="text-[14px] text-muted-foreground leading-relaxed">
-              S4 Sports and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S4 owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
+              S For Sport and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S For Sport owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The partnership</div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[13px]">
-              <div className="text-ink font-medium">S4 Sports</div>
+              <div className="text-ink font-medium">S For Sport</div>
               <div className="text-ink font-medium">Da One Sports</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Lease & infrastructure</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Coaching curriculum & coaches</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Court rentals</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">100% of coaching batch fees</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">Memberships</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S4-collected coaching revenue</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S For Sport-collected coaching revenue</div>
               <div className="text-muted-foreground border-t thin-rule pt-2">F&B · events · sponsorship · pro shop</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S4 HQ</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S For Sport HQ</div>
             </div>
           </div>
           <div className="border thin-rule rounded-md p-5">
@@ -1352,7 +1292,7 @@ export function S14() {
             items={[
               { Icon: MapPin, t: "No competition.", s: "No multi-sport + pool + events venue between Thiruvanmiyur & Mahabalipuram." },
               { Icon: Building2, t: "Premium corridor.", s: "Residential + IT belt — ideal membership & corporate demographic." },
-              { Icon: Award, t: "Home advantage.", s: "S4's home city — strongest brand recognition & network." },
+              { Icon: Award, t: "Home advantage.", s: "S For Sport's home city — strongest brand recognition & network." },
             ]}
           />
         </div>
@@ -1372,7 +1312,7 @@ export function S15() {
       />
       <KpiStrip items={[
         { label: "Capital in", value: "₹15 Cr", sub: "fully built", strong: true },
-        { label: "S4 equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
+        { label: "S For Sport equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
         { label: "Yr 3 EBITDA", value: "₹10.58 Cr", sub: "47.9% margin" },
         { label: "Yr 3 asset value", value: "₹40–55 Cr", sub: "4–5× EBITDA" },
       ]}/>
@@ -1392,7 +1332,7 @@ export function S15() {
           <InvestTable
             title="Funding stack (₹15 Cr)"
             rows={[
-              { k: "S4 equity", v: "₹3.5–4.5 Cr" },
+              { k: "S For Sport equity", v: "₹3.5–4.5 Cr" },
               { k: "Da One sweat", v: "₹0.5–1 Cr" },
               { k: "Founding memberships", v: "₹2.5–3.5 Cr" },
               { k: "Title sponsor", v: "₹1.2–1.8 Cr" },
