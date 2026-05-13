@@ -351,6 +351,7 @@ export function S04() {
       <SlideHeader tag="04 · TNPPL · Opportunity"
         title="Own a Tamil Nadu Pickleball franchise."
         sub="TNPPL Season 2 · Jawaharlal Nehru Indoor Stadium, Chennai. Organised by TNPA — affiliated with IPA, GPF, SDAT, SAI, Ministry of Youth Affairs & Sports."
+        logoKey="tnppl" logoLabel="TNPPL"
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
@@ -380,7 +381,6 @@ export function S04() {
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
             <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
-            <LogoSlot logoKey="tnppl" label="TNPPL" />
           </div>
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue</div>
@@ -484,11 +484,11 @@ export function S06() {
       <SlideHeader tag="06 · CPL · Opportunity"
         title="Be a founding owner of India's first Celebrity Pickleball League."
         sub="CPL Season 1 · October 2026. Organised by All Things Pickleball — creators of WPPL, Queen of the Court, and the Masters format."
+        logoKey="cpl" logoLabel="CPL"
       />
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md overflow-hidden relative">
+        <div className="col-span-6 border thin-rule rounded-md overflow-hidden">
           <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
-          <LogoSlot logoKey="cpl" label="CPL" />
         </div>
         <div className="col-span-6 flex flex-col gap-6">
           <div className="grid grid-cols-3 gap-6">
@@ -582,12 +582,12 @@ export function S08() {
       <SlideHeader tag="08 · CPPL · Opportunity"
         title="Own India's first Corporate Pickleball League IP."
         sub="Four cities. Recurring annual. Sponsorship-driven. Each city is an independent sports property — premium corporate demographic, asset-light, first-mover."
+        logoKey="cppl" logoLabel="CPPL"
         />
         <Grid12>
           <div className="col-span-5 flex flex-col gap-5">
-            <div className="border thin-rule rounded-md overflow-hidden h-[340px] relative">
+            <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
               <img src={images.cppl} alt="Corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-              <LogoSlot logoKey="cppl" label="CPPL" />
             </div>
             <div className="border thin-rule rounded-md p-5">
               <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Per city revenue</div>
@@ -706,6 +706,7 @@ export function S10() {
       <SlideHeader tag="10 · Inter-School League · Opportunity"
         title="Build the grassroots. Own the next generation."
         sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
+        logoKey="school" logoLabel="Inter-School League"
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
@@ -730,9 +731,8 @@ export function S10() {
             </p>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md overflow-hidden relative">
+        <div className="col-span-5 border thin-rule rounded-md overflow-hidden">
           <img src={images.school} alt="School league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-          <LogoSlot logoKey="school" label="Inter-School League" />
         </div>
       </Grid12>
     </>
@@ -807,6 +807,7 @@ export function S12() {
       <SlideHeader tag="12 · Paddle City Open · Opportunity"
         title="Take pickleball to the people."
         sub="A weekend recreational tournament — doubles, all skill levels. Four cities, two events each, eight events annually. Existing courts; no infrastructure required."
+        logoKey="paddle" logoLabel="Paddle City Open"
       />
       <Grid12>
         <div className="col-span-7 border thin-rule rounded-md p-6 flex flex-col">
@@ -853,9 +854,8 @@ export function S12() {
           </div>
         </div>
         <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden h-[280px] relative">
+          <div className="border thin-rule rounded-md overflow-hidden h-[280px]">
             <img src={images.paddle} alt="Paddle City Open" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
-            <LogoSlot logoKey="paddle" label="Paddle City Open" />
           </div>
           <div className="border thin-rule rounded-md p-5 grid grid-cols-2 gap-5">
             <Stat label="Format" value="Doubles" />
