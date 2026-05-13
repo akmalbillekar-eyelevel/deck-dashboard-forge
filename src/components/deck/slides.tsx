@@ -48,6 +48,20 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
+function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
+  const src = logos[logoKey];
+  return (
+    <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md border thin-rule p-2 flex items-center justify-center" style={{ minWidth: 96, minHeight: 72 }}>
+      {src ? (
+        <img src={src} alt={`${label} logo`} className="h-16 w-auto block" />
+      ) : (
+        <div className="h-16 w-24 flex items-center justify-center text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+          Logo
+        </div>
+      )}
+    </div>
+  );
+}
 /* ---------- 01 Cover ---------- */
 
 export function S01() {
