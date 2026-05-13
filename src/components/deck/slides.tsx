@@ -45,7 +45,7 @@ function Grid12({ children }: { children: React.ReactNode }) {
 type AboutItem = { Icon: typeof Landmark; t: string; s: string };
 function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: AboutItem[]; footer?: string; cols?: 2 | 3 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-5">
       <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
       <div className={`grid ${cols === 3 ? "grid-cols-3" : "grid-cols-2"} gap-x-6 gap-y-3`}>
         {items.map(({ Icon, t, s }) => (
