@@ -913,108 +913,112 @@ export function S09() {
   );
 }
 
-/* ---------- 10 Inter-School Opportunity ---------- */
+/* ---------- 10 Intercollege Pickleball Tournament — Opportunity ---------- */
+
+function ExpandList({ items }: { items: { Icon: typeof Sparkles; t: string; s: string }[] }) {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="flex flex-col gap-3">
+      {items.map(({ Icon, t, s }, i) => {
+        const isOpen = open === i;
+        return (
+          <button
+            key={t}
+            onClick={() => setOpen(isOpen ? null : i)}
+            className={`text-left border thin-rule rounded-md p-4 transition-colors ${isOpen ? "bg-muted/40" : "hover:bg-muted/20"}`}
+          >
+            <div className="flex items-center gap-3">
+              <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+              <div className="flex-1 text-[16px] font-medium text-ink leading-tight">{t}</div>
+              <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+            </div>
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+            </motion.div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export function S10() {
-  const cities = [
-    { k: "Chennai", v: "20+ schools & colleges" },
-    { k: "Bangalore", v: "20+ schools & colleges" },
-    { k: "Hyderabad", v: "20+ schools & colleges" },
-    { k: "Mumbai", v: "20+ schools & colleges" },
-  ];
-  const [hover, setHover] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="10 · Inter-School & College League · Opportunity"
-        title="Build the Grassroots. Own the Next Generation."
-        sub="India's first structured school & college pickleball league — 4 cities · annual · championship finals Sept–Oct 2026."
-        logoKey="school" logoLabel="Inter-School League"
+      <SlideHeader tag="10 · Intercollege Pickleball Tournament · Opportunity"
+        title="Intercollege Pickleball Tournament — Chennai & Bangalore."
+        sub="2-day event · 4-court venue · zero entry fees · sponsorship & CSR funded · in association with TNPA."
+        logoKey="school" logoLabel="Intercollege Tournament"
       />
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
-            <p className="text-[15px] text-muted-foreground leading-relaxed">
-              A structured annual pickleball league for schools and colleges across four major cities. Teams represent their institutions, compete through a seasonal league format, and culminate in a national championship.
-            </p>
-            <div className="text-[13px] text-ink mt-2 tabular">Chennai · Bangalore · Hyderabad · Mumbai</div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[280px] bg-muted flex items-center justify-center">
+            <img src={images.school} alt="Intercollege pickleball tournament" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">City targets — Year 1</div>
-            <div className="grid grid-cols-2 gap-2">
-              {cities.map((c, i) => (
-                <button key={c.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-                  className="text-left p-3 border thin-rule rounded-md transition-colors"
-                  style={{ backgroundColor: hover === i ? "color-mix(in oklch, var(--sage-tone) 25%, var(--paper))" : undefined }}>
-                  <div className="text-[15px] font-medium tracking-tight">{c.k}</div>
-                  <div className="text-[12px] text-muted-foreground tabular mt-0.5">{c.v}</div>
-                </button>
-              ))}
-            </div>
-            <div className="text-[12px] text-muted-foreground mt-3">Championship finals — September / October 2026.</div>
+          <div className="border thin-rule rounded-md p-5 grid grid-cols-3 gap-4">
+            <Stat label="Cities" value="2" sub="Chennai · BLR" />
+            <Stat label="Courts" value="4" sub="per venue" />
+            <Stat label="Days" value="2" sub="weekend event" />
           </div>
         </div>
-        <div className="col-span-5 flex flex-col gap-4 min-h-0">
-          <TakeawayList
-            title="Why it matters beyond the numbers"
-            items={[
-              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S For Sport brand advocates." },
-              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S For Sport." },
-            ]}
-          />
-          <TakeawayList
-            title="Why it's commercially attractive"
-            items={[
-              { Icon: Heart, t: "New sponsor vertical.", s: "Education · FMCG · CSR · youth wellness." },
-              { Icon: Building2, t: "Brand-safe.", s: "Community-driven — ideal for institutional sponsors." },
-              { Icon: Trophy, t: "First-mover.", s: "First structured student pickleball league in India." },
-              { Icon: TrendingUp, t: "Scalable.", s: "100+ institutions by Year 2." },
-            ]}
-          />
+
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">How it works · click to expand</div>
+          <ExpandList items={[
+            { Icon: GraduationCap, t: "Colleges send 4-player teams", s: "Each participating college fields a team of 4 players. No college pays an entry fee — the tournament is free for institutions, removing every barrier to participation." },
+            { Icon: Handshake, t: "TNPA partnership", s: "Run in association with the Tamil Nadu Pickleball Association — instant credibility, technical officials, and an established player & coach network across both cities." },
+            { Icon: Briefcase, t: "Sponsorship & CSR funded", s: "100% of revenue comes from title sponsorship, category sponsors and corporate CSR funds — youth sport, education, fitness brands and CSR mandates all line up for grassroots tie-ups." },
+            { Icon: Trophy, t: "Medals & trophies, no cash prize", s: "Recognition over cash — medals, trophies and college bragging rights. Keeps the spirit collegiate, the costs disciplined, and the brand association clean for sponsors." },
+          ]}/>
         </div>
       </Grid12>
     </>
   );
 }
 
-/* ---------- 11 Inter-School ROI ---------- */
+/* ---------- 11 Intercollege Pickleball Tournament — Investment & Returns ---------- */
 
 export function S11() {
   return (
     <>
-      <SlideHeader tag="11 · Inter-School League · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 04 · Investment Detail — ₹4L per city · 4 cities · 150–275% Year 1 ROI."
+      <SlideHeader tag="11 · Intercollege Pickleball Tournament · Investment & Returns"
+        title="₹11L in. ₹20L sponsorship out. Per city."
       />
       <KpiStrip items={[
-        { label: "Investment / city", value: "₹4L", sub: "lowest entry in deck" },
-        { label: "Revenue / city", value: "₹10–15L", sub: "fees + sponsors" },
-        { label: "Net / city", value: "₹6–11L", sub: "Year 1" },
-        { label: "ROI", value: "150–275%", sub: "Year 1 alone", strong: true },
+        { label: "Sponsorship revenue", value: "₹20L", sub: "title + category + CSR" },
+        { label: "Total expenses", value: "₹11L", sub: "all-in event cost" },
+        { label: "Net profit / city", value: "₹9L", sub: "per 2-day event" },
+        { label: "ROI", value: "~82%", sub: "single edition", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <ReturnsTable
-            title="Per city — investment vs return"
-            cols={["Line", "Min", "Max"]}
+            title="Per city — economics"
+            cols={["Line", "Cost", "Revenue"]}
             rows={[
-              { k: "Investment", a: "₹4L", b: "₹4L" },
-              { k: "School / college entry fees", a: "₹8L", b: "₹10L" },
-              { k: "Title sponsor", a: "₹5L", b: "₹8L" },
-              { k: "Co-sponsors", a: "₹2L", b: "₹3L" },
-              { k: "Year 1 revenue", a: "₹10L", b: "₹15L", total: true },
-              { k: "Net profit", a: "₹6L", b: "₹11L", total: true },
-              { k: "ROI", a: "150%", b: "275%", total: true },
+              { k: "Venue (4 courts · 2 days)", a: "₹1.5L", b: "—" },
+              { k: "Marketing & outreach", a: "₹2.5L", b: "—" },
+              { k: "Setup & production", a: "₹2L", b: "—" },
+              { k: "Trophies & medals", a: "₹1L", b: "—" },
+              { k: "Misc · contingencies", a: "₹4L", b: "—" },
+              { k: "Sponsorship & CSR (title + category)", a: "—", b: "₹20L" },
+              { k: "Total per city", a: "₹11L", b: "₹20L", total: true },
+              { k: "Net profit", a: "₹9L", b: "₹9L", total: true },
             ]}
           />
           <ReturnsTable
             title="Scale it up"
-            cols={["Line", "1 city", "4 cities"]}
+            cols={["Line", "1 city", "2 cities"]}
             rows={[
-              { k: "Investment", a: "₹4L", b: "₹16L" },
-              { k: "Revenue", a: "₹10–15L", b: "₹40–60L" },
-              { k: "Net profit", a: "₹6–11L", b: "₹24–44L", total: true },
-              { k: "ROI", a: "150–275%", b: "150–275%", total: true },
+              { k: "Investment", a: "₹11L", b: "₹22L" },
+              { k: "Revenue", a: "₹20L", b: "₹40L" },
+              { k: "Net profit", a: "₹9L", b: "₹18L", total: true },
+              { k: "ROI", a: "~82%", b: "~82%", total: true },
             ]}
           />
         </div>
@@ -1022,17 +1026,17 @@ export function S11() {
           <HorizonPicker
             label="Net profit — pick scale"
             points={[
-              { label: "1 city", value: 9, sub: "₹6–11L net · ₹4L entry." },
-              { label: "4 cities", value: 34, sub: "₹24–44L net · ₹16L total entry." },
-              { label: "100+ inst. Y2", value: 70, sub: "Scale-out across institutions." },
+              { label: "Chennai only", value: 9, sub: "Single 2-day event · ₹11L outlay." },
+              { label: "Chennai + BLR", value: 18, sub: "Both cities · same playbook." },
+              { label: "Y2 · 4 cities", value: 36, sub: "Add Hyderabad + Mumbai once template is proven." },
             ]}
           />
           <TakeawayList
             title="The strategic return"
             items={[
-              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S For Sport advocate for life." },
+              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S For Sport advocate." },
               { Icon: Heart, t: "CSR-friendly.", s: "Unlocks sponsors who won't touch pro sports." },
-              { Icon: TrendingUp, t: "Decade-long upside.", s: "Real return is bigger than the financials suggest." },
+              { Icon: Handshake, t: "TNPA-backed.", s: "Credibility, officials & college network from day one." },
             ]}
           />
         </div>
