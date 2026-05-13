@@ -18,18 +18,21 @@ function SectorTag({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SlideHeader({ tag, title, sub }: { tag: string; title: string; sub?: string }) {
+function SlideHeader({ tag, title, sub, logoKey, logoLabel }: { tag: string; title: string; sub?: string; logoKey?: string; logoLabel?: string }) {
   return (
-    <header className="mb-12">
-      <SectorTag>{tag}</SectorTag>
-      <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
-        {title}
-      </h1>
-      {sub && (
-        <p className="mt-4 max-w-[1100px] text-[22px] leading-[1.45] text-muted-foreground font-light">
-          {sub}
-        </p>
-      )}
+    <header className="mb-12 flex items-start justify-between gap-8">
+      <div className="flex-1 min-w-0">
+        <SectorTag>{tag}</SectorTag>
+        <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+          {title}
+        </h1>
+        {sub && (
+          <p className="mt-4 max-w-[1100px] text-[22px] leading-[1.45] text-muted-foreground font-light">
+            {sub}
+          </p>
+        )}
+      </div>
+      {logoKey && <LogoSlot logoKey={logoKey} label={logoLabel ?? logoKey} />}
     </header>
   );
 }
@@ -51,18 +54,18 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
   const src = logos[logoKey];
   return (
-    <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md border thin-rule p-2 flex items-center justify-center" style={{ minWidth: 96, minHeight: 72 }}>
+    <div className="shrink-0 bg-paper rounded-md border thin-rule p-3 flex items-center justify-center" style={{ minWidth: 140, minHeight: 96 }}>
       {src ? (
-        <img src={src} alt={`${label} logo`} className="h-16 w-auto block" />
+        <img src={src} alt={`${label} logo`} className="h-20 w-auto block" />
       ) : (
-        <div className="h-16 w-24 flex items-center justify-center text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
-          Logo
+        <div className="h-20 w-32 flex flex-col items-center justify-center gap-1 text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+          <span>Logo</span>
+          <span className="text-[9px] tracking-[0.14em] opacity-70">{label}</span>
         </div>
       )}
     </div>
   );
 }
-/* ---------- 01 Cover ---------- */
 
 export function S01() {
   return (
