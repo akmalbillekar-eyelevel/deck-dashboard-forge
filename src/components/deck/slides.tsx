@@ -214,7 +214,7 @@ export function S02() {
             ))}
           </div>
           <div className="mt-auto border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
-            One ecosystem. One owner at the centre. <span className="font-medium">That is S For Sport.</span>
+            Diversification is the moat. <span className="font-medium">That is how S For Sport wins.</span>
           </div>
         </div>
       </Grid12>
