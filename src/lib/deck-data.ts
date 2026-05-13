@@ -4,6 +4,7 @@ import slideCppl from "@/assets/slide-cppl.jpg";
 import slideSchool from "@/assets/slide-school.jpg";
 import slidePaddle from "@/assets/slide-paddle.jpg";
 import slideArena from "@/assets/slide-arena.jpg";
+import tnpplLogo from "@/assets/tnppl-logo.svg";
 
 export const images = {
   tnppl: slideTnppl,
@@ -12,6 +13,10 @@ export const images = {
   school: slideSchool,
   paddle: slidePaddle,
   arena: slideArena,
+};
+
+export const logos = {
+  tnppl: tnpplLogo,
 };
 
 export type SlideMeta = {
