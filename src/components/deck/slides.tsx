@@ -1173,7 +1173,7 @@ export function S13() {
               { k: "Entry fees (150 × ₹3,000)", v: "₹4.5L" },
               { k: "Title sponsor", v: "₹5L" },
               { k: "Category sponsors (×3)", v: "₹3L" },
-              { k: "Equipment / paddle stall", v: "₹1.5L" },
+              { k: "Paddle brand stall", v: "₹1.5L" },
               { k: "Total revenue", v: "₹14L", strong: true },
             ]}
           />
