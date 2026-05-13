@@ -758,66 +758,96 @@ export function S08() {
     <>
       <SlideHeader tag="08 · CPPL · Opportunity"
         title="Own India's first Corporate Pickleball League IP."
-        sub="Four cities. Recurring annual. Sponsorship-driven. Each city is an independent sports property — premium corporate demographic, asset-light, first-mover."
+        sub="Corporate Premier Pickleball League (CPPL) — 4 cities · annual · recurring."
         logoKey="cppl" logoLabel="CPPL"
-        />
-        <AboutGrid
-          label="About the league"
-          items={[
-            { Icon: Building2, t: "Corporate league IP", s: "India's first multi-city Corporate Pickleball League — own the format, not just an event." },
-            { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — each an independent property." },
-            { Icon: Repeat, t: "Recurring annual", s: "Sponsorship-driven format built for repeat revenue every year." },
-            { Icon: Briefcase, t: "Premium audience", s: "Targets corporate teams and decision-makers — high CPM demographic." },
-            { Icon: Sparkles, t: "Asset-light", s: "Uses existing courts. Zero infrastructure investment." },
-            { Icon: Flag, t: "First-mover", s: "Own the IP from Season 1 — the category-defining brand." },
-          ]}
-        />
+      />
 
-        <Grid12>
-          <div className="col-span-5 flex flex-col gap-5">
-            <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
-              <img src={images.cppl} alt="Corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-            </div>
-            <div className="border thin-rule rounded-md p-5">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Per city revenue</div>
-              <div className="mt-2 text-[40px] font-medium tabular">₹70 – 80L</div>
-              <div className="text-[14px] text-muted-foreground mt-1">Team sales ₹40–50L · Sponsorship ₹30L</div>
-            </div>
-          </div>
-          <div className="col-span-7 border thin-rule rounded-md p-6 flex">
-            <div className="flex-1 relative">
-              <ResponsiveContainer>
-                <PieChart>
-                  <Pie data={cities} dataKey="v" innerRadius={110} outerRadius={170} paddingAngle={2} stroke="var(--paper)" strokeWidth={3}
-                    onMouseEnter={(_, i) => setActive(i)} onMouseLeave={() => setActive(null)}>
-                    {cities.map((c, i) => (
-                      <Cell key={c.name} fill={c.tone} opacity={active === null || active === i ? 1 : 0.35}/>
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-center">
-                  <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{active === null ? "Combined" : cities[active].name}</div>
-                  <div className="text-[44px] font-medium tabular mt-1">
-                    {active === null ? `₹${(total/100).toFixed(2)} Cr` : `₹${cities[active].v}L`}
-                  </div>
+      <div className="mb-5 border thin-rule rounded-md p-5">
+        <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">What is CPPL</div>
+        <p className="text-[15px] leading-relaxed text-ink/90 max-w-[1200px]">
+          India's first <span className="font-medium">structured inter-corporate pickleball league</span>. Companies buy franchise teams and compete across a seasonal league format — every year, across four cities.
+          <span className="ml-2 text-muted-foreground">Chennai · Hyderabad · Bangalore · Mumbai.</span>
+        </p>
+      </div>
+
+      <Grid12>
+        <div className="col-span-6 border thin-rule rounded-md p-5 flex">
+          <div className="flex-1 relative min-h-[340px]">
+            <ResponsiveContainer>
+              <PieChart>
+                <Pie data={cities} dataKey="v" innerRadius={90} outerRadius={150} paddingAngle={2} stroke="var(--paper)" strokeWidth={3}
+                  onMouseEnter={(_, i) => setActive(i)} onMouseLeave={() => setActive(null)}>
+                  {cities.map((c, i) => (
+                    <Cell key={c.name} fill={c.tone} opacity={active === null || active === i ? 1 : 0.35}/>
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="text-center">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{active === null ? "Combined / yr" : cities[active].name}</div>
+                <div className="text-[36px] font-medium tabular mt-1">
+                  {active === null ? `₹${(total/100).toFixed(2)} Cr` : `₹${cities[active].v}L`}
                 </div>
               </div>
             </div>
-            <div className="w-[280px] flex flex-col justify-center gap-4">
-              {cities.map((c, i) => (
-                <button key={c.name} onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                  className={`flex items-center gap-3 text-left magnetic ${active === i ? "" : "opacity-70"}`}>
-                  <span className="h-3 w-3 rounded-sm" style={{ background: c.tone }}/>
-                  <span className="text-[18px] flex-1">{c.name}</span>
-                  <span className="text-[16px] tabular text-muted-foreground">₹{c.v}L</span>
-                </button>
-              ))}
-              <div className="border-t thin-rule pt-4 mt-2 text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Hover to isolate</div>
-            </div>
           </div>
-        </Grid12>
+          <div className="w-[220px] flex flex-col justify-center gap-3 pl-3">
+            <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1">Per-city revenue</div>
+            {cities.map((c, i) => (
+              <button key={c.name} onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
+                className={`flex items-center gap-3 text-left magnetic border-t thin-rule pt-2 ${active === i ? "" : "opacity-70"}`}>
+                <span className="h-3 w-3 rounded-sm" style={{ background: c.tone }}/>
+                <span className="text-[15px] flex-1">{c.name}</span>
+                <span className="text-[14px] tabular text-muted-foreground">₹{c.v}L</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="col-span-6 flex flex-col gap-5">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">What each city includes</div>
+            <ul className="space-y-2.5">
+              {[
+                { Icon: Users, t: "8–10 corporate franchise teams", s: "Companies buy in; players are their employees." },
+                { Icon: Briefcase, t: "Full sponsorship stack", s: "Title · Associates · F&B · Activations · Venue branding." },
+                { Icon: ShieldCheck, t: "Professionally managed ops", s: "Production, refereeing, scheduling, broadcast — all run for you." },
+                { Icon: Handshake, t: "Premium corporate networking", s: "League weekends double as relationship infrastructure." },
+              ].map(({ Icon, t, s }) => (
+                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="min-w-0">
+                    <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Why it works</div>
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
+              {[
+                { Icon: Repeat, t: "Annual recurring revenue", s: "Not a one-time event — a yearly IP." },
+                { Icon: Briefcase, t: "Premium corporate audience", s: "Sponsor-friendly demographic." },
+                { Icon: Sparkles, t: "Asset-light", s: "No owned infrastructure required." },
+                { Icon: Flag, t: "No competition today", s: "First-mover in the corporate league space." },
+                { Icon: TrendingUp, t: "Add cities yearly", s: "Same model — scales without re-architecture." },
+              ].map(({ Icon, t, s }) => (
+                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="min-w-0">
+                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[11px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Grid12>
     </>
   );
 }
