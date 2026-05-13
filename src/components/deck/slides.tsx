@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   LineChart, Line, ResponsiveContainer,
@@ -1224,146 +1224,143 @@ export function S13() {
 
 export function S14() {
   const inside = [
-    { i: "🏊", k: "Swimming Pool" },
-    { i: "🏏", k: "Box Cricket" },
-    { i: "⚽", k: "Football" },
-    { i: "🏀", k: "Basketball" },
-    { i: "🏓", k: "Pickleball" },
-    { i: "🛹", k: "Skating & Multi-use" },
-    { i: "🏎️", k: "RC Racing" },
-    { i: "🎮", k: "Arcade Gaming" },
-    { i: "🍽️", k: "Restaurant & Café" },
-    { i: "🏢", k: "Corporate Events Hall" },
-    { i: "🛒", k: "Pro Shop" },
-    { i: "🏥", k: "Physio & Recovery" },
-    { i: "🏟️", k: "Spectator Gallery" },
-    { i: "🏠", k: "S For Sport HQ" },
+    { i: "🏓", k: "3 Pickleball Courts" },
+    { i: "🎾", k: "1 Paddle Court" },
+    { i: "🏸", k: "3 Badminton Courts" },
+    { i: "☕", k: "Traditional Café" },
+    { i: "🎓", k: "Pro Coaching — all 3 sports" },
+    { i: "📅", k: "Memberships + Hourly" },
   ];
-  const streams = [
-    "Courts", "Pool", "Memberships", "Coaching Share", "Corporate Events",
-    "F&B", "Sponsorship & Naming", "Camps", "Leagues", "School Partnerships",
-    "Franchise Home Court", "Pro Shop", "Ancillaries",
+  const courts = [
+    { sport: "🏓 Pickleball", n: "3 Courts", rate: "₹1,200 – ₹1,500 / hr" },
+    { sport: "🎾 Paddle", n: "1 Court", rate: "₹2,500 – ₹3,000 / hr" },
+    { sport: "🏸 Badminton", n: "3 Courts", rate: "₹800 – ₹1,000 / hr" },
   ];
   return (
     <>
       <SlideHeader tag="14 · A for Arena · Opportunity"
         title="Build the Home of S For Sport."
-        sub="S For Sport Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S For Sport's permanent operating headquarters."
+        sub="A For Arena · Pickleball | Paddle | Badminton | Café · Chennai City Centre · Open 6AM–12AM, 365 days."
         logoKey="arena" logoLabel="A for Arena"
       />
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">The concept</div>
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
             <p className="text-[14px] text-muted-foreground leading-relaxed">
-              S For Sport and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S For Sport owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
+              A premium multi-sport court facility in the heart of Chennai. Three sports under one roof — pickleball, paddle, and badminton — with a café and professional coaching. Open 6AM to 12AM, 365 days a year.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The partnership</div>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[13px]">
-              <div className="text-ink font-medium">S For Sport</div>
-              <div className="text-ink font-medium">Da One Sports</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Lease & infrastructure</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Coaching curriculum & coaches</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Court rentals</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">100% of coaching batch fees</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Memberships</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S For Sport-collected coaching revenue</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">F&B · events · sponsorship · pro shop</div>
-              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S For Sport HQ</div>
-            </div>
-          </div>
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">13 revenue streams</div>
-            <div className="flex flex-wrap gap-1.5">
-              {streams.map((s) => (
-                <span key={s} className="text-[12px] tabular px-2 py-1 border thin-rule rounded">{s}</span>
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The courts</div>
+            <div className="grid grid-cols-[1.2fr_0.8fr_1.2fr] gap-x-4 gap-y-2 text-[13px]">
+              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Sport</div>
+              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Courts</div>
+              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Rental</div>
+              {courts.map((c) => (
+                <Fragment key={c.sport}>
+                  <div className="text-ink font-medium border-t thin-rule pt-2">{c.sport}</div>
+                  <div className="text-muted-foreground border-t thin-rule pt-2 tabular">{c.n}</div>
+                  <div className="text-muted-foreground border-t thin-rule pt-2 tabular">{c.rate}</div>
+                </Fragment>
               ))}
             </div>
           </div>
+          <TakeawayList
+            title="Why Chennai City Centre"
+            items={[
+              { Icon: MapPin, t: "High footfall.", s: "Office-goers, residents, students all within reach." },
+              { Icon: TrendingUp, t: "18 operating hours.", s: "Morning + evening peak demand maximises yield." },
+              { Icon: Award, t: "No direct competition.", s: "All three paddle sports under one roof — flagship S For Sport venue." },
+            ]}
+          />
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">What's inside</div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[12px]">
+            <div className="grid grid-cols-1 gap-y-2 text-[13px]">
               {inside.map((it) => (
                 <div key={it.k} className="flex items-center gap-2">
-                  <span className="text-[14px]">{it.i}</span>
+                  <span className="text-[16px]">{it.i}</span>
                   <span className="text-muted-foreground">{it.k}</span>
                 </div>
               ))}
             </div>
           </div>
-          <TakeawayList
-            title="Why Chennai ECR"
-            items={[
-              { Icon: MapPin, t: "No competition.", s: "No multi-sport + pool + events venue between Thiruvanmiyur & Mahabalipuram." },
-              { Icon: Building2, t: "Premium corridor.", s: "Residential + IT belt — ideal membership & corporate demographic." },
-              { Icon: Award, t: "Home advantage.", s: "S For Sport's home city — strongest brand recognition & network." },
-            ]}
-          />
+          <div className="border thin-rule rounded-md p-5 flex-1">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">Flagship venue</div>
+            <p className="text-[13px] text-muted-foreground leading-relaxed">
+              S For Sport's home base — a premium multi-sport club at the centre of Chennai. The anchor that turns the brand from a portfolio of plays into a permanent destination.
+            </p>
+          </div>
         </div>
       </Grid12>
     </>
   );
 }
 
-/* ---------- 15 Arena ROI ---------- */
 
 export function S15() {
   return (
     <>
       <SlideHeader tag="15 · A for Arena · Investment & Returns"
-        title="₹15 Cr in. ₹22 Cr revenue by Year 3."
-        sub="EBITDA positive Month 6–8 · Cash payback 30–36 months · Asset value ₹40–55 Cr by Year 3."
+        title="What You Build. What You Earn."
+        sub="₹2.5 Cr all-in · 10-year lease, zero monthly rent · ₹2.40 Cr EBITDA by Year 3."
       />
       <KpiStrip items={[
-        { label: "Capital in", value: "₹15 Cr", sub: "fully built", strong: true },
-        { label: "S For Sport equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
-        { label: "Yr 3 EBITDA", value: "₹10.58 Cr", sub: "47.9% margin" },
-        { label: "Yr 3 asset value", value: "₹40–55 Cr", sub: "4–5× EBITDA" },
+        { label: "Total investment", value: "₹2.50 Cr", sub: "lease + setup", strong: true },
+        { label: "Yr 1 revenue", value: "₹2.92 Cr", sub: "59% margin" },
+        { label: "Yr 3 EBITDA", value: "₹2.40 Cr", sub: "62% margin" },
+        { label: "Lease term", value: "10 years", sub: "no monthly rent" },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <ReturnsTable
-            title="3-year P&L (₹ Cr)"
-            cols={["Line", "Year 1", "Year 3"]}
+        <div className="col-span-7 grid grid-cols-2 gap-4 min-h-0">
+          <InvestTable
+            title="Investment"
             rows={[
-              { k: "Revenue", a: "₹9.3", b: "₹22.1" },
-              { k: "Opex", a: "(₹7.49)", b: "(₹11.52)" },
-              { k: "EBITDA", a: "₹1.81", b: "₹10.58", total: true },
-              { k: "Margin", a: "19.5%", b: "47.9%" },
-              { k: "Year 2 EBITDA: ₹7.01 Cr · Margin 42.0%", a: "", b: "", note: true },
+              { k: "10-Year Lease", v: "₹1.50 Cr" },
+              { k: "Setup Cost", v: "₹1.00 Cr" },
+              { k: "Total Investment", v: "₹2.50 Cr" },
             ]}
           />
           <InvestTable
-            title="Funding stack (₹15 Cr)"
+            title="Setup cost breakdown"
             rows={[
-              { k: "S For Sport equity", v: "₹3.5–4.5 Cr" },
-              { k: "Da One sweat", v: "₹0.5–1 Cr" },
-              { k: "Founding memberships", v: "₹2.5–3.5 Cr" },
-              { k: "Title sponsor", v: "₹1.2–1.8 Cr" },
-              { k: "Term loan", v: "₹5–7 Cr" },
+              { k: "Courts — PB(3), Paddle(1), Bad(3)", v: "₹60L" },
+              { k: "Civil, HVAC & Electrical", v: "₹26L" },
+              { k: "Café, Branding & Tech", v: "₹10L" },
+              { k: "Licences & Working Capital", v: "₹4L" },
+              { k: "Total", v: "₹1.00 Cr" },
             ]}
           />
+          <div className="col-span-2">
+            <ReturnsTable
+              title="Revenue & profit (₹ Cr)"
+              cols={["Line", "Year 1", "Year 3"]}
+              rows={[
+                { k: "Total Revenue", a: "₹2.92", b: "₹3.85" },
+                { k: "Operating Expenses", a: "(₹1.20)", b: "(₹1.45)" },
+                { k: "EBITDA", a: "₹1.72", b: "₹2.40", total: true },
+                { k: "Margin", a: "59%", b: "62%" },
+              ]}
+            />
+          </div>
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
             label="EBITDA — pick a year"
             points={[
-              { label: "Year 1", value: 181, sub: "EBITDA+ Month 6–8 · ramp." },
-              { label: "Year 2", value: 701, sub: "Memberships mature · F&B scales." },
-              { label: "Year 3", value: 1058, sub: "47.9% margin · steady-state." },
+              { label: "Year 1", value: 172, sub: "59% margin · ramp." },
+              { label: "Year 3", value: 240, sub: "62% margin · steady-state." },
             ]}
             format={(v) => `₹${(v/100).toFixed(2)} Cr`}
           />
           <TakeawayList
             title="Why this is the anchor asset"
             items={[
-              { Icon: Layers, t: "13 revenue streams.", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
-              { Icon: TrendingUp, t: "30–36 month payback.", s: "Cash recycles into the next venue." },
-              { Icon: Award, t: "Real asset on the books.", s: "Not an event budget — a sellable, financeable property." },
+              { Icon: Layers, t: "10-year lease.", s: "Zero monthly rent — lease prepaid up front." },
+              { Icon: TrendingUp, t: "Revenue compounds.", s: "Margin expands from 59% to 62% as memberships mature." },
+              { Icon: Award, t: "Flagship venue.", s: "S For Sport's permanent home — brand + cash flow asset." },
             ]}
           />
         </div>
