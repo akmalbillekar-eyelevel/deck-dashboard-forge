@@ -11,7 +11,7 @@ import { images, logos } from "@/lib/deck-data";
 
 function SectorTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[13px] tracking-[0.18em] uppercase text-muted-foreground">
+    <span className="inline-flex items-center gap-2 text-[16px] tracking-[0.18em] uppercase text-muted-foreground">
       <span className="h-px w-6 bg-foreground/40" />
       {children}
     </span>
@@ -23,11 +23,11 @@ function SlideHeader({ tag, title, sub, logoKey, logoLabel }: { tag: string; tit
     <header className="mb-8 flex items-start justify-between gap-8">
       <div className="flex-1 min-w-0">
         <SectorTag>{tag}</SectorTag>
-        <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+        <h1 className="mt-5 text-[76px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
           {title}
         </h1>
         {sub && (
-          <p className="mt-4 max-w-[1100px] text-[22px] leading-[1.45] text-muted-foreground font-light">
+          <p className="mt-4 max-w-[1100px] text-[26px] leading-[1.45] text-muted-foreground font-light">
             {sub}
           </p>
         )}
@@ -45,19 +45,19 @@ type AboutItem = { Icon: typeof Landmark; t: string; s: string };
 function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: AboutItem[]; footer?: string; cols?: 2 | 3 }) {
   return (
     <div className="mb-5">
-      <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
+      <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
       <div className={`grid ${cols === 3 ? "grid-cols-3" : "grid-cols-2"} gap-x-6 gap-y-3`}>
         {items.map(({ Icon, t, s }) => (
           <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
             <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
             <div className="min-w-0">
-              <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
-              <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+              <div className="text-[17px] font-medium text-ink leading-tight">{t}</div>
+              <div className="text-[14px] text-muted-foreground leading-snug mt-0.5">{s}</div>
             </div>
           </div>
         ))}
       </div>
-      {footer && <div className="text-[12px] text-muted-foreground italic mt-3">{footer}</div>}
+      {footer && <div className="text-[14px] text-muted-foreground italic mt-3">{footer}</div>}
     </div>
   );
 }
@@ -65,9 +65,9 @@ function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: A
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div>
-      <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">{label}</div>
-      <div className="mt-2 text-[44px] font-medium tabular tracking-tight text-ink leading-none">{value}</div>
-      {sub && <div className="mt-2 text-[14px] text-muted-foreground tabular">{sub}</div>}
+      <div className="text-[14px] tracking-[0.16em] uppercase text-muted-foreground">{label}</div>
+      <div className="mt-2 text-[52px] font-medium tabular tracking-tight text-ink leading-none">{value}</div>
+      {sub && <div className="mt-2 text-[17px] text-muted-foreground tabular">{sub}</div>}
     </div>
   );
 }
@@ -79,9 +79,9 @@ function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
       {src ? (
         <img src={src} alt={`${label} logo`} className="h-40 w-auto block" />
       ) : (
-        <div className="h-40 w-64 flex flex-col items-center justify-center gap-1 text-[12px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+        <div className="h-40 w-64 flex flex-col items-center justify-center gap-1 text-[14px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
           <span>Logo</span>
-          <span className="text-[10px] tracking-[0.14em] opacity-70">{label}</span>
+          <span className="text-[12px] tracking-[0.14em] opacity-70">{label}</span>
         </div>
       )}
     </div>
@@ -93,21 +93,21 @@ export function S01() {
     <div className="flex flex-col h-full justify-between">
       <div className="flex items-center justify-between">
         <SectorTag>S For Sport — Diversification Memorandum</SectorTag>
-        <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
+        <span className="text-[16px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
-        <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
+        <h1 className="text-[184px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
           Diversifying<br/>S For Sport.
         </h1>
-        <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
+        <p className="mt-10 text-[38px] text-muted-foreground font-light max-w-[1100px]">
           Six plays. One brand. Spread the bet across leagues, venues, grassroots & events.
         </p>
       </div>
-      <div className="flex items-end justify-between text-[14px] tabular">
+      <div className="flex items-end justify-between text-[17px] tabular">
         <div className="grid grid-cols-3 gap-12">
-          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Diversified plays</div><div className="mt-1 text-[28px] font-medium">06</div></div>
-          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Capital range</div><div className="mt-1 text-[28px] font-medium">₹16L – ₹16Cr</div></div>
-          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Horizon</div><div className="mt-1 text-[28px] font-medium">3–5 years</div></div>
+          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[13px]">Diversified plays</div><div className="mt-1 text-[34px] font-medium">06</div></div>
+          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[13px]">Capital range</div><div className="mt-1 text-[34px] font-medium">₹16L – ₹16Cr</div></div>
+          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[13px]">Horizon</div><div className="mt-1 text-[34px] font-medium">3–5 years</div></div>
         </div>
         <div className="text-muted-foreground">Confidential — do not distribute</div>
       </div>
@@ -120,7 +120,7 @@ export function S01() {
 
 function AnimatedHeadline({ text }: { text: string }) {
   return (
-    <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+    <h1 className="mt-5 text-[76px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
       {text.split("").map((ch, i) => (
         <motion.span
           key={i}
@@ -153,7 +153,7 @@ export function S02() {
       <header className="mb-8">
         <SectorTag>The Thesis</SectorTag>
         <AnimatedHeadline text="Don't bet S For Sport on one league. Diversify it." />
-        <p className="mt-4 text-[22px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
+        <p className="mt-4 text-[26px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
           Spread the brand across leagues, venues, grassroots and events. Each play compounds the others.
         </p>
       </header>
@@ -168,15 +168,15 @@ export function S02() {
             className="border thin-rule rounded-md p-5 flex flex-col gap-2"
           >
             <Icon className="h-8 w-8 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
-            <div className="text-[22px] font-medium tracking-tight text-ink mt-1">{t}</div>
-            <div className="text-[13px] text-muted-foreground">{s}</div>
+            <div className="text-[26px] font-medium tracking-tight text-ink mt-1">{t}</div>
+            <div className="text-[16px] text-muted-foreground">{s}</div>
           </motion.div>
         ))}
       </div>
 
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4">
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">Why now</div>
+          <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground">Why now</div>
           {why.map(({ Icon, n, t, s }, i) => (
             <motion.div
               key={t}
@@ -186,16 +186,16 @@ export function S02() {
               className="flex items-center gap-5 border-t thin-rule pt-4"
             >
               <Icon className="h-7 w-7 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-              <div className="text-[34px] tabular font-medium tracking-tight text-ink w-[140px]">{n}</div>
+              <div className="text-[40px] tabular font-medium tracking-tight text-ink w-[140px]">{n}</div>
               <div className="flex-1">
-                <div className="text-[18px] font-medium text-ink leading-tight">{t}</div>
-                <div className="text-[14px] text-muted-foreground mt-1">{s}</div>
+                <div className="text-[22px] font-medium text-ink leading-tight">{t}</div>
+                <div className="text-[17px] text-muted-foreground mt-1">{s}</div>
               </div>
             </motion.div>
           ))}
         </div>
         <div className="col-span-5 border thin-rule rounded-md p-6 flex flex-col">
-          <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks · what's possible</div>
+          <div className="text-[14px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks · what's possible</div>
           <div className="mt-4 border-t thin-rule">
             {[
               { Icon: Trophy, code: "MLP", value: "65×", detail: "$200K → $13M (USA, 4 yrs)" },
@@ -206,14 +206,14 @@ export function S02() {
               <div key={code} className="grid grid-cols-12 items-center py-3.5 border-b thin-rule gap-3">
                 <Icon className="h-5 w-5 text-[color:var(--slate-tone)] col-span-1" strokeWidth={1.5} />
                 <div className="col-span-7">
-                  <div className="text-[13px] tracking-[0.16em] uppercase text-muted-foreground">{code}</div>
-                  <div className="text-[12px] text-ink/80 mt-0.5">{detail}</div>
+                  <div className="text-[16px] tracking-[0.16em] uppercase text-muted-foreground">{code}</div>
+                  <div className="text-[14px] text-ink/80 mt-0.5">{detail}</div>
                 </div>
-                <div className="col-span-4 text-right text-[28px] font-medium tabular tracking-tight">{value}</div>
+                <div className="col-span-4 text-right text-[34px] font-medium tabular tracking-tight">{value}</div>
               </div>
             ))}
           </div>
-          <div className="mt-auto border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
+          <div className="mt-auto border-t thin-rule pt-4 text-[17px] text-ink leading-relaxed">
             Diversification is the moat. <span className="font-medium">That is how S For Sport wins.</span>
           </div>
         </div>
@@ -250,7 +250,7 @@ export function S03() {
         sub="Four asset classes. Six independent plays. One brand getting bigger from every direction."
       />
       <div className="border-t thin-rule">
-        <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
+        <div className="grid grid-cols-12 text-[13px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
           <div className="col-span-1">#</div>
           <div className="col-span-7">Opportunity</div>
           <div className="col-span-4">Category</div>
@@ -262,24 +262,24 @@ export function S03() {
             onMouseLeave={() => setHover(null)}
             className={`grid grid-cols-12 py-4 border-b thin-rule items-center magnetic ${hover === p.n ? "bg-muted/60" : ""}`}
           >
-            <div className="col-span-1 tabular text-[15px] text-muted-foreground">{p.n}</div>
-            <div className="col-span-7 text-[20px] font-medium tracking-tight leading-tight">
+            <div className="col-span-1 tabular text-[18px] text-muted-foreground">{p.n}</div>
+            <div className="col-span-7 text-[24px] font-medium tracking-tight leading-tight">
               {p.name}
-              {p.kind === "anchor" && <span className="ml-3 text-[10px] uppercase tracking-[0.16em] text-[color:var(--sage-tone)]">Anchor</span>}
+              {p.kind === "anchor" && <span className="ml-3 text-[12px] uppercase tracking-[0.16em] text-[color:var(--sage-tone)]">Anchor</span>}
             </div>
-            <div className="col-span-4 text-[14px] text-muted-foreground">{p.cat}</div>
+            <div className="col-span-4 text-[17px] text-muted-foreground">{p.cat}</div>
           </div>
         ))}
       </div>
 
       <div className="mt-8">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they diversify the brand</div>
+        <div className="text-[13px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they diversify the brand</div>
         <div className="grid grid-cols-4 gap-5">
           {connections.map(({ Icon, k, v }) => (
             <div key={k} className="border thin-rule rounded-md p-5 flex flex-col gap-2">
               <Icon className="h-7 w-7 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
-              <div className="text-[18px] font-medium tracking-tight text-ink mt-1">{k}</div>
-              <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
+              <div className="text-[22px] font-medium tracking-tight text-ink mt-1">{k}</div>
+              <div className="text-[16px] text-muted-foreground leading-snug">{v}</div>
             </div>
           ))}
         </div>
@@ -309,8 +309,8 @@ function HeatStrip({
             className={`heat-cell text-left px-5 py-6 border-r last:border-r-0 thin-rule ${isPinned ? "ring-1 ring-foreground/60" : ""}`}
             style={{ backgroundColor: bg }}
           >
-            <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{y}</div>
-            <div className="mt-2 text-[26px] font-medium tabular">₹{values[i].toFixed(1)}L</div>
+            <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{y}</div>
+            <div className="mt-2 text-[31px] font-medium tabular">₹{values[i].toFixed(1)}L</div>
           </button>
         );
       })}
@@ -340,14 +340,14 @@ function TicketStepper({
 }: { value: number; min: number; max: number; step: number; onChange: (v: number) => void; format: (v: number) => string }) {
   return (
     <div className="border thin-rule rounded-md p-5">
-      <div className="flex items-center justify-between text-[12px] uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="flex items-center justify-between text-[14px] uppercase tracking-[0.16em] text-muted-foreground">
         <span>Ticket size</span>
         <span className="tabular">{format(min)} – {format(max)}</span>
       </div>
       <div className="mt-3 flex items-center justify-between gap-4">
-        <button onClick={() => onChange(Math.max(min, value - step))} className="h-10 w-10 border thin-rule rounded magnetic hover:bg-muted text-[20px]">−</button>
-        <div className="text-[42px] font-medium tabular tracking-tight">{format(value)}</div>
-        <button onClick={() => onChange(Math.min(max, value + step))} className="h-10 w-10 border thin-rule rounded magnetic hover:bg-muted text-[20px]">+</button>
+        <button onClick={() => onChange(Math.max(min, value - step))} className="h-10 w-10 border thin-rule rounded magnetic hover:bg-muted text-[24px]">−</button>
+        <div className="text-[50px] font-medium tabular tracking-tight">{format(value)}</div>
+        <button onClick={() => onChange(Math.min(max, value + step))} className="h-10 w-10 border thin-rule rounded magnetic hover:bg-muted text-[24px]">+</button>
       </div>
       <input
         type="range" min={min} max={max} step={step} value={value}
@@ -365,9 +365,9 @@ function KpiStrip({ items }: { items: { label: string; value: string; sub?: stri
     <div className="grid gap-3 mb-5" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
       {items.map((it) => (
         <div key={it.label} className={`border thin-rule rounded-md p-5 ${it.strong ? "bg-foreground text-paper" : ""}`}>
-          <div className={`text-[12px] uppercase tracking-[0.16em] ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.label}</div>
-          <div className="text-[38px] font-medium tabular tracking-tight mt-1.5 leading-none">{it.value}</div>
-          {it.sub && <div className={`text-[13px] mt-2 ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.sub}</div>}
+          <div className={`text-[14px] uppercase tracking-[0.16em] ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.label}</div>
+          <div className="text-[46px] font-medium tabular tracking-tight mt-1.5 leading-none">{it.value}</div>
+          {it.sub && <div className={`text-[16px] mt-2 ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.sub}</div>}
         </div>
       ))}
     </div>
@@ -377,9 +377,9 @@ function KpiStrip({ items }: { items: { label: string; value: string; sub?: stri
 function InvestTable({ title, rows }: { title: string; rows: { k: string; v: string; strong?: boolean; muted?: boolean }[] }) {
   return (
     <div className="border thin-rule rounded-md p-5">
-      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{title}</div>
+      <div className="text-[16px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{title}</div>
       {rows.map((r) => (
-        <div key={r.k} className={`flex justify-between gap-4 border-t thin-rule py-2.5 text-[16px] ${r.strong ? "text-ink font-medium" : ""}`}>
+        <div key={r.k} className={`flex justify-between gap-4 border-t thin-rule py-2.5 text-[19px] ${r.strong ? "text-ink font-medium" : ""}`}>
           <span className={r.strong ? "" : "text-muted-foreground"}>{r.k}</span>
           <span className={`tabular text-right ${r.muted ? "text-muted-foreground" : ""}`}>{r.v}</span>
         </div>
@@ -397,17 +397,17 @@ function ReturnsTable({
 }) {
   return (
     <div className="border thin-rule rounded-md flex flex-col min-h-0">
-      <div className="px-5 py-3 border-b thin-rule text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{title}</div>
-      <div className="grid grid-cols-12 px-5 py-2.5 text-[12px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
+      <div className="px-5 py-3 border-b thin-rule text-[16px] uppercase tracking-[0.16em] text-muted-foreground">{title}</div>
+      <div className="grid grid-cols-12 px-5 py-2.5 text-[14px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
         <div className="col-span-6">{cols[0]}</div>
         <div className="col-span-3 text-right">{cols[1]}</div>
         <div className="col-span-3 text-right">{cols[2]}</div>
       </div>
       {rows.map((r) => (
-        <div key={r.k} className={`grid grid-cols-12 px-5 py-2.5 text-[16px] border-t thin-rule ${r.total ? "bg-muted/25" : ""}`}>
+        <div key={r.k} className={`grid grid-cols-12 px-5 py-2.5 text-[19px] border-t thin-rule ${r.total ? "bg-muted/25" : ""}`}>
           <div className={`col-span-6 ${r.total ? "text-ink font-medium" : "text-muted-foreground"}`}>{r.k}</div>
           {r.note ? (
-            <div className="col-span-6 text-[14px] text-muted-foreground italic text-right">{r.a}</div>
+            <div className="col-span-6 text-[17px] text-muted-foreground italic text-right">{r.a}</div>
           ) : (
             <>
               <div className={`col-span-3 text-right tabular ${r.total ? "text-ink font-medium" : ""}`}>{r.a}</div>
@@ -432,16 +432,16 @@ function HorizonPicker({
   return (
     <div className="border thin-rule rounded-md p-6">
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{label}</div>
-        <div className="text-[12px] text-muted-foreground tabular">Hover or tap</div>
+        <div className="text-[16px] uppercase tracking-[0.16em] text-muted-foreground">{label}</div>
+        <div className="text-[14px] text-muted-foreground tabular">Hover or tap</div>
       </div>
-      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground">{points[i].label}</div>
+      <div className="text-[16px] uppercase tracking-[0.16em] text-muted-foreground">{points[i].label}</div>
       <Tween
         value={points[i].value}
         format={(v) => format(v)}
-        className="block mt-1.5 text-[64px] font-medium tabular tracking-tight leading-none"
+        className="block mt-1.5 text-[76px] font-medium tabular tracking-tight leading-none"
       />
-      {points[i].sub && <div className="text-[14px] text-muted-foreground mt-2.5">{points[i].sub}</div>}
+      {points[i].sub && <div className="text-[17px] text-muted-foreground mt-2.5">{points[i].sub}</div>}
       <div className="mt-5 grid gap-2" style={{ gridTemplateColumns: `repeat(${points.length}, 1fr)` }}>
         {points.map((p, idx) => {
           const active = idx === i;
@@ -453,8 +453,8 @@ function HorizonPicker({
               onClick={() => setI(idx)}
               className={`magnetic border thin-rule rounded p-2.5 text-left transition-colors ${active ? "bg-foreground text-paper" : "hover:bg-muted/40"}`}
             >
-              <div className={`text-[11px] uppercase tracking-[0.14em] ${active ? "opacity-70" : "text-muted-foreground"}`}>{p.label}</div>
-              <div className="text-[16px] tabular mt-1">{format(p.value)}</div>
+              <div className={`text-[13px] uppercase tracking-[0.14em] ${active ? "opacity-70" : "text-muted-foreground"}`}>{p.label}</div>
+              <div className="text-[19px] tabular mt-1">{format(p.value)}</div>
               <div className={`mt-1.5 h-[3px] rounded-full ${active ? "bg-paper/70" : "bg-foreground/15"}`} style={{ transform: `scaleX(${w})`, transformOrigin: "left" }} />
             </button>
           );
@@ -467,14 +467,14 @@ function HorizonPicker({
 function TakeawayList({ title, items }: { title: string; items: { Icon: typeof Sparkles; t: string; s: string }[] }) {
   return (
     <div className="border thin-rule rounded-md p-5">
-      <div className="text-[13px] uppercase tracking-[0.16em] text-muted-foreground mb-3">{title}</div>
+      <div className="text-[16px] uppercase tracking-[0.16em] text-muted-foreground mb-3">{title}</div>
       <ul className="space-y-2.5">
         {items.map(({ Icon, t, s }) => (
           <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
             <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
             <div className="min-w-0">
-              <span className="text-[15px] font-medium text-ink">{t}</span>{" "}
-              <span className="text-[14px] text-muted-foreground">{s}</span>
+              <span className="text-[18px] font-medium text-ink">{t}</span>{" "}
+              <span className="text-[17px] text-muted-foreground">{s}</span>
             </div>
           </li>
         ))}
@@ -496,7 +496,7 @@ export function S04() {
       <Grid12>
         <div className="col-span-7 flex flex-col gap-5">
           <div>
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">About the league</div>
+            <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground mb-3">About the league</div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[
                 { Icon: Landmark, t: "Organised by TNPA", s: "Tamil Nadu Pickleball Association — official state governing body." },
@@ -509,21 +509,21 @@ export function S04() {
                 <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
                   <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
                   <div>
-                    <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                    <div className="text-[17px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[14px] text-muted-foreground leading-snug mt-0.5">{s}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="text-[12px] text-muted-foreground italic mt-3">
+            <div className="text-[14px] text-muted-foreground italic mt-3">
               Not a startup event. A fully governed, nationally credible league with institutional backing at every level.
             </div>
           </div>
 
           <div className="border-t thin-rule pt-4">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Season 1 vs Season 2</div>
+            <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Season 1 vs Season 2</div>
             <div className="border thin-rule rounded-md overflow-hidden">
-              <div className="grid grid-cols-12 text-[10px] uppercase tracking-[0.16em] text-muted-foreground py-2 px-4 border-b thin-rule bg-muted/40">
+              <div className="grid grid-cols-12 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-2 px-4 border-b thin-rule bg-muted/40">
                 <div className="col-span-4">Metric</div>
                 <div className="col-span-4">Season 1</div>
                 <div className="col-span-4">Season 2</div>
@@ -535,8 +535,8 @@ export function S04() {
                 ["Sponsors", "MGM Healthcare, BoomCars, Indian Bank, TexValley", "Open for Season 2"],
                 ["VIP presence", "Sharath Kamal · IAS CEO of SDAT", "—"],
               ].map((row, i) => (
-                <div key={row[0]} className={`grid grid-cols-12 py-2 px-4 text-[12px] tabular ${i % 2 ? "bg-muted/20" : ""} border-b thin-rule last:border-b-0`}>
-                  <div className="col-span-4 text-muted-foreground uppercase tracking-[0.12em] text-[10px] mt-0.5">{row[0]}</div>
+                <div key={row[0]} className={`grid grid-cols-12 py-2 px-4 text-[14px] tabular ${i % 2 ? "bg-muted/20" : ""} border-b thin-rule last:border-b-0`}>
+                  <div className="col-span-4 text-muted-foreground uppercase tracking-[0.12em] text-[12px] mt-0.5">{row[0]}</div>
                   <div className="col-span-4 text-ink/80">{row[1]}</div>
                   <div className="col-span-4 text-ink font-medium">{row[2]}</div>
                 </div>
@@ -558,14 +558,14 @@ export function S04() {
           </div>
           <div className="p-6 flex flex-col gap-4 flex-1">
             <div>
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue · Confirmed</div>
-              <div className="text-[26px] font-medium tracking-tight mt-1 leading-tight">Jawaharlal Nehru<br/>Indoor Stadium, Chennai</div>
+              <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground">Venue · Confirmed</div>
+              <div className="text-[31px] font-medium tracking-tight mt-1 leading-tight">Jawaharlal Nehru<br/>Indoor Stadium, Chennai</div>
             </div>
             <div className="grid grid-cols-2 gap-4 border-t thin-rule pt-4">
               <Stat label="Prize pool" value="₹30L" sub="4× S1" />
               <Stat label="Reach" value="50L+" sub="9-ch · 90 days" />
             </div>
-            <div className="border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
+            <div className="border-t thin-rule pt-4 text-[17px] text-ink leading-relaxed">
               Your franchise brand rides every channel of this campaign from <span className="font-medium">Day 1</span>.
             </div>
           </div>
@@ -659,7 +659,7 @@ export function S06() {
 
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Who's behind CPL</div>
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Who's behind CPL</div>
             <div className="grid grid-cols-3 gap-x-5 gap-y-3">
               {[
                 { Icon: Star, t: "ATP", s: "All Things Pickleball — India's ecosystem builder." },
@@ -672,8 +672,8 @@ export function S06() {
                 <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
                   <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
                   <div>
-                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                    <div className="text-[16px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[14px] text-muted-foreground leading-snug mt-0.5">{s}</div>
                   </div>
                 </div>
               ))}
@@ -681,8 +681,8 @@ export function S06() {
           </div>
 
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Your team</div>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 text-[14px]">
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Your team</div>
+            <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 text-[17px]">
               {[
                 ["Your role", "Captain — face, owner, story."],
                 ["Your team", "You + 2–3 celebs + 1 pro."],
@@ -690,7 +690,7 @@ export function S06() {
                 ["Time", "10–11 days / season."],
               ].map(([k, v]) => (
                 <div key={k} className="flex gap-3 border-t thin-rule pt-2">
-                  <span className="text-muted-foreground w-[90px] shrink-0 text-[12px] uppercase tracking-[0.12em] mt-0.5">{k}</span>
+                  <span className="text-muted-foreground w-[90px] shrink-0 text-[14px] uppercase tracking-[0.12em] mt-0.5">{k}</span>
                   <span className="text-ink">{v}</span>
                 </div>
               ))}
@@ -698,7 +698,7 @@ export function S06() {
           </div>
 
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why founding matters</div>
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why founding matters</div>
             <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
               {[
                 { Icon: Users, t: "Sponsors follow stars.", s: "Bigger team = bigger ticket." },
@@ -708,7 +708,7 @@ export function S06() {
               ].map(({ Icon, t, s }) => (
                 <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
                   <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="text-[13px] leading-snug">
+                  <div className="text-[16px] leading-snug">
                     <span className="text-ink font-medium">{t}</span>{" "}
                     <span className="text-muted-foreground">{s}</span>
                   </div>
@@ -812,12 +812,12 @@ export function S08() {
             <img src={images.cppl} alt="CPPL corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Per-city revenue · Year 1</div>
+            <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Per-city revenue · Year 1</div>
             <div className="grid grid-cols-4 gap-3">
               {cities.map((c) => (
                 <div key={c.name} className="border thin-rule rounded p-3">
-                  <div className="text-[12px] text-muted-foreground">{c.name}</div>
-                  <div className="text-[24px] tabular font-medium tracking-tight mt-0.5">₹{c.v}L</div>
+                  <div className="text-[14px] text-muted-foreground">{c.name}</div>
+                  <div className="text-[28px] tabular font-medium tracking-tight mt-0.5">₹{c.v}L</div>
                 </div>
               ))}
             </div>
@@ -825,7 +825,7 @@ export function S08() {
         </div>
 
         <div className="col-span-6 flex flex-col gap-3 min-h-0">
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">What each city includes</div>
+          <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground">What each city includes</div>
           {includes.map(({ Icon, t, s }, i) => {
             const isOpen = open === i;
             return (
@@ -836,8 +836,8 @@ export function S08() {
               >
                 <div className="flex items-center gap-3">
                   <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="flex-1 text-[17px] font-medium text-ink leading-tight">{t}</div>
-                  <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+                  <div className="flex-1 text-[20px] font-medium text-ink leading-tight">{t}</div>
+                  <span className={`text-[22px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
                 </div>
                 <motion.div
                   initial={false}
@@ -845,7 +845,7 @@ export function S08() {
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+                  <div className="pt-3 mt-3 border-t thin-rule text-[17px] text-muted-foreground leading-relaxed">{s}</div>
                 </motion.div>
               </button>
             );
@@ -934,8 +934,8 @@ function ExpandList({ items }: { items: { Icon: typeof Sparkles; t: string; s: s
           >
             <div className="flex items-center gap-3">
               <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-              <div className="flex-1 text-[16px] font-medium text-ink leading-tight">{t}</div>
-              <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+              <div className="flex-1 text-[19px] font-medium text-ink leading-tight">{t}</div>
+              <span className={`text-[22px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
             </div>
             <motion.div
               initial={false}
@@ -943,7 +943,7 @@ function ExpandList({ items }: { items: { Icon: typeof Sparkles; t: string; s: s
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+              <div className="pt-3 mt-3 border-t thin-rule text-[17px] text-muted-foreground leading-relaxed">{s}</div>
             </motion.div>
           </button>
         );
@@ -981,11 +981,11 @@ export function S10() {
         </div>
 
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">What it is</div>
-          <div className="border thin-rule rounded-md p-5 text-[15px] text-ink leading-relaxed">
+          <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground">What it is</div>
+          <div className="border thin-rule rounded-md p-5 text-[18px] text-ink leading-relaxed">
             A 2-day structured pickleball tournament for colleges across Chennai and Bangalore. Each college sends a team of 4 players. No entry fee. All revenue comes from sponsorship and CSR funds.
           </div>
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">How it works · click to expand</div>
+          <div className="text-[14px] uppercase tracking-[0.18em] text-muted-foreground">How it works · click to expand</div>
           <ExpandList items={[
             { Icon: GraduationCap, t: "College tie-ups", s: "Partner with top colleges across Chennai and Bangalore. Invite each to send a 4-player team. Zero financial burden on institutions — participation is fully sponsored." },
             { Icon: Trophy, t: "Tournament format", s: "4 courts · 2-day event · structured league format with finals on Day 2. Run with TNPA-certified officials and a clean broadcast-ready production." },
@@ -1087,15 +1087,15 @@ export function S12() {
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
-            <p className="text-[15px] text-muted-foreground leading-relaxed">
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
+            <p className="text-[18px] text-muted-foreground leading-relaxed">
               A weekend recreational pickleball tournament open to all skill levels — beginner, intermediate, and pro-am. Doubles format. Played with a paddle. Anyone can register and play. Think amateur open golf day — but for pickleball. Social, competitive, and accessible.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5 flex flex-col">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">The 4-city circuit</div>
-              <div className="text-[12px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities · Sat–Sun"}</div>
+              <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground">The 4-city circuit</div>
+              <div className="text-[14px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities · Sat–Sun"}</div>
             </div>
             <div className="relative h-[230px] bg-[color:var(--paper)] border thin-rule rounded overflow-hidden">
               <img src={images.paddle} alt="Paddle City Open weekend tournament" className="w-full h-full object-cover" loading="lazy"/>
@@ -1104,13 +1104,13 @@ export function S12() {
                 {cityNodes.map((c, i) => (
                   <button key={c.name}
                     onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                    className={`text-[12px] tabular px-2 py-1 rounded border thin-rule bg-background/80 backdrop-blur ${active === i ? "text-ink border-foreground/40" : "text-muted-foreground"}`}>
+                    className={`text-[14px] tabular px-2 py-1 rounded border thin-rule bg-background/80 backdrop-blur ${active === i ? "text-ink border-foreground/40" : "text-muted-foreground"}`}>
                     {c.name} · {c.events} events
                   </button>
                 ))}
               </div>
             </div>
-            <div className="text-[12px] text-muted-foreground mt-3">
+            <div className="text-[14px] text-muted-foreground mt-3">
               2 events per city · 8 events annually · Sat–Sun · existing courts — no infrastructure ownership.
             </div>
           </div>
@@ -1246,17 +1246,17 @@ export function S14() {
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
-            <p className="text-[14px] text-muted-foreground leading-relaxed">
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
+            <p className="text-[17px] text-muted-foreground leading-relaxed">
               A premium multi-sport court facility in the heart of Chennai. Three sports under one roof — pickleball, paddle, and badminton — with a café and professional coaching. Open 6AM to 12AM, 365 days a year.
             </p>
           </div>
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The courts</div>
-            <div className="grid grid-cols-[1.2fr_0.8fr_1.2fr] gap-x-4 gap-y-2 text-[13px]">
-              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Sport</div>
-              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Courts</div>
-              <div className="text-muted-foreground text-[11px] uppercase tracking-wider">Rental</div>
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The courts</div>
+            <div className="grid grid-cols-[1.2fr_0.8fr_1.2fr] gap-x-4 gap-y-2 text-[16px]">
+              <div className="text-muted-foreground text-[13px] uppercase tracking-wider">Sport</div>
+              <div className="text-muted-foreground text-[13px] uppercase tracking-wider">Courts</div>
+              <div className="text-muted-foreground text-[13px] uppercase tracking-wider">Rental</div>
               {courts.map((c) => (
                 <Fragment key={c.sport}>
                   <div className="text-ink font-medium border-t thin-rule pt-2">{c.sport}</div>
@@ -1277,19 +1277,19 @@ export function S14() {
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">What's inside</div>
-            <div className="grid grid-cols-1 gap-y-2 text-[13px]">
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-3">What's inside</div>
+            <div className="grid grid-cols-1 gap-y-2 text-[16px]">
               {inside.map((it) => (
                 <div key={it.k} className="flex items-center gap-2">
-                  <span className="text-[16px]">{it.i}</span>
+                  <span className="text-[19px]">{it.i}</span>
                   <span className="text-muted-foreground">{it.k}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="border thin-rule rounded-md p-5 flex-1">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">Flagship venue</div>
-            <p className="text-[13px] text-muted-foreground leading-relaxed">
+            <div className="text-[14px] uppercase tracking-[0.16em] text-muted-foreground mb-2">Flagship venue</div>
+            <p className="text-[16px] text-muted-foreground leading-relaxed">
               S For Sport's home base — a premium multi-sport club at the centre of Chennai. The anchor that turns the brand from a portfolio of plays into a permanent destination.
             </p>
           </div>
@@ -1385,7 +1385,7 @@ export function S16() {
     <>
       <SlideHeader tag="16 · Next Steps" title="Pick the plays that diversify S For Sport first." />
       <div className="border-t thin-rule">
-        <div className="grid grid-cols-12 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-4 border-b thin-rule">
+        <div className="grid grid-cols-12 text-[14px] uppercase tracking-[0.16em] text-muted-foreground py-4 border-b thin-rule">
           <div className="col-span-4">Opportunity</div>
           <div className="col-span-2">Ready</div>
           <div className="col-span-3">Investment</div>
@@ -1393,10 +1393,10 @@ export function S16() {
         </div>
         {next.map((row) => (
           <div key={row[0]} className="grid grid-cols-12 py-5 border-b thin-rule items-baseline">
-            <div className="col-span-4 text-[22px] font-medium tracking-tight">{row[0]}</div>
-            <div className="col-span-2 text-[16px] tabular text-muted-foreground">{row[1]}</div>
-            <div className="col-span-3 text-[18px] tabular">{row[2]}</div>
-            <div className="col-span-3 text-[16px] text-muted-foreground">{row[3]}</div>
+            <div className="col-span-4 text-[26px] font-medium tracking-tight">{row[0]}</div>
+            <div className="col-span-2 text-[19px] tabular text-muted-foreground">{row[1]}</div>
+            <div className="col-span-3 text-[22px] tabular">{row[2]}</div>
+            <div className="col-span-3 text-[19px] text-muted-foreground">{row[3]}</div>
           </div>
         ))}
       </div>
@@ -1407,9 +1407,9 @@ export function S16() {
           ["03", "Begin ECR site shortlisting for A for Arena", "Site, lease, Da One sign-off."],
         ].map(([n, t, s]) => (
           <div key={n} className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] tabular text-muted-foreground">This week · {n}</div>
-            <div className="text-[24px] font-medium tracking-tight mt-2">{t}</div>
-            <div className="text-[14px] text-muted-foreground mt-2">{s}</div>
+            <div className="text-[14px] tabular text-muted-foreground">This week · {n}</div>
+            <div className="text-[28px] font-medium tracking-tight mt-2">{t}</div>
+            <div className="text-[17px] text-muted-foreground mt-2">{s}</div>
           </div>
         ))}
       </div>
