@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell,
 } from "recharts";
 import { Tween } from "./Tween";
-import { images } from "@/lib/deck-data";
+import { images, logos } from "@/lib/deck-data";
 
 /* ---------- Shared atoms ---------- */
 
@@ -299,6 +299,9 @@ export function S04() {
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
             <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
+            <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md p-2 border thin-rule">
+              <img src={logos.tnppl} alt="TNPPL Season 2 logo" className="h-16 w-auto block" />
+            </div>
           </div>
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue</div>
