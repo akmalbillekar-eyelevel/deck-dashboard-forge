@@ -181,45 +181,90 @@ export function S02() {
 /* ---------- 03 Portfolio Overview ---------- */
 
 const portfolio = [
-  { n: "01", name: "TNPPL Franchise", inv: "₹31L", ret: "₹7.5L – ₹23L / season", kind: "play" },
-  { n: "02", name: "CPL Celebrity League", inv: "₹30L", ret: "₹15L – ₹30L Year 1", kind: "play" },
-  { n: "03", name: "CPPL Corporate League", inv: "₹1.54 Cr", ret: "80% – 108% per city", kind: "play" },
-  { n: "04", name: "Inter-School League", inv: "₹16L", ret: "150% – 275%", kind: "play" },
-  { n: "05", name: "Paddle City Open", inv: "₹72L", ret: "55%+", kind: "play" },
-  { n: "06", name: "A for Arena", inv: "₹14–16 Cr", ret: "₹10.58 Cr EBITDA by Y3", kind: "anchor" },
+  { n: "01", name: "TNPPL Franchise", cat: "League Franchise", inv: "₹31L", ret: "₹7.5L – ₹23L per season", roi: "Variable", kind: "play" },
+  { n: "02", name: "CPL — Celebrity Pickleball League", cat: "Celebrity Franchise", inv: "₹30L", ret: "₹15L – ₹30L Year 1", roi: "50% – 100%+", kind: "play" },
+  { n: "03", name: "CPPL — Corporate Pickleball League", cat: "League IP", inv: "₹8–12L per city", ret: "₹31.5L – ₹41.5L per city", roi: "80% – 108%", kind: "play" },
+  { n: "04", name: "Inter-School & College League", cat: "Grassroots IP", inv: "₹16L", ret: "₹24L – ₹44L Year 1", roi: "150% – 275%", kind: "play" },
+  { n: "05", name: "Paddle City Open", cat: "Event Circuit", inv: "₹72L", ret: "~₹40L Year 1", roi: "~55%", kind: "play" },
+  { n: "06", name: "A for Arena — Multi-Sport Club", cat: "Infrastructure", inv: "₹14–16 Cr", ret: "₹10.58 Cr EBITDA Year 3", roi: "Asset value ₹40–55 Cr", kind: "anchor" },
+];
+
+const connections = [
+  ["Grassroots", "Inter-School League builds the player base and the next generation."],
+  ["Events", "Paddle City Open brings the community together across cities."],
+  ["Leagues", "TNPPL, CPL, CPPL monetise the audience at every level."],
+  ["Infrastructure", "A for Arena anchors and hosts everything under one roof."],
 ];
 
 export function S03() {
   const [hover, setHover] = useState<string | null>(null);
   return (
     <>
-      <SlideHeader tag="Portfolio Overview" title="Six plays. One ecosystem." sub="01–05 are immediate entry plays. 06 is the long-term anchor that amplifies everything else." />
+      <SlideHeader
+        tag="Portfolio Overview"
+        title="One ecosystem. Every angle covered."
+        sub="Each opportunity stands alone. Together, they build something no single investor has built in Indian sports."
+      />
       <div className="border-t thin-rule">
-        <div className="grid grid-cols-12 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-4 border-b thin-rule">
+        <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
           <div className="col-span-1">#</div>
-          <div className="col-span-5">Opportunity</div>
+          <div className="col-span-4">Opportunity</div>
+          <div className="col-span-2">Category</div>
           <div className="col-span-2">Investment</div>
-          <div className="col-span-3">Indicative return</div>
-          <div className="col-span-1 text-right">Role</div>
+          <div className="col-span-2">Net return</div>
+          <div className="col-span-1 text-right">ROI</div>
         </div>
         {portfolio.map((p) => (
           <div
             key={p.n}
             onMouseEnter={() => setHover(p.n)}
             onMouseLeave={() => setHover(null)}
-            className={`grid grid-cols-12 py-7 border-b thin-rule items-center magnetic ${hover === p.n ? "bg-muted/60" : ""}`}
+            className={`grid grid-cols-12 py-4 border-b thin-rule items-center magnetic ${hover === p.n ? "bg-muted/60" : ""}`}
           >
-            <div className="col-span-1 tabular text-[18px] text-muted-foreground">{p.n}</div>
-            <div className="col-span-5 text-[28px] font-medium tracking-tight">{p.name}</div>
-            <div className="col-span-2 text-[22px] tabular">{p.inv}</div>
-            <div className="col-span-3 text-[18px] text-muted-foreground tabular">{p.ret}</div>
-            <div className="col-span-1 text-right text-[12px] uppercase tracking-[0.16em]">
-              <span className={p.kind === "anchor" ? "text-[color:var(--sage-tone)]" : "text-muted-foreground"}>
-                {p.kind === "anchor" ? "Anchor" : "Play"}
-              </span>
+            <div className="col-span-1 tabular text-[15px] text-muted-foreground">{p.n}</div>
+            <div className="col-span-4 text-[20px] font-medium tracking-tight leading-tight">
+              {p.name}
+              {p.kind === "anchor" && <span className="ml-3 text-[10px] uppercase tracking-[0.16em] text-[color:var(--sage-tone)]">Anchor</span>}
             </div>
+            <div className="col-span-2 text-[13px] text-muted-foreground">{p.cat}</div>
+            <div className="col-span-2 text-[16px] tabular">{p.inv}</div>
+            <div className="col-span-2 text-[14px] text-muted-foreground tabular">{p.ret}</div>
+            <div className="col-span-1 text-right text-[14px] tabular">{p.roi}</div>
           </div>
         ))}
+      </div>
+
+      <div className="grid grid-cols-12 gap-8 mt-6">
+        <div className="col-span-7">
+          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-3">How they connect</div>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+            {connections.map(([k, v]) => (
+              <div key={k} className="flex gap-3 border-t thin-rule pt-3">
+                <div className="text-[12px] uppercase tracking-[0.14em] text-ink w-[110px] shrink-0 mt-[2px]">{k}</div>
+                <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 text-[11px] text-muted-foreground italic">
+            CPPL: per city, scalable across 4 cities; team franchise fees collected upfront cover operating costs. A for Arena: infrastructure asset — measured by EBITDA and exit value, not percentage ROI.
+          </div>
+        </div>
+        <div className="col-span-5 border thin-rule rounded-md p-5">
+          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">The Range</div>
+          <div className="grid grid-cols-2 gap-6 mt-3">
+            <div>
+              <div className="text-[28px] font-medium tabular tracking-tight">₹16L</div>
+              <div className="text-[12px] text-muted-foreground mt-1">Entry play</div>
+            </div>
+            <div>
+              <div className="text-[28px] font-medium tabular tracking-tight">₹14–16 Cr</div>
+              <div className="text-[12px] text-muted-foreground mt-1">Anchor asset</div>
+            </div>
+          </div>
+          <div className="text-[13px] text-muted-foreground mt-3 leading-relaxed">
+            Quick launches. 18-month builds. Something for every timeline.
+          </div>
+        </div>
       </div>
     </>
   );
