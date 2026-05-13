@@ -1079,6 +1079,18 @@ export function S14() {
         sub="S4 Sports × Da One Sports · ~53,000 sq ft · Chennai ECR. S4 owns venue, infrastructure, memberships, F&B, events, sponsorship. Da One owns coaching."
         logoKey="arena" logoLabel="A for Arena"
       />
+      <AboutGrid
+        label="About the venue"
+        items={[
+          { Icon: MapPin, t: "Chennai ECR", s: "~53,000 sq ft on East Coast Road — premium catchment." },
+          { Icon: Handshake, t: "S4 × Da One Sports", s: "JV — S4 owns venue, memberships, F&B, events; Da One owns coaching." },
+          { Icon: Layers, t: "13 revenue streams", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
+          { Icon: Dumbbell, t: "Multi-sport", s: "Pool · football · basketball · pickleball · cricket · frisbee." },
+          { Icon: Award, t: "Premium gap", s: "Only multi-sport venue between Thiruvanmiyur & Mahabalipuram." },
+          { Icon: TrendingUp, t: "EBITDA Month 6–8", s: "Cash payback 30–36 months · asset value ₹40–55 Cr by Year 3." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
           <div className="aspect-[16/10] overflow-hidden bg-muted">
