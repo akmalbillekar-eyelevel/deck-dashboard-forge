@@ -369,7 +369,132 @@ function TicketStepper({
   );
 }
 
-/* ---------- 04 TNPPL Opportunity ---------- */
+/* ---------- Compact investment-slide helpers ---------- */
+
+function KpiStrip({ items }: { items: { label: string; value: string; sub?: string; strong?: boolean }[] }) {
+  return (
+    <div className="grid gap-3 mb-4" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
+      {items.map((it) => (
+        <div key={it.label} className={`border thin-rule rounded-md p-4 ${it.strong ? "bg-foreground text-paper" : ""}`}>
+          <div className={`text-[10px] uppercase tracking-[0.16em] ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.label}</div>
+          <div className="text-[30px] font-medium tabular tracking-tight mt-1 leading-none">{it.value}</div>
+          {it.sub && <div className={`text-[11px] mt-1.5 ${it.strong ? "opacity-70" : "text-muted-foreground"}`}>{it.sub}</div>}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function InvestTable({ title, rows }: { title: string; rows: { k: string; v: string; strong?: boolean; muted?: boolean }[] }) {
+  return (
+    <div className="border thin-rule rounded-md p-4">
+      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">{title}</div>
+      {rows.map((r) => (
+        <div key={r.k} className={`flex justify-between gap-4 border-t thin-rule py-2 text-[13px] ${r.strong ? "text-ink font-medium" : ""}`}>
+          <span className={r.strong ? "" : "text-muted-foreground"}>{r.k}</span>
+          <span className={`tabular text-right ${r.muted ? "text-muted-foreground" : ""}`}>{r.v}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ReturnsTable({
+  title, cols, rows,
+}: {
+  title: string;
+  cols: [string, string, string];
+  rows: { k: string; a: string; b: string; total?: boolean; note?: boolean }[];
+}) {
+  return (
+    <div className="border thin-rule rounded-md flex flex-col min-h-0">
+      <div className="px-4 py-2.5 border-b thin-rule text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{title}</div>
+      <div className="grid grid-cols-12 px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
+        <div className="col-span-6">{cols[0]}</div>
+        <div className="col-span-3 text-right">{cols[1]}</div>
+        <div className="col-span-3 text-right">{cols[2]}</div>
+      </div>
+      {rows.map((r) => (
+        <div key={r.k} className={`grid grid-cols-12 px-4 py-2 text-[13px] border-t thin-rule ${r.total ? "bg-muted/25" : ""}`}>
+          <div className={`col-span-6 ${r.total ? "text-ink font-medium" : "text-muted-foreground"}`}>{r.k}</div>
+          {r.note ? (
+            <div className="col-span-6 text-[12px] text-muted-foreground italic text-right">{r.a}</div>
+          ) : (
+            <>
+              <div className={`col-span-3 text-right tabular ${r.total ? "text-ink font-medium" : ""}`}>{r.a}</div>
+              <div className={`col-span-3 text-right tabular ${r.total ? "text-ink font-medium" : ""}`}>{r.b}</div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function HorizonPicker({
+  label, points, format = (v: number) => `₹${v}L`,
+}: {
+  label: string;
+  points: { label: string; value: number; sub?: string }[];
+  format?: (v: number) => string;
+}) {
+  const [i, setI] = useState(points.length - 1);
+  const max = Math.max(...points.map((p) => Math.abs(p.value)));
+  return (
+    <div className="border thin-rule rounded-md p-5">
+      <div className="flex items-center justify-between mb-3">
+        <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{label}</div>
+        <div className="text-[10px] text-muted-foreground tabular">Hover or tap</div>
+      </div>
+      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{points[i].label}</div>
+      <Tween
+        value={points[i].value}
+        format={(v) => format(v)}
+        className="block mt-1 text-[56px] font-medium tabular tracking-tight leading-none"
+      />
+      {points[i].sub && <div className="text-[12px] text-muted-foreground mt-2">{points[i].sub}</div>}
+      <div className="mt-5 grid gap-2" style={{ gridTemplateColumns: `repeat(${points.length}, 1fr)` }}>
+        {points.map((p, idx) => {
+          const active = idx === i;
+          const w = Math.max(0.05, Math.abs(p.value) / max);
+          return (
+            <button
+              key={p.label}
+              onMouseEnter={() => setI(idx)}
+              onClick={() => setI(idx)}
+              className={`magnetic border thin-rule rounded p-2 text-left transition-colors ${active ? "bg-foreground text-paper" : "hover:bg-muted/40"}`}
+            >
+              <div className={`text-[10px] uppercase tracking-[0.14em] ${active ? "opacity-70" : "text-muted-foreground"}`}>{p.label}</div>
+              <div className="text-[14px] tabular mt-0.5">{format(p.value)}</div>
+              <div className={`mt-1.5 h-[3px] rounded-full ${active ? "bg-paper/70" : "bg-foreground/15"}`} style={{ transform: `scaleX(${w})`, transformOrigin: "left" }} />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function TakeawayList({ title, items }: { title: string; items: { Icon: typeof Sparkles; t: string; s: string }[] }) {
+  return (
+    <div className="border thin-rule rounded-md p-4">
+      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2.5">{title}</div>
+      <ul className="space-y-2">
+        {items.map(({ Icon, t, s }) => (
+          <li key={t} className="flex gap-2.5 border-t thin-rule pt-2">
+            <Icon className="h-3.5 w-3.5 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+            <div className="min-w-0">
+              <span className="text-[13px] font-medium text-ink">{t}</span>{" "}
+              <span className="text-[12px] text-muted-foreground">{s}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+
 
 export function S04() {
   return (
