@@ -582,7 +582,7 @@ export function S05() {
       <KpiStrip items={[
         { label: "Total entry", value: "₹31L", sub: "₹28L fee + ₹3L auction", strong: true },
         { label: "Per-season recovery", value: "₹7.5–23L", sub: "cash from 4 sources" },
-        { label: "Tenure", value: "3 yrs", sub: "S2 · S3 · S For Sport" },
+        { label: "Tenure", value: "3 yrs", sub: "S2 · S3 · S4" },
         { label: "Renewal", value: "+20%", sub: "preferential rate" },
       ]}/>
       <Grid12>
@@ -592,7 +592,7 @@ export function S05() {
             rows={[
               { k: "Franchise fee", v: "₹28L + GST" },
               { k: "Player auction budget", v: "₹3L (S2 only)" },
-              { k: "Tenure", v: "3 years (S2 · S3 · S For Sport)" },
+              { k: "Tenure", v: "3 years (S2 · S3 · S4)" },
               { k: "Total entry", v: "₹31L", strong: true },
             ]}
           />
