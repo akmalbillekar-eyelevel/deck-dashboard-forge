@@ -1144,8 +1144,9 @@ export function S12() {
 export function S13() {
   return (
     <>
-      <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
-        title="₹9L per weekend. ₹14L back. 8 weekends a year."
+      <SlideHeader tag="13 · Opportunity 05 · Investment Detail"
+        title="Low Risk. Real Returns."
+        sub="Per event · ₹9L in · ₹14L out · 8 events a year."
       />
       <KpiStrip items={[
         { label: "Investment / event", value: "₹9L", sub: "all-in cost" },
@@ -1172,7 +1173,7 @@ export function S13() {
               { k: "Entry fees (150 × ₹3,000)", v: "₹4.5L" },
               { k: "Title sponsor", v: "₹5L" },
               { k: "Category sponsors (×3)", v: "₹3L" },
-              { k: "Equipment / paddle stall", v: "₹1.5L" },
+              { k: "Paddle brand stall", v: "₹1.5L" },
               { k: "Total revenue", v: "₹14L", strong: true },
             ]}
           />
