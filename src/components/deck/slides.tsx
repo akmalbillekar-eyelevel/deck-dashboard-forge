@@ -1148,8 +1148,7 @@ export function S13() {
   return (
     <>
       <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 05 · Investment Detail — ₹9L per event · 8 events · ~55% Year 1 ROI."
+        title="₹9L per weekend. ₹14L back. 8 weekends a year."
       />
       <KpiStrip items={[
         { label: "Investment / event", value: "₹9L", sub: "all-in cost" },
