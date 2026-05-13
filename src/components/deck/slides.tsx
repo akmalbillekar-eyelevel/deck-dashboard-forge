@@ -547,8 +547,14 @@ export function S04() {
 
         <div className="col-span-5 border thin-rule rounded-md overflow-hidden flex flex-col">
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-            <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
+            <iframe
+              src="https://www.youtube.com/embed/5bgFuGL3zE0?si=W_0TviCiuOJsoyqc"
+              title="TNPPL"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
           <div className="p-6 flex flex-col gap-4 flex-1">
             <div>
