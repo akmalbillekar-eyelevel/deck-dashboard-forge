@@ -442,76 +442,96 @@ export function S04() {
 
 export function S05() {
   const years = ["Season 2", "Season 3", "Season 4"];
-  const baseRecovery = [9, 14, 21]; // ₹L median
+  const recovery = [9, 14, 21]; // ₹L median cash recovery per season
   const [pinned, setPinned] = useState<number | null>(null);
-  const ticket = 31;
-  const moic = 1.0 + (ticket / 31) * 1.6;
-  const irr = 22 + (ticket - 31) * 0.4;
-  const coc = 0.55 + (ticket - 31) * 0.012;
-  const recovery = baseRecovery.map((v) => v * (ticket / 31));
   return (
     <>
-      <SlideHeader tag="05 · TNPPL · Investment & ROI"
+      <SlideHeader tag="Opportunity 01 · Investment Detail"
         title="What you put in. What you get back."
-        sub="₹28L franchise fee + ₹3L auction = ₹31L total. Three-year tenure. 20% preferential renewal. Franchise is transferable."
+        sub="₹28L franchise fee + ₹3L auction = ₹31L total entry. Three-year tenure across Seasons 2, 3 & 4."
       />
       <Grid12>
         <div className="col-span-8 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Cash recovery — heat strip</div>
-              <div className="text-[12px] text-muted-foreground tabular">Hover or click a season to pin</div>
-            </div>
-            <div className="px-5 pt-4">
-              <Sparkline values={recovery} focus={pinned} />
-            </div>
-            <HeatStrip years={years} values={recovery} pinned={pinned} onPin={setPinned} />
-          </div>
           <div className="grid grid-cols-2 gap-6">
             <div className="border thin-rule rounded-md p-5">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Per season — components</div>
+              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Your investment — Season 2</div>
               {[
-                ["Team sponsorship", "₹5L – ₹10L"],
-                ["Central guarantee", "₹2L (minimum)"],
-                ["Central revenue share", "up to ₹4.16L+"],
-                ["Prize money", "₹50K – ₹9L"],
-                ["Media equivalence", "₹15 – 20L"],
-              ].map(([k, v]) => (
-                <div key={k} className="flex justify-between border-t thin-rule py-3 text-[16px]">
-                  <span className="text-muted-foreground">{k}</span>
+                ["Franchise fee", "₹28L + GST"],
+                ["Tenure", "3 years (S2, S3, S4)"],
+                ["Player auction budget", "₹3L (S2 only)"],
+                ["Total entry", "₹31L"],
+              ].map(([k, v], i) => (
+                <div key={k} className={`flex justify-between border-t thin-rule py-3 text-[15px] ${i === 3 ? "text-ink font-medium" : ""}`}>
+                  <span className={i === 3 ? "" : "text-muted-foreground"}>{k}</span>
                   <span className="tabular">{v}</span>
                 </div>
               ))}
             </div>
             <div className="border thin-rule rounded-md p-5">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Central pool mechanics</div>
-              <p className="text-[15px] text-muted-foreground leading-relaxed">
-                League earns above ₹1 Cr → franchises receive 50% of the surplus pool → your share works out to ₹4.16L+ per season at conservative growth.
-              </p>
-              <div className="mt-5 grid grid-cols-3 gap-4">
-                <Stat label="Tenure" value="3 yrs" />
-                <Stat label="Renewal" value="+20%" sub="preferential" />
-                <Stat label="Status" value="Transferable" />
-              </div>
+              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Your returns — per season</div>
+              {[
+                ["Team sponsorship", "₹5L – ₹10L"],
+                ["Central guarantee", "₹2L"],
+                ["Prize money", "₹50K – ₹9L"],
+                ["Brand & media equivalence", "₹15L – ₹20L"],
+                ["Total cash recovery", "₹7.5L – ₹23L"],
+              ].map(([k, v], i, arr) => (
+                <div key={k} className={`flex justify-between border-t thin-rule py-3 text-[15px] ${i === arr.length - 1 ? "text-ink font-medium" : ""}`}>
+                  <span className={i === arr.length - 1 ? "" : "text-muted-foreground"}>{k}</span>
+                  <span className="tabular">{v}</span>
+                </div>
+              ))}
             </div>
+          </div>
+          <div className="border thin-rule rounded-md">
+            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
+              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Central sponsorship — how it works</div>
+              <div className="text-[12px] text-muted-foreground tabular">Hover a season for cash recovery</div>
+            </div>
+            <div className="grid grid-cols-12 px-5 py-3 text-[12px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
+              <div className="col-span-5">League collects</div>
+              <div className="col-span-4">Franchises receive</div>
+              <div className="col-span-3 text-right">Your share (÷12)</div>
+            </div>
+            {[
+              ["Up to ₹50L", "30% of pool", "Up to ₹1.25L"],
+              ["₹50L – ₹1 Cr", "40% of pool", "Up to ₹3.33L"],
+              ["Above ₹1 Cr", "50% of pool", "₹4.16L+"],
+              ["Guaranteed minimum", "—", "₹2L per season"],
+            ].map(([a, b, c]) => (
+              <div key={a} className="grid grid-cols-12 px-5 py-3 text-[15px] border-t thin-rule">
+                <div className="col-span-5 text-muted-foreground">{a}</div>
+                <div className="col-span-4 tabular">{b}</div>
+                <div className="col-span-3 text-right tabular">{c}</div>
+              </div>
+            ))}
+            <div className="px-5 pt-4">
+              <Sparkline values={recovery} focus={pinned} />
+            </div>
+            <HeatStrip years={years} values={recovery} pinned={pinned} onPin={setPinned} />
           </div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
           <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year horizon</div>
-            <div className="mt-5 space-y-5">
-              <div className="flex items-end justify-between">
-                <span className="text-[14px] text-muted-foreground">MOIC</span>
-                <Tween value={moic} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" />
-              </div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5">
-                <span className="text-[14px] text-muted-foreground">IRR</span>
-                <Tween value={irr} format={(v) => `${v.toFixed(1)}%`} className="text-[44px] font-medium tabular" />
-              </div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5">
-                <span className="text-[14px] text-muted-foreground">Cash-on-cash</span>
-                <Tween value={coc} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" />
-              </div>
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">The long-term play</div>
+            <ul className="mt-5 space-y-4 text-[15px] leading-relaxed">
+              <li className="border-t thin-rule pt-4">
+                <span className="text-ink font-medium">3-year tenure.</span>{" "}
+                <span className="text-muted-foreground">Your brand compounds across every season.</span>
+              </li>
+              <li className="border-t thin-rule pt-4">
+                <span className="text-ink font-medium">First right of renewal</span>{" "}
+                <span className="text-muted-foreground">at a 20% preferential rate.</span>
+              </li>
+              <li className="border-t thin-rule pt-4">
+                <span className="text-ink font-medium">Franchise is transferable.</span>{" "}
+                <span className="text-muted-foreground">A sports asset on your books — not just an event fee.</span>
+              </li>
+            </ul>
+            <div className="mt-6 grid grid-cols-3 gap-4 border-t thin-rule pt-5">
+              <Stat label="Tenure" value="3 yrs" />
+              <Stat label="Renewal" value="+20%" sub="preferential" />
+              <Stat label="Status" value="Transferable" />
             </div>
           </div>
         </div>
