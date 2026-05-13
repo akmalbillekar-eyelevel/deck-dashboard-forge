@@ -48,6 +48,20 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
+function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
+  const src = logos[logoKey];
+  return (
+    <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md border thin-rule p-2 flex items-center justify-center" style={{ minWidth: 96, minHeight: 72 }}>
+      {src ? (
+        <img src={src} alt={`${label} logo`} className="h-16 w-auto block" />
+      ) : (
+        <div className="h-16 w-24 flex items-center justify-center text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+          Logo
+        </div>
+      )}
+    </div>
+  );
+}
 /* ---------- 01 Cover ---------- */
 
 export function S01() {
@@ -299,9 +313,7 @@ export function S04() {
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.tnppl} alt="TNPPL arena" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
             <div className="absolute inset-0 bg-gradient-to-t from-paper/40 to-transparent" />
-            <div className="absolute top-4 left-4 bg-paper/90 backdrop-blur rounded-md p-2 border thin-rule">
-              <img src={logos.tnppl} alt="TNPPL Season 2 logo" className="h-16 w-auto block" />
-            </div>
+            <LogoSlot logoKey="tnppl" label="TNPPL" />
           </div>
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Venue</div>
@@ -407,8 +419,9 @@ export function S06() {
         sub="CPL Season 1 · October 2026. Organised by All Things Pickleball — creators of WPPL, Queen of the Court, and the Masters format."
       />
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md overflow-hidden">
+        <div className="col-span-6 border thin-rule rounded-md overflow-hidden relative">
           <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
+          <LogoSlot logoKey="cpl" label="CPL" />
         </div>
         <div className="col-span-6 flex flex-col gap-6">
           <div className="grid grid-cols-3 gap-6">
@@ -505,8 +518,9 @@ export function S08() {
         />
         <Grid12>
           <div className="col-span-5 flex flex-col gap-5">
-            <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
+            <div className="border thin-rule rounded-md overflow-hidden h-[340px] relative">
               <img src={images.cppl} alt="Corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
+              <LogoSlot logoKey="cppl" label="CPPL" />
             </div>
             <div className="border thin-rule rounded-md p-5">
               <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Per city revenue</div>
@@ -649,8 +663,9 @@ export function S10() {
             </p>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md overflow-hidden">
+        <div className="col-span-5 border thin-rule rounded-md overflow-hidden relative">
           <img src={images.school} alt="School league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
+          <LogoSlot logoKey="school" label="Inter-School League" />
         </div>
       </Grid12>
     </>
@@ -771,8 +786,9 @@ export function S12() {
           </div>
         </div>
         <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden h-[280px]">
+          <div className="border thin-rule rounded-md overflow-hidden h-[280px] relative">
             <img src={images.paddle} alt="Paddle City Open" className="w-full h-full object-cover grayscale-[0.2] saturate-50" loading="lazy"/>
+            <LogoSlot logoKey="paddle" label="Paddle City Open" />
           </div>
           <div className="border thin-rule rounded-md p-5 grid grid-cols-2 gap-5">
             <Stat label="Format" value="Doubles" />
@@ -867,8 +883,9 @@ export function S14() {
       />
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
-          <div className="aspect-[16/10] overflow-hidden bg-muted">
+          <div className="aspect-[16/10] overflow-hidden bg-muted relative">
             <img src={images.arena} alt="A for Arena" className="w-full h-full object-cover grayscale-[0.15] saturate-50" loading="lazy"/>
+            <LogoSlot logoKey="arena" label="A for Arena" />
           </div>
           <div className="p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Inside</div>

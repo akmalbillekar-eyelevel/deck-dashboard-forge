@@ -15,8 +15,13 @@ export const images = {
   arena: slideArena,
 };
 
-export const logos = {
+export const logos: Record<string, string | undefined> = {
   tnppl: tnpplLogo,
+  cpl: undefined,
+  cppl: undefined,
+  school: undefined,
+  paddle: undefined,
+  arena: undefined,
 };
 
 export type SlideMeta = {
