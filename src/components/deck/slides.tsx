@@ -1098,8 +1098,8 @@ export function S12() {
               <div className="text-[12px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities · Sat–Sun"}</div>
             </div>
             <div className="relative h-[230px] bg-[color:var(--paper)] border thin-rule rounded overflow-hidden">
-              <img src={images.paddle} alt="Paddle City Open weekend tournament" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <img src={images.paddle} alt="Paddle City Open weekend tournament" className="w-full h-full object-cover" loading="lazy"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
               <div className="absolute inset-0 p-3 flex flex-wrap content-end gap-2">
                 {cityNodes.map((c, i) => (
                   <button key={c.name}
