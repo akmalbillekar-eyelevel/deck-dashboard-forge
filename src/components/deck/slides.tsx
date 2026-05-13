@@ -92,20 +92,20 @@ export function S01() {
   return (
     <div className="flex flex-col h-full justify-between">
       <div className="flex items-center justify-between">
-        <SectorTag>S For Sport — Investor Memorandum</SectorTag>
+        <SectorTag>S For Sport — Diversification Memorandum</SectorTag>
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
         <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
-          The S For Sport<br/>Playbook.
+          Diversifying<br/>S For Sport.
         </h1>
         <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
-          Every League. Every Arena. Every City.
+          Six plays. One brand. Spread the bet across leagues, venues, grassroots & events.
         </p>
       </div>
       <div className="flex items-end justify-between text-[14px] tabular">
         <div className="grid grid-cols-3 gap-12">
-          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Investments</div><div className="mt-1 text-[28px] font-medium">06</div></div>
+          <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Diversified plays</div><div className="mt-1 text-[28px] font-medium">06</div></div>
           <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Capital range</div><div className="mt-1 text-[28px] font-medium">₹16L – ₹16Cr</div></div>
           <div><div className="text-muted-foreground uppercase tracking-[0.16em] text-[11px]">Horizon</div><div className="mt-1 text-[28px] font-medium">3–5 years</div></div>
         </div>
