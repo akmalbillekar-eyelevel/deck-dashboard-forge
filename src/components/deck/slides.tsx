@@ -114,52 +114,56 @@ export function S02() {
         sub="Leagues. Venues. Grassroots. Events. Each one compounds the other."
       />
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-6">
-          <p className="text-[18px] leading-[1.55] text-muted-foreground max-w-[760px] border-t thin-rule pt-6">
-            Bengaluru Jawans winning WPBL Season 1 was proof of concept. This portfolio is the expansion — not deeper into one sport, but wider across the sports and entertainment landscape being built in India right now.
+        <div className="col-span-7 flex flex-col gap-5">
+          <p className="text-[17px] leading-[1.55] text-muted-foreground max-w-[760px] border-t thin-rule pt-5">
+            Bengaluru Jawans winning <span className="text-ink">World Pickleball League Season 1</span> was proof of concept. This portfolio is the expansion — not deeper into one sport, but wider across the sports and entertainment landscape being built in India right now.
           </p>
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mt-2">Why Now</div>
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mt-1">Why the moment is now</div>
           {[
-            ["India's sports economy is at an inflection point.", "Every sport that built franchise value here — cricket, kabaddi, football — was dismissed early. First movers are now holding assets worth 10–50×. That window is open again."],
+            ["India's sports economy is at an inflection point.", "Every sport that built franchise value here — cricket, kabaddi, football — was dismissed early. The investors who moved first are now holding assets worth 10–50×. That window is open again."],
             ["Entertainment and sport are converging.", "Shah Rukh Khan didn't just own KKR — he built a brand that amplified everything else. The same model applies here, and no one is better positioned to run it."],
             ["The network is the real asset.", "Infrastructure can be built. Capital can be raised. The ability to bring Shah Rukh Khan, Allu Arjun, Vijay, and Deepika to the table cannot be bought."],
           ].map(([h, b], i) => (
-            <div key={h as string} className="flex gap-6 border-t thin-rule pt-5">
-              <div className="text-[13px] tabular text-muted-foreground w-10">0{i + 1}</div>
+            <div key={h as string} className="flex gap-5 border-t thin-rule pt-4">
+              <div className="text-[12px] tabular text-muted-foreground w-8 mt-[2px]">0{i + 1}</div>
               <div>
-                <div className="text-[20px] font-medium tracking-tight leading-tight">{h}</div>
-                <div className="text-[15px] text-muted-foreground mt-2 max-w-[640px] leading-relaxed">{b}</div>
+                <div className="text-[18px] font-medium tracking-tight leading-tight">{h}</div>
+                <div className="text-[14px] text-muted-foreground mt-1.5 max-w-[640px] leading-relaxed">{b}</div>
               </div>
             </div>
           ))}
-          <div className="border-t thin-rule pt-5 mt-2">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">The Logic</div>
-            <p className="text-[16px] text-muted-foreground leading-relaxed max-w-[720px]">
-              Each opportunity here works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S4 Sports.</span>
+          <div className="border-t thin-rule pt-4 mt-1">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">The Logic</div>
+            <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[720px]">
+              Each opportunity in this deck works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S4 Sports.</span>
             </p>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md p-8 flex flex-col">
+        <div className="col-span-5 border thin-rule rounded-md p-7 flex flex-col">
           <div className="flex items-center justify-between">
-            <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">League Valuation Index</div>
-            <div className="text-[12px] tabular text-muted-foreground">2020 – 2024</div>
+            <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks — Why this trajectory is real</div>
           </div>
-          <div className="mt-6 border-t thin-rule">
+          <div className="mt-5 border-t thin-rule">
             {[
-              { label: "MLP franchise value", detail: "$200K → $13M in 4 years", value: "65×" },
-              { label: "CCL", detail: "₹50 Cr annual ad revenue · 14 seasons", value: "₹50 Cr" },
-              { label: "WPBL prize pool", detail: "Growth in one year", value: "4×" },
+              { code: "MLP", name: "Major League Pickleball", what: "Premier professional pickleball league in the USA", value: "65×", detail: "Franchise value $200K → $13M in 4 years" },
+              { code: "CCL", name: "Celebrity Cricket League", what: "India — Bollywood, Tamil & Telugu film stars", value: "₹50 Cr", detail: "Annual ad revenue after 14 seasons" },
+              { code: "ISL", name: "Indian Super League", what: "India's pro football league · launched 2014, 8 teams", value: "3×", detail: "Title sponsorship ₹51 Cr → ₹160 Cr in 6 years; revenue 2× in 5" },
+              { code: "UTT", name: "Ultimate Table Tennis", what: "India's pro table tennis league · launched 2017", value: "1.3×", detail: "JioStar 3-yr broadcast (2025); WTT investing $3–5M anchored on UTT" },
             ].map((r) => (
-              <div key={r.label} className="grid grid-cols-12 items-baseline py-5 border-b thin-rule">
+              <div key={r.code} className="grid grid-cols-12 items-baseline py-3.5 border-b thin-rule gap-3">
                 <div className="col-span-8">
-                  <div className="text-[15px] font-medium tracking-tight text-ink">{r.label}</div>
-                  <div className="text-[12px] text-muted-foreground mt-1">{r.detail}</div>
+                  <div className="flex items-baseline gap-2">
+                    <div className="text-[11px] tabular tracking-[0.16em] uppercase text-muted-foreground">{r.code}</div>
+                    <div className="text-[14px] font-medium tracking-tight text-ink">{r.name}</div>
+                  </div>
+                  <div className="text-[11px] text-muted-foreground mt-1 leading-snug">{r.what}</div>
+                  <div className="text-[11px] text-ink/80 mt-1 leading-snug">{r.detail}</div>
                 </div>
-                <div className="col-span-4 text-right text-[28px] font-medium tabular tracking-tight">{r.value}</div>
+                <div className="col-span-4 text-right text-[26px] font-medium tabular tracking-tight leading-none">{r.value}</div>
               </div>
             ))}
           </div>
-          <div className="flex-1 min-h-0 mt-6">
+          <div className="flex-1 min-h-0 mt-4">
             <ResponsiveContainer>
               <AreaChart data={growthData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                 <defs>
