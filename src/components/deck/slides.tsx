@@ -126,79 +126,103 @@ const growthData = [
   { year: 2024, mlp: 13, ccl: 50 },
 ];
 
+function AnimatedHeadline({ text }: { text: string }) {
+  return (
+    <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
+      {text.split("").map((ch, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: i * 0.012, ease: "easeOut" }}
+          style={{ display: "inline-block", whiteSpace: ch === " " ? "pre" : "normal" }}
+        >
+          {ch}
+        </motion.span>
+      ))}
+    </h1>
+  );
+}
+
 export function S02() {
+  const pillars = [
+    { Icon: Trophy, t: "Leagues", s: "TNPPL · CPL · CPPL" },
+    { Icon: Building2, t: "Venues", s: "A for Arena anchor" },
+    { Icon: GraduationCap, t: "Grassroots", s: "Schools & colleges" },
+    { Icon: CalendarDays, t: "Events", s: "Paddle City Open" },
+  ];
+  const why = [
+    { Icon: TrendingUp, n: "10–50×", t: "Asset returns", s: "Cricket · kabaddi · football precedent." },
+    { Icon: Sparkles, n: "1×", t: "Sport × Stardom", s: "SRK + KKR template — no one better placed." },
+    { Icon: Handshake, n: "∞", t: "Network moat", s: "Rolodex you cannot buy." },
+  ];
   return (
     <>
-      <SlideHeader
-        tag="The Thesis"
-        title="The opportunity isn't one league. It's the entire ecosystem."
-        sub="Leagues. Venues. Grassroots. Events. Each one compounds the other."
-      />
+      <header className="mb-8">
+        <SectorTag>The Thesis</SectorTag>
+        <AnimatedHeadline text="It isn't one league. It's the entire ecosystem." />
+        <p className="mt-4 text-[22px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
+          Leagues. Venues. Grassroots. Events. Each one compounds the other.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-4 gap-5 mb-7">
+        {pillars.map(({ Icon, t, s }, i) => (
+          <motion.div
+            key={t}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + i * 0.08 }}
+            className="border thin-rule rounded-md p-5 flex flex-col gap-2"
+          >
+            <Icon className="h-8 w-8 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
+            <div className="text-[22px] font-medium tracking-tight text-ink mt-1">{t}</div>
+            <div className="text-[13px] text-muted-foreground">{s}</div>
+          </motion.div>
+        ))}
+      </div>
+
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-5">
-          <p className="text-[17px] leading-[1.55] text-muted-foreground max-w-[760px] border-t thin-rule pt-5">
-            Bengaluru Jawans winning <span className="text-ink">World Pickleball League Season 1</span> was proof of concept. This portfolio is the expansion — not deeper into one sport, but wider across the sports and entertainment landscape being built in India right now.
-          </p>
-          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mt-1">Why the moment is now</div>
-          {[
-            ["India's sports economy is at an inflection point.", "Every sport that built franchise value here — cricket, kabaddi, football — was dismissed early. The investors who moved first are now holding assets worth 10–50×. That window is open again."],
-            ["Entertainment and sport are converging.", "Shah Rukh Khan didn't just own KKR — he built a brand that amplified everything else. The same model applies here, and no one is better positioned to run it."],
-            ["The network is the real asset.", "Infrastructure can be built. Capital can be raised. The ability to bring Shah Rukh Khan, Allu Arjun, Vijay, and Deepika to the table cannot be bought."],
-          ].map(([h, b], i) => (
-            <div key={h as string} className="flex gap-5 border-t thin-rule pt-4">
-              <div className="text-[12px] tabular text-muted-foreground w-8 mt-[2px]">0{i + 1}</div>
-              <div>
-                <div className="text-[18px] font-medium tracking-tight leading-tight">{h}</div>
-                <div className="text-[14px] text-muted-foreground mt-1.5 max-w-[640px] leading-relaxed">{b}</div>
+        <div className="col-span-7 flex flex-col gap-4">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">Why now</div>
+          {why.map(({ Icon, n, t, s }, i) => (
+            <motion.div
+              key={t}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7 + i * 0.1 }}
+              className="flex items-center gap-5 border-t thin-rule pt-4"
+            >
+              <Icon className="h-7 w-7 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+              <div className="text-[34px] tabular font-medium tracking-tight text-ink w-[140px]">{n}</div>
+              <div className="flex-1">
+                <div className="text-[18px] font-medium text-ink leading-tight">{t}</div>
+                <div className="text-[14px] text-muted-foreground mt-1">{s}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
-          <div className="border-t thin-rule pt-4 mt-1">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">The Logic</div>
-            <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[720px]">
-              Each opportunity in this deck works independently. Together they connect — grassroots feeds corporate feeds professional feeds a venue that hosts all of them. One ecosystem. One owner at the centre. <span className="text-ink">That is S For Sport.</span>
-            </p>
-          </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md p-7 flex flex-col">
-          <div className="flex items-center justify-between">
-            <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks — Why this trajectory is real</div>
-          </div>
-          <div className="mt-5 border-t thin-rule">
+        <div className="col-span-5 border thin-rule rounded-md p-6 flex flex-col">
+          <div className="text-[12px] tracking-[0.16em] uppercase text-muted-foreground">Benchmarks · what's possible</div>
+          <div className="mt-4 border-t thin-rule">
             {[
-              { code: "MLP", name: "Major League Pickleball", what: "Premier professional pickleball league in the USA", value: "65×", detail: "Franchise value $200K → $13M in 4 years" },
-              { code: "CCL", name: "Celebrity Cricket League", what: "India — Bollywood, Tamil & Telugu film stars", value: "₹50 Cr", detail: "Annual ad revenue after 14 seasons" },
-              { code: "ISL", name: "Indian Super League", what: "India's pro football league · launched 2014, 8 teams", value: "3×", detail: "Title sponsorship ₹51 Cr → ₹160 Cr in 6 years; revenue 2× in 5" },
-              { code: "UTT", name: "Ultimate Table Tennis", what: "India's pro table tennis league · launched 2017", value: "1.3×", detail: "JioStar 3-yr broadcast (2025); WTT investing $3–5M anchored on UTT" },
-            ].map((r) => (
-              <div key={r.code} className="grid grid-cols-12 items-baseline py-3.5 border-b thin-rule gap-3">
-                <div className="col-span-8">
-                  <div className="flex items-baseline gap-2">
-                    <div className="text-[11px] tabular tracking-[0.16em] uppercase text-muted-foreground">{r.code}</div>
-                    <div className="text-[14px] font-medium tracking-tight text-ink">{r.name}</div>
-                  </div>
-                  <div className="text-[11px] text-muted-foreground mt-1 leading-snug">{r.what}</div>
-                  <div className="text-[11px] text-ink/80 mt-1 leading-snug">{r.detail}</div>
+              { Icon: Trophy, code: "MLP", value: "65×", detail: "$200K → $13M (USA, 4 yrs)" },
+              { Icon: Star, code: "CCL", value: "₹50 Cr", detail: "Annual ad revenue · 14 seasons" },
+              { Icon: Flag, code: "ISL", value: "3×", detail: "Title sponsorship in 6 yrs" },
+              { Icon: Award, code: "UTT", value: "1.3×", detail: "JioStar 3-yr broadcast (2025)" },
+            ].map(({ Icon, code, value, detail }) => (
+              <div key={code} className="grid grid-cols-12 items-center py-3.5 border-b thin-rule gap-3">
+                <Icon className="h-5 w-5 text-[color:var(--slate-tone)] col-span-1" strokeWidth={1.5} />
+                <div className="col-span-7">
+                  <div className="text-[13px] tracking-[0.16em] uppercase text-muted-foreground">{code}</div>
+                  <div className="text-[12px] text-ink/80 mt-0.5">{detail}</div>
                 </div>
-                <div className="col-span-4 text-right text-[26px] font-medium tabular tracking-tight leading-none">{r.value}</div>
+                <div className="col-span-4 text-right text-[28px] font-medium tabular tracking-tight">{value}</div>
               </div>
             ))}
           </div>
-          <div className="flex-1 min-h-0 mt-4">
-            <ResponsiveContainer>
-              <AreaChart data={growthData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--slate-tone)" stopOpacity={0.35}/>
-                    <stop offset="100%" stopColor="var(--slate-tone)" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="year" tick={{ fontSize: 11, fill: "currentColor", opacity: 0.5 }} axisLine={false} tickLine={false}/>
-                <YAxis hide />
-                <Area type="monotone" dataKey="mlp" stroke="var(--slate-tone)" strokeWidth={1.5} fill="url(#g1)" />
-                <Line type="monotone" dataKey="ccl" stroke="var(--ink)" strokeWidth={1.25} dot={false}/>
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="mt-auto border-t thin-rule pt-4 text-[14px] text-ink leading-relaxed">
+            One ecosystem. One owner at the centre. <span className="font-medium">That is S For Sport.</span>
           </div>
         </div>
       </Grid12>
