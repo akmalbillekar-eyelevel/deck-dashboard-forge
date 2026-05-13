@@ -234,11 +234,11 @@ const portfolio = [
   { n: "06", name: "A for Arena — Multi-Sport Club", cat: "Infrastructure", inv: "₹14–16 Cr", ret: "₹10.58 Cr EBITDA Year 3", roi: "Asset value ₹40–55 Cr", kind: "anchor" },
 ];
 
-const connections = [
-  ["Grassroots", "Inter-School League builds the player base and the next generation."],
-  ["Events", "Paddle City Open brings the community together across cities."],
-  ["Leagues", "TNPPL, CPL, CPPL monetise the audience at every level."],
-  ["Infrastructure", "A for Arena anchors and hosts everything under one roof."],
+const connections: { Icon: typeof Sparkles; k: string; v: string }[] = [
+  { Icon: GraduationCap, k: "Grassroots", v: "Schools build the player base." },
+  { Icon: CalendarDays, k: "Events", v: "Paddle City Open builds community." },
+  { Icon: Trophy, k: "Leagues", v: "TNPPL · CPL · CPPL monetise audience." },
+  { Icon: Building2, k: "Infrastructure", v: "A for Arena hosts everything." },
 ];
 
 export function S03() {
@@ -253,11 +253,8 @@ export function S03() {
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[11px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule">
           <div className="col-span-1">#</div>
-          <div className="col-span-4">Opportunity</div>
-          <div className="col-span-2">Category</div>
-          <div className="col-span-2">Investment</div>
-          <div className="col-span-2">Net return</div>
-          <div className="col-span-1 text-right">ROI</div>
+          <div className="col-span-7">Opportunity</div>
+          <div className="col-span-4">Category</div>
         </div>
         {portfolio.map((p) => (
           <div
@@ -267,48 +264,25 @@ export function S03() {
             className={`grid grid-cols-12 py-4 border-b thin-rule items-center magnetic ${hover === p.n ? "bg-muted/60" : ""}`}
           >
             <div className="col-span-1 tabular text-[15px] text-muted-foreground">{p.n}</div>
-            <div className="col-span-4 text-[20px] font-medium tracking-tight leading-tight">
+            <div className="col-span-7 text-[20px] font-medium tracking-tight leading-tight">
               {p.name}
               {p.kind === "anchor" && <span className="ml-3 text-[10px] uppercase tracking-[0.16em] text-[color:var(--sage-tone)]">Anchor</span>}
             </div>
-            <div className="col-span-2 text-[13px] text-muted-foreground">{p.cat}</div>
-            <div className="col-span-2 text-[16px] tabular">{p.inv}</div>
-            <div className="col-span-2 text-[14px] text-muted-foreground tabular">{p.ret}</div>
-            <div className="col-span-1 text-right text-[14px] tabular">{p.roi}</div>
+            <div className="col-span-4 text-[14px] text-muted-foreground">{p.cat}</div>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-8 mt-6">
-        <div className="col-span-7">
-          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-3">How they connect</div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-            {connections.map(([k, v]) => (
-              <div key={k} className="flex gap-3 border-t thin-rule pt-3">
-                <div className="text-[12px] uppercase tracking-[0.14em] text-ink w-[110px] shrink-0 mt-[2px]">{k}</div>
-                <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 text-[11px] text-muted-foreground italic">
-            CPPL: per city, scalable across 4 cities; team franchise fees collected upfront cover operating costs. A for Arena: infrastructure asset — measured by EBITDA and exit value, not percentage ROI.
-          </div>
-        </div>
-        <div className="col-span-5 border thin-rule rounded-md p-5">
-          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">The Range</div>
-          <div className="grid grid-cols-2 gap-6 mt-3">
-            <div>
-              <div className="text-[28px] font-medium tabular tracking-tight">₹16L</div>
-              <div className="text-[12px] text-muted-foreground mt-1">Entry play</div>
+      <div className="mt-8">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they connect</div>
+        <div className="grid grid-cols-4 gap-5">
+          {connections.map(({ Icon, k, v }) => (
+            <div key={k} className="border thin-rule rounded-md p-5 flex flex-col gap-2">
+              <Icon className="h-7 w-7 text-[color:var(--slate-tone)]" strokeWidth={1.5} />
+              <div className="text-[18px] font-medium tracking-tight text-ink mt-1">{k}</div>
+              <div className="text-[13px] text-muted-foreground leading-snug">{v}</div>
             </div>
-            <div>
-              <div className="text-[28px] font-medium tabular tracking-tight">₹14–16 Cr</div>
-              <div className="text-[12px] text-muted-foreground mt-1">Anchor asset</div>
-            </div>
-          </div>
-          <div className="text-[13px] text-muted-foreground mt-3 leading-relaxed">
-            Quick launches. 18-month builds. Something for every timeline.
-          </div>
+          ))}
         </div>
       </div>
     </>
