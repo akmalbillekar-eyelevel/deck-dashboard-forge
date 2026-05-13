@@ -967,56 +967,61 @@ export function S09() {
 /* ---------- 10 Inter-School Opportunity ---------- */
 
 export function S10() {
-  const stages = [
-    { k: "City leagues", v: 4 },
-    { k: "Regional finals", v: 4 },
-    { k: "National championship", v: 1 },
+  const cities = [
+    { k: "Chennai", v: "20+ schools & colleges" },
+    { k: "Bangalore", v: "20+ schools & colleges" },
+    { k: "Hyderabad", v: "20+ schools & colleges" },
+    { k: "Mumbai", v: "20+ schools & colleges" },
   ];
   const [hover, setHover] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="10 · Inter-School League · Opportunity"
-        title="Build the grassroots. Own the next generation."
-        sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
+      <SlideHeader tag="10 · Inter-School & College League · Opportunity"
+        title="Build the Grassroots. Own the Next Generation."
+        sub="India's first structured school & college pickleball league — 4 cities · annual · championship finals Sept–Oct 2026."
         logoKey="school" logoLabel="Inter-School League"
       />
-      <AboutGrid
-        label="About the league"
-        items={[
-          { Icon: GraduationCap, t: "Schools & colleges", s: "Structured annual league across institutions in 4 cities." },
-          { Icon: Building2, t: "City leagues", s: "Four city events form the base of the player pipeline." },
-          { Icon: Trophy, t: "Regional finals", s: "Four regional rounds crown qualifiers from each city." },
-          { Icon: Award, t: "National championship", s: "One marquee final caps the season — the showcase event." },
-          { Icon: Sparkles, t: "Talent pipeline", s: "Feeds CPPL, Paddle City Open and the entire S4 ecosystem." },
-          { Icon: Heart, t: "CSR-friendly", s: "Unlocks education, FMCG, youth-wellness sponsors that won't touch pro sports." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-5">Pipeline architecture</div>
-            <div className="grid grid-cols-3 gap-3">
-              {stages.map((s, i) => (
-                <button key={s.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-                  className={`heat-cell text-left p-5 border thin-rule rounded-md ${hover === i ? "bg-muted" : ""}`}
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
+            <p className="text-[15px] text-muted-foreground leading-relaxed">
+              A structured annual pickleball league for schools and colleges across four major cities. Teams represent their institutions, compete through a seasonal league format, and culminate in a national championship.
+            </p>
+            <div className="text-[13px] text-ink mt-2 tabular">Chennai · Bangalore · Hyderabad · Mumbai</div>
+          </div>
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">City targets — Year 1</div>
+            <div className="grid grid-cols-2 gap-2">
+              {cities.map((c, i) => (
+                <button key={c.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
+                  className="text-left p-3 border thin-rule rounded-md transition-colors"
                   style={{ backgroundColor: hover === i ? "color-mix(in oklch, var(--sage-tone) 25%, var(--paper))" : undefined }}>
-                  <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Stage 0{i+1}</div>
-                  <div className="text-[22px] font-medium tracking-tight mt-2">{s.k}</div>
-                  <div className="text-[14px] text-muted-foreground mt-1 tabular">{s.v} {s.v === 1 ? "event" : "events"}</div>
+                  <div className="text-[15px] font-medium tracking-tight">{c.k}</div>
+                  <div className="text-[12px] text-muted-foreground tabular mt-0.5">{c.v}</div>
                 </button>
               ))}
             </div>
-          </div>
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Strategic spillover</div>
-            <p className="text-[18px] text-muted-foreground leading-relaxed max-w-[640px]">
-              Students who play today become CPPL corporate players, Paddle City Open participants, and S4 brand advocates. Unlocks education brands, FMCG, CSR and youth-wellness sponsors that won't touch pro sports.
-            </p>
+            <div className="text-[12px] text-muted-foreground mt-3">Championship finals — September / October 2026.</div>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md overflow-hidden">
-          <img src={images.school} alt="School league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <TakeawayList
+            title="Why it matters beyond the numbers"
+            items={[
+              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S4 brand advocates." },
+              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S4 Sports." },
+            ]}
+          />
+          <TakeawayList
+            title="Why it's commercially attractive"
+            items={[
+              { Icon: Heart, t: "New sponsor vertical.", s: "Education · FMCG · CSR · youth wellness." },
+              { Icon: Building2, t: "Brand-safe.", s: "Community-driven — ideal for institutional sponsors." },
+              { Icon: Trophy, t: "First-mover.", s: "First structured student pickleball league in India." },
+              { Icon: TrendingUp, t: "Scalable.", s: "100+ institutions by Year 2." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
