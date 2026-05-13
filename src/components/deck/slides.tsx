@@ -144,17 +144,17 @@ export function S02() {
     { Icon: CalendarDays, t: "Events", s: "Paddle City Open" },
   ];
   const why = [
-    { Icon: TrendingUp, n: "10–50×", t: "Asset returns", s: "Cricket · kabaddi · football precedent." },
-    { Icon: Sparkles, n: "1×", t: "Sport × Stardom", s: "SRK + KKR template — no one better placed." },
-    { Icon: Handshake, n: "∞", t: "Network moat", s: "Rolodex you cannot buy." },
+    { Icon: TrendingUp, n: "4", t: "Asset classes", s: "Leagues, venues, grassroots, events — never one bet." },
+    { Icon: Sparkles, n: "6", t: "Independent plays", s: "Each stands alone. Together they de-risk the brand." },
+    { Icon: Handshake, n: "1", t: "Brand compounding", s: "Every play feeds S For Sport's flywheel." },
   ];
   return (
     <>
       <header className="mb-8">
         <SectorTag>The Thesis</SectorTag>
-        <AnimatedHeadline text="It isn't one league. It's the entire ecosystem." />
+        <AnimatedHeadline text="Don't bet S For Sport on one league. Diversify it." />
         <p className="mt-4 text-[22px] leading-[1.45] text-muted-foreground font-light max-w-[1200px]">
-          Leagues. Venues. Grassroots. Events. Each one compounds the other.
+          Spread the brand across leagues, venues, grassroots and events. Each play compounds the others.
         </p>
       </header>
 
