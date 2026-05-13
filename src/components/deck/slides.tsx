@@ -1034,54 +1034,56 @@ export function S11() {
   return (
     <>
       <SlideHeader tag="11 · Inter-School League · Investment & Returns"
-        title="Lowest entry. Highest strategic return."
-        sub="₹4L per city × 4 cities = ₹16L. The real return is the pipeline you own for the next decade."
+        title="What You Put In. What You Get Back."
+        sub="Opportunity 04 · Investment Detail — ₹4L per city · 4 cities · 150–275% Year 1 ROI."
       />
       <KpiStrip items={[
-        { label: "Total entry", value: "₹16L", sub: "₹4L × 4 cities", strong: true },
-        { label: "Year-1 revenue", value: "₹40–60L", sub: "across all stages" },
-        { label: "Year-1 net", value: "₹24–44L", sub: "after costs" },
-        { label: "ROI", value: "150–275%", sub: "Year 1 alone" },
+        { label: "Investment / city", value: "₹4L", sub: "lowest entry in deck" },
+        { label: "Revenue / city", value: "₹10–15L", sub: "fees + sponsors" },
+        { label: "Net / city", value: "₹6–11L", sub: "Year 1" },
+        { label: "ROI", value: "150–275%", sub: "Year 1 alone", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <InvestTable
-            title="Per-city expenses (₹4L)"
+          <ReturnsTable
+            title="Per city — investment vs return"
+            cols={["Line", "Min", "Max"]}
             rows={[
-              { k: "Outreach", v: "₹1L" },
-              { k: "Equipment", v: "₹1L" },
-              { k: "Finals day", v: "₹1.5L" },
-              { k: "Marketing", v: "₹0.5L" },
-              { k: "Total per city × 4", v: "₹16L", strong: true },
+              { k: "Investment", a: "₹4L", b: "₹4L" },
+              { k: "School / college entry fees", a: "₹8L", b: "₹10L" },
+              { k: "Title sponsor", a: "₹5L", b: "₹8L" },
+              { k: "Co-sponsors", a: "₹2L", b: "₹3L" },
+              { k: "Year 1 revenue", a: "₹10L", b: "₹15L", total: true },
+              { k: "Net profit", a: "₹6L", b: "₹11L", total: true },
+              { k: "ROI", a: "150%", b: "275%", total: true },
             ]}
           />
           <ReturnsTable
-            title="Year-1 economics"
-            cols={["Line item", "Min", "Max"]}
+            title="Scale it up"
+            cols={["Line", "1 city", "4 cities"]}
             rows={[
-              { k: "Sponsorship (education · FMCG · CSR)", a: "₹25L", b: "₹40L" },
-              { k: "School participation fees", a: "₹10L", b: "₹15L" },
-              { k: "Activations & merch", a: "₹5L", b: "₹5L" },
-              { k: "Revenue", a: "₹40L", b: "₹60L", total: true },
-              { k: "Net (after ₹16L cost)", a: "₹24L", b: "₹44L", total: true },
+              { k: "Investment", a: "₹4L", b: "₹16L" },
+              { k: "Revenue", a: "₹10–15L", b: "₹40–60L" },
+              { k: "Net profit", a: "₹6–11L", b: "₹24–44L", total: true },
+              { k: "ROI", a: "150–275%", b: "150–275%", total: true },
             ]}
           />
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
-            label="Net by stage — pick a level"
+            label="Net profit — pick scale"
             points={[
-              { label: "City Yr 1", value: 12, sub: "4 city leagues live." },
-              { label: "Regional", value: 22, sub: "Qualifiers — bigger sponsor draw." },
-              { label: "National", value: 40, sub: "Marquee final — peak media value." },
+              { label: "1 city", value: 9, sub: "₹6–11L net · ₹4L entry." },
+              { label: "4 cities", value: 34, sub: "₹24–44L net · ₹16L total entry." },
+              { label: "100+ inst. Y2", value: 70, sub: "Scale-out across institutions." },
             ]}
           />
           <TakeawayList
-            title="Why this is the strategic play"
+            title="The strategic return"
             items={[
-              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Today's students = tomorrow's CPPL & Paddle City Open players." },
+              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S4 advocate for life." },
               { Icon: Heart, t: "CSR-friendly.", s: "Unlocks sponsors who won't touch pro sports." },
-              { Icon: TrendingUp, t: "Decade-long upside.", s: "ROI compounds across the entire S4 ecosystem." },
+              { Icon: TrendingUp, t: "Decade-long upside.", s: "Real return is bigger than the financials suggest." },
             ]}
           />
         </div>
