@@ -928,6 +928,18 @@ export function S12() {
         sub="A weekend recreational tournament — doubles, all skill levels. Four cities, two events each, eight events annually. Existing courts; no infrastructure required."
         logoKey="paddle" logoLabel="Paddle City Open"
       />
+      <AboutGrid
+        label="About the tournament"
+        items={[
+          { Icon: CalendarDays, t: "Weekend format", s: "Saturday–Sunday — doubles play across all skill levels." },
+          { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — 2 events each per year." },
+          { Icon: Repeat, t: "8 events / year", s: "Recurring city circuit from Year 1 onward." },
+          { Icon: Building2, t: "Asset-light", s: "Existing courts. Zero infrastructure cost — operationally lean." },
+          { Icon: Users, t: "Recreational base", s: "Casual players + community — broadest reach across the portfolio." },
+          { Icon: Sparkles, t: "Sponsorship upside", s: "Entry fees cover ops; sponsorship revenue is pure margin." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-7 border thin-rule rounded-md p-6 flex flex-col">
           <div className="flex items-center justify-between mb-3">
