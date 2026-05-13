@@ -1213,17 +1213,6 @@ export function S13() {
 
 /* ---------- 14 Arena Opportunity (waterfall) ---------- */
 
-const capitalDeploy = [
-  { k: "Lease deposit", v: 200 },
-  { k: "Fit-out", v: 380 },
-  { k: "Pool", v: 220 },
-  { k: "Surfaces", v: 150 },
-  { k: "HVAC", v: 120 },
-  { k: "Events hall", v: 130 },
-  { k: "Solar + tech", v: 110 },
-  { k: "Marketing", v: 90 },
-  { k: "Working capital", v: 100 },
-];
 
 export function S14() {
   const inside = [
