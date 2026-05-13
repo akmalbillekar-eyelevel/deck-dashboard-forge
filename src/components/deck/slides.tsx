@@ -1380,7 +1380,7 @@ const next = [
 export function S16() {
   return useMemo(() => (
     <>
-      <SlideHeader tag="16 · Next Steps" title="Let's talk about what you want to build." />
+      <SlideHeader tag="16 · Next Steps" title="Pick the plays that diversify S For Sport first." />
       <div className="border-t thin-rule">
         <div className="grid grid-cols-12 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-4 border-b thin-rule">
           <div className="col-span-4">Opportunity</div>
