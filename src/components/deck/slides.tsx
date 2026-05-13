@@ -947,12 +947,12 @@ export function S14() {
       <SlideHeader tag="14 · A for Arena · Opportunity"
         title="Build the home of S4 Sports."
         sub="S4 Sports × Da One Sports · ~53,000 sq ft · Chennai ECR. S4 owns venue, infrastructure, memberships, F&B, events, sponsorship. Da One owns coaching."
+        logoKey="arena" logoLabel="A for Arena"
       />
       <Grid12>
         <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
-          <div className="aspect-[16/10] overflow-hidden bg-muted relative">
+          <div className="aspect-[16/10] overflow-hidden bg-muted">
             <img src={images.arena} alt="A for Arena" className="w-full h-full object-cover grayscale-[0.15] saturate-50" loading="lazy"/>
-            <LogoSlot logoKey="arena" label="A for Arena" />
           </div>
           <div className="p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Inside</div>
