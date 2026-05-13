@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart, Line, ResponsiveContainer, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip,
+  LineChart, Line, ResponsiveContainer, XAxis, YAxis,
   PieChart, Pie, Cell,
 } from "recharts";
 import { Tween } from "./Tween";
