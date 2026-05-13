@@ -1144,8 +1144,9 @@ export function S12() {
 export function S13() {
   return (
     <>
-      <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
-        title="₹9L per weekend. ₹14L back. 8 weekends a year."
+      <SlideHeader tag="13 · Opportunity 05 · Investment Detail"
+        title="Low Risk. Real Returns."
+        sub="Per event · ₹9L in · ₹14L out · 8 events a year."
       />
       <KpiStrip items={[
         { label: "Investment / event", value: "₹9L", sub: "all-in cost" },
