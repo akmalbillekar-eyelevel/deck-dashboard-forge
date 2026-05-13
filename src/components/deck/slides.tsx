@@ -1014,7 +1014,7 @@ export function S11() {
         { label: "ROI", value: "~82%", sub: "single edition", strong: true },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+        <div className="col-span-7 grid grid-cols-2 gap-4 min-h-0">
           <ReturnsTable
             title="Investment breakdown · per city"
             cols={["Expense", "Amount", ""]}
