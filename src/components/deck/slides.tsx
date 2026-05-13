@@ -781,13 +781,18 @@ export function S07() {
 
 export function S08() {
   const cities = [
-    { name: "Chennai", v: 80, tone: "var(--slate-tone)" },
-    { name: "Hyderabad", v: 75, tone: "var(--sand-tone)" },
-    { name: "Bangalore", v: 78, tone: "var(--sage-tone)" },
-    { name: "Mumbai", v: 82, tone: "var(--ink)" },
+    { name: "Chennai", v: 80 },
+    { name: "Hyderabad", v: 75 },
+    { name: "Bangalore", v: 78 },
+    { name: "Mumbai", v: 82 },
   ];
-  const [active, setActive] = useState<number | null>(null);
-  const total = cities.reduce((a, c) => a + c.v, 0);
+  const includes = [
+    { Icon: Users, t: "8–10 corporate franchise teams", s: "Companies buy in; players are their employees. Each team commits a multi-year captaincy and brand presence." },
+    { Icon: Briefcase, t: "Full sponsorship stack", s: "Title · Associates · F&B · Activations · Venue branding — every inventory slot monetised across the season." },
+    { Icon: ShieldCheck, t: "Professionally managed ops", s: "Production, refereeing, scheduling, broadcast — handled end-to-end by the central league office." },
+    { Icon: Handshake, t: "Premium corporate networking", s: "League weekends double as relationship infrastructure — CXOs, founders and HR heads in one room." },
+  ];
+  const [open, setOpen] = useState<number | null>(0);
   return (
     <>
       <SlideHeader tag="08 · CPPL · Opportunity"
@@ -796,90 +801,50 @@ export function S08() {
         logoKey="cppl" logoLabel="CPPL"
       />
 
-      <div className="mb-5 border thin-rule rounded-md p-5">
-        <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-2">What is CPPL</div>
-        <p className="text-[15px] leading-relaxed text-ink/90 max-w-[1200px]">
-          India's first <span className="font-medium">structured inter-corporate pickleball league</span>. Companies buy franchise teams and compete across a seasonal league format — every year, across four cities.
-          <span className="ml-2 text-muted-foreground">Chennai · Hyderabad · Bangalore · Mumbai.</span>
-        </p>
-      </div>
-
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md p-5 flex">
-          <div className="flex-1 relative min-h-[340px]">
-            <ResponsiveContainer>
-              <PieChart>
-                <Pie data={cities} dataKey="v" innerRadius={90} outerRadius={150} paddingAngle={2} stroke="var(--paper)" strokeWidth={3}
-                  onMouseEnter={(_, i) => setActive(i)} onMouseLeave={() => setActive(null)}>
-                  {cities.map((c, i) => (
-                    <Cell key={c.name} fill={c.tone} opacity={active === null || active === i ? 1 : 0.35}/>
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-center">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{active === null ? "Combined / yr" : cities[active].name}</div>
-                <div className="text-[36px] font-medium tabular mt-1">
-                  {active === null ? `₹${(total/100).toFixed(2)} Cr` : `₹${cities[active].v}L`}
-                </div>
-              </div>
-            </div>
+        <div className="col-span-6 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[300px]">
+            <img src={images.cppl} alt="CPPL corporate league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
-          <div className="w-[220px] flex flex-col justify-center gap-3 pl-3">
-            <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-1">Per-city revenue</div>
-            {cities.map((c, i) => (
-              <button key={c.name} onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                className={`flex items-center gap-3 text-left magnetic border-t thin-rule pt-2 ${active === i ? "" : "opacity-70"}`}>
-                <span className="h-3 w-3 rounded-sm" style={{ background: c.tone }}/>
-                <span className="text-[15px] flex-1">{c.name}</span>
-                <span className="text-[14px] tabular text-muted-foreground">₹{c.v}L</span>
-              </button>
-            ))}
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Per-city revenue · Year 1</div>
+            <div className="grid grid-cols-4 gap-3">
+              {cities.map((c) => (
+                <div key={c.name} className="border thin-rule rounded p-3">
+                  <div className="text-[12px] text-muted-foreground">{c.name}</div>
+                  <div className="text-[24px] tabular font-medium tracking-tight mt-0.5">₹{c.v}L</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="col-span-6 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">What each city includes</div>
-            <ul className="space-y-2.5">
-              {[
-                { Icon: Users, t: "8–10 corporate franchise teams", s: "Companies buy in; players are their employees." },
-                { Icon: Briefcase, t: "Full sponsorship stack", s: "Title · Associates · F&B · Activations · Venue branding." },
-                { Icon: ShieldCheck, t: "Professionally managed ops", s: "Production, refereeing, scheduling, broadcast — all run for you." },
-                { Icon: Handshake, t: "Premium corporate networking", s: "League weekends double as relationship infrastructure." },
-              ].map(({ Icon, t, s }) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
-                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="min-w-0">
-                    <div className="text-[14px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Why it works</div>
-            <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
-              {[
-                { Icon: Repeat, t: "Annual recurring revenue", s: "Not a one-time event — a yearly IP." },
-                { Icon: Briefcase, t: "Premium corporate audience", s: "Sponsor-friendly demographic." },
-                { Icon: Sparkles, t: "Asset-light", s: "No owned infrastructure required." },
-                { Icon: Flag, t: "No competition today", s: "First-mover in the corporate league space." },
-                { Icon: TrendingUp, t: "Add cities yearly", s: "Same model — scales without re-architecture." },
-              ].map(({ Icon, t, s }) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
-                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="min-w-0">
-                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
-                    <div className="text-[11px] text-muted-foreground leading-snug mt-0.5">{s}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="col-span-6 flex flex-col gap-3 min-h-0">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">What each city includes</div>
+          {includes.map(({ Icon, t, s }, i) => {
+            const isOpen = open === i;
+            return (
+              <button
+                key={t}
+                onClick={() => setOpen(isOpen ? null : i)}
+                className={`text-left border thin-rule rounded-md p-4 transition-colors ${isOpen ? "bg-muted/40" : "hover:bg-muted/20"}`}
+              >
+                <div className="flex items-center gap-3">
+                  <Icon className="h-5 w-5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="flex-1 text-[17px] font-medium text-ink leading-tight">{t}</div>
+                  <span className={`text-[18px] text-muted-foreground transition-transform ${isOpen ? "rotate-45" : ""}`}>+</span>
+                </div>
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-3 mt-3 border-t thin-rule text-[14px] text-muted-foreground leading-relaxed">{s}</div>
+                </motion.div>
+              </button>
+            );
+          })}
         </div>
       </Grid12>
     </>
