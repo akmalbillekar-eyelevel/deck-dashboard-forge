@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell,
 } from "recharts";
 import { Tween } from "./Tween";
-import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck } from "lucide-react";
+import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck, Star, Users, Sparkles, CalendarDays, MapPin, Repeat, Briefcase, Flag, GraduationCap, Award, Heart, Handshake, Layers, TrendingUp, Dumbbell } from "lucide-react";
 import { images, logos } from "@/lib/deck-data";
 
 /* ---------- Shared atoms ---------- */
