@@ -1275,69 +1275,86 @@ const capitalDeploy = [
 ];
 
 export function S14() {
-  const [active, setActive] = useState<number | null>(null);
-  const total = capitalDeploy.reduce((a, c) => a + c.v, 0);
+  const inside = [
+    { i: "🏊", k: "Swimming Pool" },
+    { i: "🏏", k: "Box Cricket" },
+    { i: "⚽", k: "Football" },
+    { i: "🏀", k: "Basketball" },
+    { i: "🏓", k: "Pickleball" },
+    { i: "🛹", k: "Skating & Multi-use" },
+    { i: "🏎️", k: "RC Racing" },
+    { i: "🎮", k: "Arcade Gaming" },
+    { i: "🍽️", k: "Restaurant & Café" },
+    { i: "🏢", k: "Corporate Events Hall" },
+    { i: "🛒", k: "Pro Shop" },
+    { i: "🏥", k: "Physio & Recovery" },
+    { i: "🏟️", k: "Spectator Gallery" },
+    { i: "🏠", k: "S4 Sports HQ" },
+  ];
+  const streams = [
+    "Courts", "Pool", "Memberships", "Coaching Share", "Corporate Events",
+    "F&B", "Sponsorship & Naming", "Camps", "Leagues", "School Partnerships",
+    "Franchise Home Court", "Pro Shop", "Ancillaries",
+  ];
   return (
     <>
       <SlideHeader tag="14 · A for Arena · Opportunity"
-        title="Build the home of S4 Sports."
-        sub="S4 Sports × Da One Sports · ~53,000 sq ft · Chennai ECR. S4 owns venue, infrastructure, memberships, F&B, events, sponsorship. Da One owns coaching."
+        title="Build the Home of S4 Sports."
+        sub="S4 Sports Multi-Sport Club × Da One Sports · ~53,000 sq ft · Chennai ECR — S4's permanent operating headquarters."
         logoKey="arena" logoLabel="A for Arena"
       />
-      <AboutGrid
-        label="About the venue"
-        items={[
-          { Icon: MapPin, t: "Chennai ECR", s: "~53,000 sq ft on East Coast Road — premium catchment." },
-          { Icon: Handshake, t: "S4 × Da One Sports", s: "JV — S4 owns venue, memberships, F&B, events; Da One owns coaching." },
-          { Icon: Layers, t: "13 revenue streams", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
-          { Icon: Dumbbell, t: "Multi-sport", s: "Pool · football · basketball · pickleball · cricket · frisbee." },
-          { Icon: Award, t: "Premium gap", s: "Only multi-sport venue between Thiruvanmiyur & Mahabalipuram." },
-          { Icon: TrendingUp, t: "EBITDA Month 6–8", s: "Cash payback 30–36 months · asset value ₹40–55 Cr by Year 3." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-6 border thin-rule rounded-md overflow-hidden flex flex-col">
-          <div className="aspect-[16/10] overflow-hidden bg-muted">
-            <img src={images.arena} alt="A for Arena" className="w-full h-full object-cover grayscale-[0.15] saturate-50" loading="lazy"/>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">The concept</div>
+            <p className="text-[14px] text-muted-foreground leading-relaxed">
+              S4 Sports and Da One Sports jointly develop a 53,000 sq ft premium multi-sport venue on Chennai's ECR. S4 owns the venue, infrastructure and all commercial revenue. Da One owns the coaching — coaches, curriculum, batches. Together: Chennai's premier multi-sport destination.
+            </p>
           </div>
-          <div className="p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Inside</div>
-            <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-muted-foreground">
-              {[
-                "25m semi-Olympic pool", "Football 5-a-side",
-                "Basketball full court", "3–4 pickleball courts",
-                "Box cricket cage", "Frisbee / skating zone",
-                "Café + restaurant", "Corporate hall (80–120)",
-                "300–500 seat gallery", "Pro shop · S4 HQ",
-              ].map((s) => <div key={s} className="border-t thin-rule pt-2">{s}</div>)}
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The partnership</div>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[13px]">
+              <div className="text-ink font-medium">S4 Sports</div>
+              <div className="text-ink font-medium">Da One Sports</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Lease & infrastructure</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Coaching curriculum & coaches</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Court rentals</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">100% of coaching batch fees</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Memberships</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">35% of S4-collected coaching revenue</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">F&B · events · sponsorship · pro shop</div>
+              <div className="text-muted-foreground border-t thin-rule pt-2">Office space within S4 HQ</div>
+            </div>
+          </div>
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">13 revenue streams</div>
+            <div className="flex flex-wrap gap-1.5">
+              {streams.map((s) => (
+                <span key={s} className="text-[12px] tabular px-2 py-1 border thin-rule rounded">{s}</span>
+              ))}
             </div>
           </div>
         </div>
-        <div className="col-span-6 border thin-rule rounded-md p-6 flex flex-col">
-          <div className="flex items-center justify-between">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Capital deployment — waterfall</div>
-            <div className="text-[12px] tabular text-muted-foreground">{active !== null ? `${capitalDeploy[active].k} · ₹${capitalDeploy[active].v}L` : `Total ₹${(total/100).toFixed(2)} Cr`}</div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">What's inside</div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[12px]">
+              {inside.map((it) => (
+                <div key={it.k} className="flex items-center gap-2">
+                  <span className="text-[14px]">{it.i}</span>
+                  <span className="text-muted-foreground">{it.k}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex-1 mt-4 min-h-0">
-            <ResponsiveContainer>
-              <BarChart data={capitalDeploy} margin={{ top: 10, right: 10, left: 0, bottom: 30 }}
-                onMouseMove={(s: { activeTooltipIndex?: number }) => setActive(s?.activeTooltipIndex ?? null)}
-                onMouseLeave={() => setActive(null)}>
-                <XAxis dataKey="k" tick={{ fontSize: 10, fill: "currentColor", opacity: 0.5 }} interval={0} angle={-25} textAnchor="end" axisLine={false} tickLine={false}/>
-                <YAxis hide />
-                <Tooltip cursor={{ fill: "transparent" }} content={() => null}/>
-                <Bar dataKey="v" radius={[2,2,0,0]}>
-                  {capitalDeploy.map((_, i) => (
-                    <Cell key={i} fill={active === null || active === i ? "var(--ink)" : "color-mix(in oklch, var(--ink) 30%, var(--paper))"}/>
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="mt-3 text-[14px] text-muted-foreground">
-            13 revenue streams · ECR is the only premium multi-sport gap between Thiruvanmiyur and Mahabalipuram.
-          </div>
+          <TakeawayList
+            title="Why Chennai ECR"
+            items={[
+              { Icon: MapPin, t: "No competition.", s: "No multi-sport + pool + events venue between Thiruvanmiyur & Mahabalipuram." },
+              { Icon: Building2, t: "Premium corridor.", s: "Residential + IT belt — ideal membership & corporate demographic." },
+              { Icon: Award, t: "Home advantage.", s: "S4's home city — strongest brand recognition & network." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
