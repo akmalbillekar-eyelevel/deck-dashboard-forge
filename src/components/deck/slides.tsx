@@ -1329,59 +1329,60 @@ export function S14() {
 /* ---------- 15 Arena ROI ---------- */
 
 export function S15() {
-  const years = ["Year 1", "Year 2", "Year 3"];
-  const ebitda = [181, 701, 1058];
-  const [pinned, setPinned] = useState<number | null>(null);
-  const ticket = 15;
-  const ebitdaScaled = ebitda.map((v) => v * (ticket / 15));
-  const moic = 1 + (ticket / 15) * 2.7;
-  const irr = 32 + (ticket - 15) * 0.4;
-  const coc = 0.7 + (ticket - 15) * 0.02;
   return (
     <>
       <SlideHeader tag="15 · A for Arena · Investment & Returns"
         title="₹15 Cr in. ₹22 Cr revenue by Year 3."
-        sub="EBITDA positive Month 6–8. Cash payback 30–36 months. Asset value Year 3: ₹40–55 Cr at 4–5× EBITDA. S4 actual equity out-of-pocket: ₹3.5–4.5 Cr."
+        sub="EBITDA positive Month 6–8 · Cash payback 30–36 months · Asset value ₹40–55 Cr by Year 3."
       />
+      <KpiStrip items={[
+        { label: "Capital in", value: "₹15 Cr", sub: "fully built", strong: true },
+        { label: "S4 equity out", value: "₹3.5–4.5 Cr", sub: "after stack" },
+        { label: "Yr 3 EBITDA", value: "₹10.58 Cr", sub: "47.9% margin" },
+        { label: "Yr 3 asset value", value: "₹40–55 Cr", sub: "4–5× EBITDA" },
+      ]}/>
       <Grid12>
-        <div className="col-span-8 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">EBITDA — heat strip</div>
-              <div className="text-[12px] text-muted-foreground tabular">₹L</div>
-            </div>
-            <div className="px-5 pt-4"><Sparkline values={ebitdaScaled} focus={pinned} /></div>
-            <HeatStrip years={years} values={ebitdaScaled} pinned={pinned} onPin={setPinned} />
-          </div>
-          <div className="border thin-rule rounded-md">
-            <div className="grid grid-cols-4 text-[12px] uppercase tracking-[0.16em] text-muted-foreground py-3 border-b thin-rule px-5">
-              <span></span><span className="text-right">Year 1</span><span className="text-right">Year 2</span><span className="text-right">Year 3</span>
-            </div>
-            {[
-              ["Revenue", ["₹9.3 Cr","₹16.7 Cr","₹22.1 Cr"]],
-              ["Opex", ["₹7.49 Cr","₹9.69 Cr","₹11.52 Cr"]],
-              ["EBITDA", ["₹1.81 Cr","₹7.01 Cr","₹10.58 Cr"]],
-              ["Margin", ["19.5%","42.0%","47.9%"]],
-            ].map(([k, vs]) => (
-              <div key={k as string} className="grid grid-cols-4 px-5 py-3 border-b thin-rule last:border-b-0 text-[18px]">
-                <span className="text-muted-foreground">{k as string}</span>
-                {(vs as string[]).map((v, i) => <span key={i} className="text-right tabular">{v}</span>)}
-              </div>
-            ))}
-          </div>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <ReturnsTable
+            title="3-year P&L (₹ Cr)"
+            cols={["Line", "Year 1", "Year 3"]}
+            rows={[
+              { k: "Revenue", a: "₹9.3", b: "₹22.1" },
+              { k: "Opex", a: "(₹7.49)", b: "(₹11.52)" },
+              { k: "EBITDA", a: "₹1.81", b: "₹10.58", total: true },
+              { k: "Margin", a: "19.5%", b: "47.9%" },
+              { k: "Year 2 EBITDA: ₹7.01 Cr · Margin 42.0%", a: "", b: "", note: true },
+            ]}
+          />
+          <InvestTable
+            title="Funding stack (₹15 Cr)"
+            rows={[
+              { k: "S4 equity", v: "₹3.5–4.5 Cr" },
+              { k: "Da One sweat", v: "₹0.5–1 Cr" },
+              { k: "Founding memberships", v: "₹2.5–3.5 Cr" },
+              { k: "Title sponsor", v: "₹1.2–1.8 Cr" },
+              { k: "Term loan", v: "₹5–7 Cr" },
+            ]}
+          />
         </div>
-        <div className="col-span-4 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year</div>
-            <div className="mt-5 space-y-5">
-              <div className="flex items-end justify-between"><span className="text-[14px] text-muted-foreground">MOIC</span><Tween value={moic} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">IRR</span><Tween value={irr} format={(v) => `${v.toFixed(1)}%`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">Cash-on-cash</span><Tween value={coc} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-            </div>
-            <div className="mt-5 text-[12px] text-muted-foreground border-t thin-rule pt-4">
-              Funding stack: S4 equity ₹3.5–4.5 Cr · Da One sweat ₹0.5–1 Cr · Founding memberships ₹2.5–3.5 Cr · Title sponsor ₹1.2–1.8 Cr · Term loan ₹5–7 Cr.
-            </div>
-          </div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <HorizonPicker
+            label="EBITDA — pick a year"
+            points={[
+              { label: "Year 1", value: 181, sub: "EBITDA+ Month 6–8 · ramp." },
+              { label: "Year 2", value: 701, sub: "Memberships mature · F&B scales." },
+              { label: "Year 3", value: 1058, sub: "47.9% margin · steady-state." },
+            ]}
+            format={(v) => `₹${(v/100).toFixed(2)} Cr`}
+          />
+          <TakeawayList
+            title="Why this is the anchor asset"
+            items={[
+              { Icon: Layers, t: "13 revenue streams.", s: "Memberships · F&B · events · sponsorship · pro shop · academy · more." },
+              { Icon: TrendingUp, t: "30–36 month payback.", s: "Cash recycles into the next venue." },
+              { Icon: Award, t: "Real asset on the books.", s: "Not an event budget — a sellable, financeable property." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
