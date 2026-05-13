@@ -857,8 +857,7 @@ export function S09() {
   return (
     <>
       <SlideHeader tag="09 · CPPL · Investment & Returns"
-        title="What You Put In. What You Get Back."
-        sub="Opportunity 03 · Investment Detail — per city economics, scaled across 4 cities."
+        title="₹38.5L in. ₹70–80L out. Per city. Every year."
       />
       <KpiStrip items={[
         { label: "Investment / city", value: "₹8–12L", sub: "founder contribution" },
