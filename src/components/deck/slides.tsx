@@ -738,89 +738,54 @@ export function S07() {
   return (
     <>
       <SlideHeader tag="07 · CPL · Investment & Returns"
-        title="What you put in. What you get back."
-        sub="₹30L founding franchise fee · one payment · Season 1 only. Six slots nationwide."
+        title="₹30L. One payment. This founding price never exists again."
+        sub="Founding franchise fee — Season 1 only. Six slots nationwide."
       />
+      <KpiStrip items={[
+        { label: "Founding fee", value: "₹30L", sub: "one-time · S1 only", strong: true },
+        { label: "Year-1 cash recovery", value: "₹15–30L", sub: "across 4 sources" },
+        { label: "Slots", value: "6", sub: "nationwide" },
+        { label: "Appreciation", value: "2–3×", sub: "by Season 3" },
+      ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Your investment</div>
-            {[
-              ["Founding franchise fee", "₹30 Lakhs"],
-              ["What it covers", "Complete franchise — branding, identity, operations, broadcast."],
-              ["Price lock", "This price will never be available after Season 1."],
-            ].map(([k, v], i) => (
-              <div key={k} className={`grid grid-cols-12 gap-4 border-t thin-rule py-3 text-[15px] ${i === 0 ? "items-baseline" : ""}`}>
-                <div className={`col-span-4 ${i === 2 ? "text-ink font-medium" : "text-muted-foreground"}`}>{k}</div>
-                <div className={`col-span-8 tabular ${i === 0 ? "text-ink font-medium text-[18px]" : ""}`}>{v}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-3 border-b thin-rule text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Your returns</div>
-            <div className="grid grid-cols-12 px-5 py-2.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
-              <div className="col-span-6">Revenue source</div>
-              <div className="col-span-3 text-right">Minimum</div>
-              <div className="col-span-3 text-right">Maximum</div>
-            </div>
-            {[
-              ["General team sponsorship", "₹15L", "₹30L"],
-              ["Franchise appreciation", "2× by S3", "3× by S3"],
-              ["Personal brand & media value", "₹10L", "₹25L"],
-              ["Content monetisation", "Ongoing — reels, YouTube, brand collabs", "—"],
-              ["Total cash recovery — Year 1", "₹15L", "₹30L"],
-            ].map(([k, a, b], i, arr) => {
-              const isTotal = i === arr.length - 1;
-              const isContent = i === arr.length - 2;
-              return (
-                <div key={k} className={`grid grid-cols-12 px-5 py-3 text-[15px] border-t thin-rule ${isTotal ? "bg-muted/20" : ""}`}>
-                  <div className={`col-span-6 ${isTotal ? "text-ink font-medium" : "text-muted-foreground"}`}>{k}</div>
-                  {isContent ? (
-                    <div className="col-span-6 text-[14px] text-muted-foreground italic">{a}</div>
-                  ) : (
-                    <>
-                      <div className={`col-span-3 text-right tabular ${isTotal ? "text-ink font-medium" : ""}`}>{a}</div>
-                      <div className={`col-span-3 text-right tabular ${isTotal ? "text-ink font-medium" : ""}`}>{b}</div>
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <InvestTable
+            title="Your investment"
+            rows={[
+              { k: "Founding franchise fee", v: "₹30 Lakhs", strong: true },
+              { k: "What it covers", v: "Branding · identity · ops · broadcast", muted: true },
+              { k: "Price lock", v: "Never available after Season 1", muted: true },
+            ]}
+          />
+          <ReturnsTable
+            title="Your returns"
+            cols={["Revenue source", "Min", "Max"]}
+            rows={[
+              { k: "General team sponsorship", a: "₹15L", b: "₹30L" },
+              { k: "Personal brand & media value", a: "₹10L", b: "₹25L" },
+              { k: "Franchise appreciation", a: "2× by S3", b: "3× by S3" },
+              { k: "Content monetisation", a: "Reels · YouTube · brand collabs — ongoing", b: "", note: true },
+              { k: "Total cash recovery — Year 1", a: "₹15L", b: "₹30L", total: true },
+            ]}
+          />
         </div>
-
-        <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Founding price · locked</div>
-            <div className="mt-4 flex items-end justify-between">
-              <span className="text-[14px] text-muted-foreground">One payment</span>
-              <span className="text-[56px] font-medium tabular tracking-tight leading-none">₹30L</span>
-            </div>
-            <div className="mt-5 grid grid-cols-3 gap-4 border-t thin-rule pt-5">
-              <Stat label="Slots" value="6" sub="nationwide" />
-              <Stat label="Window" value="10–11d" sub="per season" />
-              <Stat label="Appreciation" value="2–3×" sub="by Season 3" />
-            </div>
-          </div>
-
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why the founding round matters</div>
-            <ul className="space-y-3 text-[14px]">
-              <li className="flex gap-3 border-t thin-rule pt-3">
-                <Sparkles className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                <span><span className="text-ink font-medium">Six slots.</span> <span className="text-muted-foreground">Once gone, the founding price is gone.</span></span>
-              </li>
-              <li className="flex gap-3 border-t thin-rule pt-3">
-                <TrendingUp className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                <span><span className="text-ink font-medium">Benchmarks.</span> <span className="text-muted-foreground">CCL → ₹50 Cr/season after 14 seasons. MLP → $200K to $13M in four years (65×).</span></span>
-              </li>
-              <li className="flex gap-3 border-t thin-rule pt-3">
-                <Star className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                <span><span className="text-ink font-medium">Ground floor.</span> <span className="text-muted-foreground">Season 2+ pricing tracks established franchise value, not the founding round.</span></span>
-              </li>
-            </ul>
-          </div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <HorizonPicker
+            label="Cumulative cash trajectory"
+            points={[
+              { label: "Year 1", value: 22, sub: "Sponsorship + brand pickup." },
+              { label: "Year 2", value: 38, sub: "Compounding — content engine matures." },
+              { label: "Year 3", value: 65, sub: "Franchise appreciation realised." },
+            ]}
+          />
+          <TakeawayList
+            title="Why the founding round matters"
+            items={[
+              { Icon: Sparkles, t: "Six slots.", s: "Once gone, the founding price is gone." },
+              { Icon: TrendingUp, t: "Benchmarks.", s: "MLP $200K → $13M in 4 yrs (65×). CCL ₹50 Cr/season after 14." },
+              { Icon: Star, t: "Ground floor.", s: "S2+ pricing tracks franchise value, not founding." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
