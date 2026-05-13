@@ -399,7 +399,7 @@ export function S05() {
   const years = ["Season 2", "Season 3", "Season 4"];
   const baseRecovery = [9, 14, 21]; // ₹L median
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(31);
+  const ticket = 31;
   const moic = 1.0 + (ticket / 31) * 1.6;
   const irr = 22 + (ticket - 31) * 0.4;
   const coc = 0.55 + (ticket - 31) * 0.012;
@@ -452,7 +452,6 @@ export function S05() {
           </div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={31} max={62} step={1} onChange={setTicket} format={(v) => `₹${v}L`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year horizon</div>
             <div className="mt-5 space-y-5">
@@ -520,7 +519,7 @@ export function S07() {
   const years = ["Year 1", "Year 2", "Year 3"];
   const base = [22, 38, 65];
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(30);
+  const ticket = 30;
   const recovery = base.map((v) => v * (ticket / 30));
   const moic = 1.0 + (ticket / 30) * 2.2;
   const irr = 38 + (ticket - 30) * 0.5;
@@ -551,7 +550,6 @@ export function S07() {
           </div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={30} max={120} step={5} onChange={setTicket} format={(v) => `₹${v}L`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year horizon</div>
             <div className="mt-5 space-y-5">
@@ -639,7 +637,7 @@ export function S09() {
   const years = ["Yr 1", "Yr 2", "Yr 3"];
   const base = [126, 165, 210];
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(154);
+  const ticket = 154;
   const recovery = base.map((v) => v * (ticket / 154));
   const moic = 1 + (ticket / 154) * 1.4;
   const irr = 65 + (ticket - 154) * 0.05;
@@ -677,7 +675,6 @@ export function S09() {
           <div className="text-[15px] text-muted-foreground">This is not an event. It's a sports IP business with recurring annual revenue across four cities.</div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={154} max={400} step={10} onChange={setTicket} format={(v) => `₹${(v/100).toFixed(2)} Cr`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — annualised</div>
             <div className="mt-5 space-y-5">
@@ -745,7 +742,7 @@ export function S11() {
   const years = ["City Yr1", "Regional", "National"];
   const base = [12, 22, 40];
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(16);
+  const ticket = 16;
   const recovery = base.map((v) => v * (ticket / 16));
   const moic = 1 + (ticket / 16) * 2.4;
   const irr = 175 + (ticket - 16) * 1.2;
@@ -776,7 +773,6 @@ export function S11() {
           </div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={16} max={64} step={4} onChange={setTicket} format={(v) => `₹${v}L`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — Year 1</div>
             <div className="mt-5 space-y-5">
@@ -878,7 +874,7 @@ export function S13() {
   const events = ["Event 1", "Event 4", "Event 8"];
   const base = [-2, 18, 40];
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(72);
+  const ticket = 72;
   const recovery = base.map((v) => v * (ticket / 72));
   const moic = 1 + (ticket / 72) * 0.55;
   const irr = 55 + (ticket - 72) * 0.25;
@@ -910,7 +906,6 @@ export function S13() {
           <div className="text-[15px] text-muted-foreground">Year 2: title sponsorship alone hits ₹8–10L/event → annual net jumps to ₹70–80L.</div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={72} max={200} step={4} onChange={setTicket} format={(v) => `₹${v}L`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — Year 1</div>
             <div className="mt-5 space-y-5">
@@ -1003,7 +998,7 @@ export function S15() {
   const years = ["Year 1", "Year 2", "Year 3"];
   const ebitda = [181, 701, 1058];
   const [pinned, setPinned] = useState<number | null>(null);
-  const [ticket, setTicket] = useState(15);
+  const ticket = 15;
   const ebitdaScaled = ebitda.map((v) => v * (ticket / 15));
   const moic = 1 + (ticket / 15) * 2.7;
   const irr = 32 + (ticket - 15) * 0.4;
@@ -1042,7 +1037,6 @@ export function S15() {
           </div>
         </div>
         <div className="col-span-4 flex flex-col gap-5">
-          <TicketStepper value={ticket} min={14} max={30} step={1} onChange={setTicket} format={(v) => `₹${v} Cr`} />
           <div className="border thin-rule rounded-md p-6">
             <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year</div>
             <div className="mt-5 space-y-5">
