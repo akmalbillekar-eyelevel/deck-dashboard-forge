@@ -54,13 +54,13 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 function LogoSlot({ logoKey, label }: { logoKey: string; label: string }) {
   const src = logos[logoKey];
   return (
-    <div className="shrink-0 bg-paper rounded-md border thin-rule p-3 flex items-center justify-center" style={{ minWidth: 140, minHeight: 96 }}>
+    <div className="shrink-0 bg-paper rounded-md border thin-rule p-4 flex items-center justify-center" style={{ minWidth: 280, minHeight: 192 }}>
       {src ? (
-        <img src={src} alt={`${label} logo`} className="h-20 w-auto block" />
+        <img src={src} alt={`${label} logo`} className="h-40 w-auto block" />
       ) : (
-        <div className="h-20 w-32 flex flex-col items-center justify-center gap-1 text-[10px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
+        <div className="h-40 w-64 flex flex-col items-center justify-center gap-1 text-[12px] tracking-[0.18em] uppercase text-muted-foreground border border-dashed border-foreground/20 rounded-sm">
           <span>Logo</span>
-          <span className="text-[9px] tracking-[0.14em] opacity-70">{label}</span>
+          <span className="text-[10px] tracking-[0.14em] opacity-70">{label}</span>
         </div>
       )}
     </div>
