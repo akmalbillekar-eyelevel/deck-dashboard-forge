@@ -21,7 +21,7 @@ function SectorTag({ children }: { children: React.ReactNode }) {
 
 function SlideHeader({ tag, title, sub, logoKey, logoLabel }: { tag: string; title: string; sub?: string; logoKey?: string; logoLabel?: string }) {
   return (
-    <header className="mb-12 flex items-start justify-between gap-8">
+    <header className="mb-8 flex items-start justify-between gap-8">
       <div className="flex-1 min-w-0">
         <SectorTag>{tag}</SectorTag>
         <h1 className="mt-5 text-[64px] leading-[1.05] font-medium tracking-[-0.02em] text-ink">
@@ -45,7 +45,7 @@ function Grid12({ children }: { children: React.ReactNode }) {
 type AboutItem = { Icon: typeof Landmark; t: string; s: string };
 function AboutGrid({ label, items, footer, cols = 3 }: { label: string; items: AboutItem[]; footer?: string; cols?: 2 | 3 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-5">
       <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">{label}</div>
       <div className={`grid ${cols === 3 ? "grid-cols-3" : "grid-cols-2"} gap-x-6 gap-y-3`}>
         {items.map(({ Icon, t, s }) => (
@@ -467,7 +467,7 @@ export function S05() {
   const [pinned, setPinned] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="Opportunity 01 · Investment Detail"
+      <SlideHeader tag="05 · TNPPL · Investment & Returns"
         title="What you put in. What you get back."
         sub="₹28L franchise fee + ₹3L auction = ₹31L total entry. Three-year tenure across Seasons 2, 3 & 4."
       />
@@ -661,7 +661,7 @@ export function S07() {
   const coc = 0.85 + (ticket - 30) * 0.018;
   return (
     <>
-      <SlideHeader tag="07 · CPL · Investment & ROI"
+      <SlideHeader tag="07 · CPL · Investment & Returns"
         title="₹30L. One payment. This founding price never exists again."
         sub="Benchmarks: CCL → ₹50 Cr/season after 14 seasons. MLP → $200K to $13M in four years (65×). CPL Season 1 is the ground floor of that trajectory."
       />
@@ -791,7 +791,7 @@ export function S09() {
   const coc = 0.82 + (ticket - 154) * 0.002;
   return (
     <>
-      <SlideHeader tag="09 · CPPL · Investment & ROI"
+      <SlideHeader tag="09 · CPPL · Investment & Returns"
         title="A high-margin sports IP built for recurring revenue."
         sub="Per city: ₹70–80L revenue · ₹38.5L expenses. Four cities combined: ₹2.8–3.2 Cr revenue, ₹1.54 Cr expenses, ₹1.26–1.66 Cr net. ROI 80–108%+."
       />
@@ -908,7 +908,7 @@ export function S11() {
   const coc = 1.5 + (ticket - 16) * 0.04;
   return (
     <>
-      <SlideHeader tag="11 · Inter-School · Investment & ROI"
+      <SlideHeader tag="11 · Inter-School League · Investment & Returns"
         title="Lowest entry. Highest strategic return."
         sub="₹4L per city × 4 cities = ₹16L. Year-1 revenue ₹40–60L, net ₹24–44L, ROI 150–275%. The real return is the pipeline you own for the next decade."
       />
@@ -1052,7 +1052,7 @@ export function S13() {
   const coc = 0.55 + (ticket - 72) * 0.005;
   return (
     <>
-      <SlideHeader tag="13 · Paddle City Open · Investment & ROI"
+      <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
         title="Low risk. Real returns."
         sub="₹9L per event · 8 events Year 1 = ₹72L. Per-event revenue ₹14L → ₹1.12 Cr annually. Net ~₹40L Year 1. Break-even after event 5–6."
       />
@@ -1188,7 +1188,7 @@ export function S15() {
   const coc = 0.7 + (ticket - 15) * 0.02;
   return (
     <>
-      <SlideHeader tag="15 · A for Arena · Investment & ROI"
+      <SlideHeader tag="15 · A for Arena · Investment & Returns"
         title="₹15 Cr in. ₹22 Cr revenue by Year 3."
         sub="EBITDA positive Month 6–8. Cash payback 30–36 months. Asset value Year 3: ₹40–55 Cr at 4–5× EBITDA. S4 actual equity out-of-pocket: ₹3.5–4.5 Cr."
       />
