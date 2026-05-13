@@ -907,56 +907,55 @@ export function S09() {
   return (
     <>
       <SlideHeader tag="09 · CPPL · Investment & Returns"
-        title="A high-margin sports IP built for recurring revenue."
-        sub="Per city ₹70–80L revenue · ₹38.5L expenses. Four cities combined: ₹1.26–1.66 Cr net every year."
+        title="What You Put In. What You Get Back."
+        sub="Opportunity 03 · Investment Detail — per city economics, scaled across 4 cities."
       />
       <KpiStrip items={[
-        { label: "Per-city opex", value: "₹38.5L", sub: "fixed cost base" },
-        { label: "Per-city revenue", value: "₹70–80L", sub: "team sales + sponsorship" },
-        { label: "Per-city net", value: "₹31.5–41.5L", sub: "annual" },
-        { label: "ROI", value: "80–108%+", sub: "annualised", strong: true },
+        { label: "Investment / city", value: "₹8–12L", sub: "founder contribution" },
+        { label: "Revenue / city", value: "₹70–80L", sub: "teams + sponsorship" },
+        { label: "Net / city", value: "₹31.5–41.5L", sub: "after ₹38.5L opex" },
+        { label: "ROI", value: "80–108%", sub: "annual · per city", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <InvestTable
-            title="Per-city expenses (₹38.5L)"
+          <ReturnsTable
+            title="Per city — investment vs return"
+            cols={["Line", "Min", "Max"]}
             rows={[
-              { k: "Production", v: "₹15L" },
-              { k: "Prize pool", v: "₹15L" },
-              { k: "Branding & marketing", v: "₹5L" },
-              { k: "Management", v: "₹2L" },
-              { k: "Venue", v: "₹1.5L" },
-              { k: "Total per city", v: "₹38.5L", strong: true },
+              { k: "Investment", a: "₹8L", b: "₹12L" },
+              { k: "Revenue", a: "₹70L", b: "₹80L" },
+              { k: "Expenses", a: "(₹38.5L)", b: "(₹38.5L)" },
+              { k: "Net profit", a: "₹31.5L", b: "₹41.5L", total: true },
+              { k: "ROI", a: "80%", b: "108%", total: true },
             ]}
           />
           <ReturnsTable
-            title="Per-city economics"
-            cols={["Line item", "Min", "Max"]}
+            title="Scale it up"
+            cols={["Line", "1 city", "4 cities"]}
             rows={[
-              { k: "Team sales (8–10 corporates)", a: "₹40L", b: "₹50L" },
-              { k: "Sponsorship stack", a: "₹30L", b: "₹30L" },
-              { k: "Revenue", a: "₹70L", b: "₹80L", total: true },
-              { k: "Less: opex", a: "(₹38.5L)", b: "(₹38.5L)" },
-              { k: "Net per city", a: "₹31.5L", b: "₹41.5L", total: true },
+              { k: "Revenue", a: "₹70–80L", b: "₹2.8–3.2 Cr" },
+              { k: "Expenses", a: "(₹38.5L)", b: "(₹1.54 Cr)" },
+              { k: "Net profit", a: "₹31.5–41.5L", b: "₹1.26–1.66 Cr", total: true },
+              { k: "ROI", a: "80–108%", b: "80–108%", total: true },
             ]}
           />
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
-            label="4-city net — pick a year"
+            label="Net profit — pick scale"
             points={[
-              { label: "Year 1", value: 126, sub: "Launch year — 4 cities live." },
-              { label: "Year 2", value: 165, sub: "Sponsorship deepens · team retention." },
-              { label: "Year 3", value: 210, sub: "Mature pricing across all cities." },
+              { label: "1 city", value: 36, sub: "₹31.5–41.5L net · upfront team fees cover opex." },
+              { label: "4 cities (Y1)", value: 146, sub: "Chennai · Hyderabad · Bangalore · Mumbai." },
+              { label: "6 cities (Y2)", value: 220, sub: "Add 2 cities — same playbook, bigger numbers." },
             ]}
             format={(v) => `₹${(v/100).toFixed(2)} Cr`}
           />
           <TakeawayList
-            title="Why it's an IP, not an event"
+            title="The model scales simply"
             items={[
-              { Icon: Repeat, t: "Annual recurring.", s: "Same model · same cities · every year." },
-              { Icon: Briefcase, t: "Premium audience.", s: "Corporate teams = high-CPM sponsorship." },
-              { Icon: TrendingUp, t: "Add cities yearly.", s: "Scales without re-architecture." },
+              { Icon: Repeat, t: "Upfront fees cover opex.", s: "Team franchise fees collected before season starts." },
+              { Icon: Briefcase, t: "Year 1 — 4 cities.", s: "Same structure · same sponsorship playbook." },
+              { Icon: TrendingUp, t: "Year 2 — add 2 more.", s: "No re-architecture. Just bigger numbers." },
             ]}
           />
         </div>
