@@ -9,6 +9,7 @@ import cplLogo from "@/assets/cpl-logo.png";
 import cpplLogo from "@/assets/cppl-logo.png";
 import intercollegeLogo from "@/assets/intercollege-logo.png";
 import paddleLogo from "@/assets/paddle-logo.png";
+import arenaLogo from "@/assets/arena-logo.png";
 
 export const images = {
   tnppl: slideTnppl,
@@ -25,7 +26,7 @@ export const logos: Record<string, string | undefined> = {
   cppl: cpplLogo,
   school: intercollegeLogo,
   paddle: paddleLogo,
-  arena: undefined,
+  arena: arenaLogo,
 };
 
 export type SlideMeta = {
