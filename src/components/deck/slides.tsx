@@ -967,56 +967,61 @@ export function S09() {
 /* ---------- 10 Inter-School Opportunity ---------- */
 
 export function S10() {
-  const stages = [
-    { k: "City leagues", v: 4 },
-    { k: "Regional finals", v: 4 },
-    { k: "National championship", v: 1 },
+  const cities = [
+    { k: "Chennai", v: "20+ schools & colleges" },
+    { k: "Bangalore", v: "20+ schools & colleges" },
+    { k: "Hyderabad", v: "20+ schools & colleges" },
+    { k: "Mumbai", v: "20+ schools & colleges" },
   ];
   const [hover, setHover] = useState<number | null>(null);
   return (
     <>
-      <SlideHeader tag="10 · Inter-School League · Opportunity"
-        title="Build the grassroots. Own the next generation."
-        sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
+      <SlideHeader tag="10 · Inter-School & College League · Opportunity"
+        title="Build the Grassroots. Own the Next Generation."
+        sub="India's first structured school & college pickleball league — 4 cities · annual · championship finals Sept–Oct 2026."
         logoKey="school" logoLabel="Inter-School League"
       />
-      <AboutGrid
-        label="About the league"
-        items={[
-          { Icon: GraduationCap, t: "Schools & colleges", s: "Structured annual league across institutions in 4 cities." },
-          { Icon: Building2, t: "City leagues", s: "Four city events form the base of the player pipeline." },
-          { Icon: Trophy, t: "Regional finals", s: "Four regional rounds crown qualifiers from each city." },
-          { Icon: Award, t: "National championship", s: "One marquee final caps the season — the showcase event." },
-          { Icon: Sparkles, t: "Talent pipeline", s: "Feeds CPPL, Paddle City Open and the entire S4 ecosystem." },
-          { Icon: Heart, t: "CSR-friendly", s: "Unlocks education, FMCG, youth-wellness sponsors that won't touch pro sports." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-5">Pipeline architecture</div>
-            <div className="grid grid-cols-3 gap-3">
-              {stages.map((s, i) => (
-                <button key={s.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-                  className={`heat-cell text-left p-5 border thin-rule rounded-md ${hover === i ? "bg-muted" : ""}`}
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-2">What it is</div>
+            <p className="text-[15px] text-muted-foreground leading-relaxed">
+              A structured annual pickleball league for schools and colleges across four major cities. Teams represent their institutions, compete through a seasonal league format, and culminate in a national championship.
+            </p>
+            <div className="text-[13px] text-ink mt-2 tabular">Chennai · Bangalore · Hyderabad · Mumbai</div>
+          </div>
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">City targets — Year 1</div>
+            <div className="grid grid-cols-2 gap-2">
+              {cities.map((c, i) => (
+                <button key={c.k} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
+                  className="text-left p-3 border thin-rule rounded-md transition-colors"
                   style={{ backgroundColor: hover === i ? "color-mix(in oklch, var(--sage-tone) 25%, var(--paper))" : undefined }}>
-                  <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Stage 0{i+1}</div>
-                  <div className="text-[22px] font-medium tracking-tight mt-2">{s.k}</div>
-                  <div className="text-[14px] text-muted-foreground mt-1 tabular">{s.v} {s.v === 1 ? "event" : "events"}</div>
+                  <div className="text-[15px] font-medium tracking-tight">{c.k}</div>
+                  <div className="text-[12px] text-muted-foreground tabular mt-0.5">{c.v}</div>
                 </button>
               ))}
             </div>
-          </div>
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Strategic spillover</div>
-            <p className="text-[18px] text-muted-foreground leading-relaxed max-w-[640px]">
-              Students who play today become CPPL corporate players, Paddle City Open participants, and S4 brand advocates. Unlocks education brands, FMCG, CSR and youth-wellness sponsors that won't touch pro sports.
-            </p>
+            <div className="text-[12px] text-muted-foreground mt-3">Championship finals — September / October 2026.</div>
           </div>
         </div>
-        <div className="col-span-5 border thin-rule rounded-md overflow-hidden">
-          <img src={images.school} alt="School league" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <TakeawayList
+            title="Why it matters beyond the numbers"
+            items={[
+              { Icon: GraduationCap, t: "Player pipeline.", s: "Today's students = tomorrow's CPPL players & S4 brand advocates." },
+              { Icon: Sparkles, t: "Feeds the ecosystem.", s: "Talent funnel for every other league in S4 Sports." },
+            ]}
+          />
+          <TakeawayList
+            title="Why it's commercially attractive"
+            items={[
+              { Icon: Heart, t: "New sponsor vertical.", s: "Education · FMCG · CSR · youth wellness." },
+              { Icon: Building2, t: "Brand-safe.", s: "Community-driven — ideal for institutional sponsors." },
+              { Icon: Trophy, t: "First-mover.", s: "First structured student pickleball league in India." },
+              { Icon: TrendingUp, t: "Scalable.", s: "100+ institutions by Year 2." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
@@ -1029,54 +1034,56 @@ export function S11() {
   return (
     <>
       <SlideHeader tag="11 · Inter-School League · Investment & Returns"
-        title="Lowest entry. Highest strategic return."
-        sub="₹4L per city × 4 cities = ₹16L. The real return is the pipeline you own for the next decade."
+        title="What You Put In. What You Get Back."
+        sub="Opportunity 04 · Investment Detail — ₹4L per city · 4 cities · 150–275% Year 1 ROI."
       />
       <KpiStrip items={[
-        { label: "Total entry", value: "₹16L", sub: "₹4L × 4 cities", strong: true },
-        { label: "Year-1 revenue", value: "₹40–60L", sub: "across all stages" },
-        { label: "Year-1 net", value: "₹24–44L", sub: "after costs" },
-        { label: "ROI", value: "150–275%", sub: "Year 1 alone" },
+        { label: "Investment / city", value: "₹4L", sub: "lowest entry in deck" },
+        { label: "Revenue / city", value: "₹10–15L", sub: "fees + sponsors" },
+        { label: "Net / city", value: "₹6–11L", sub: "Year 1" },
+        { label: "ROI", value: "150–275%", sub: "Year 1 alone", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <InvestTable
-            title="Per-city expenses (₹4L)"
+          <ReturnsTable
+            title="Per city — investment vs return"
+            cols={["Line", "Min", "Max"]}
             rows={[
-              { k: "Outreach", v: "₹1L" },
-              { k: "Equipment", v: "₹1L" },
-              { k: "Finals day", v: "₹1.5L" },
-              { k: "Marketing", v: "₹0.5L" },
-              { k: "Total per city × 4", v: "₹16L", strong: true },
+              { k: "Investment", a: "₹4L", b: "₹4L" },
+              { k: "School / college entry fees", a: "₹8L", b: "₹10L" },
+              { k: "Title sponsor", a: "₹5L", b: "₹8L" },
+              { k: "Co-sponsors", a: "₹2L", b: "₹3L" },
+              { k: "Year 1 revenue", a: "₹10L", b: "₹15L", total: true },
+              { k: "Net profit", a: "₹6L", b: "₹11L", total: true },
+              { k: "ROI", a: "150%", b: "275%", total: true },
             ]}
           />
           <ReturnsTable
-            title="Year-1 economics"
-            cols={["Line item", "Min", "Max"]}
+            title="Scale it up"
+            cols={["Line", "1 city", "4 cities"]}
             rows={[
-              { k: "Sponsorship (education · FMCG · CSR)", a: "₹25L", b: "₹40L" },
-              { k: "School participation fees", a: "₹10L", b: "₹15L" },
-              { k: "Activations & merch", a: "₹5L", b: "₹5L" },
-              { k: "Revenue", a: "₹40L", b: "₹60L", total: true },
-              { k: "Net (after ₹16L cost)", a: "₹24L", b: "₹44L", total: true },
+              { k: "Investment", a: "₹4L", b: "₹16L" },
+              { k: "Revenue", a: "₹10–15L", b: "₹40–60L" },
+              { k: "Net profit", a: "₹6–11L", b: "₹24–44L", total: true },
+              { k: "ROI", a: "150–275%", b: "150–275%", total: true },
             ]}
           />
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
-            label="Net by stage — pick a level"
+            label="Net profit — pick scale"
             points={[
-              { label: "City Yr 1", value: 12, sub: "4 city leagues live." },
-              { label: "Regional", value: 22, sub: "Qualifiers — bigger sponsor draw." },
-              { label: "National", value: 40, sub: "Marquee final — peak media value." },
+              { label: "1 city", value: 9, sub: "₹6–11L net · ₹4L entry." },
+              { label: "4 cities", value: 34, sub: "₹24–44L net · ₹16L total entry." },
+              { label: "100+ inst. Y2", value: 70, sub: "Scale-out across institutions." },
             ]}
           />
           <TakeawayList
-            title="Why this is the strategic play"
+            title="The strategic return"
             items={[
-              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Today's students = tomorrow's CPPL & Paddle City Open players." },
+              { Icon: GraduationCap, t: "Pipeline ownership.", s: "Every student athlete = future CPPL player & S4 advocate for life." },
               { Icon: Heart, t: "CSR-friendly.", s: "Unlocks sponsors who won't touch pro sports." },
-              { Icon: TrendingUp, t: "Decade-long upside.", s: "ROI compounds across the entire S4 ecosystem." },
+              { Icon: TrendingUp, t: "Decade-long upside.", s: "Real return is bigger than the financials suggest." },
             ]}
           />
         </div>
