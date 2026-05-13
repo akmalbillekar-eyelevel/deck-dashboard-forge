@@ -533,12 +533,8 @@ export function S04() {
                 ["Teams", "16 teams", "12 franchise teams"],
                 ["Players", "160 players", "168 players across the state"],
                 ["Prize pool", "₹7 Lakhs", "₹30 Lakhs (4× growth)"],
-                ["Venue", "—", "JN Indoor Stadium, Chennai"],
-                ["Daily footfall", "~1,000 / day", "50 Lakh+ projected campaign reach"],
                 ["Sponsors", "MGM Healthcare, BoomCars, Indian Bank, TexValley", "Open for Season 2"],
                 ["VIP presence", "Sharath Kamal · IAS CEO of SDAT", "—"],
-                ["Marketing", "—", "9-channel campaign · 90 days"],
-                ["Channels", "—", "Outdoor · Print · Radio · Digital · YouTube Live · PR · Influencers"],
               ].map((row, i) => (
                 <div key={row[0]} className={`grid grid-cols-12 py-2 px-4 text-[12px] tabular ${i % 2 ? "bg-muted/20" : ""} border-b thin-rule last:border-b-0`}>
                   <div className="col-span-4 text-muted-foreground uppercase tracking-[0.12em] text-[10px] mt-0.5">{row[0]}</div>
