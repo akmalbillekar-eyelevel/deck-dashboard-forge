@@ -1091,40 +1091,18 @@ export function S12() {
               <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">The 4-city circuit</div>
               <div className="text-[12px] text-muted-foreground tabular">{active !== null ? cityNodes[active].name : "8 events · 4 cities · Sat–Sun"}</div>
             </div>
-            <div className="relative h-[260px] bg-[color:var(--paper)] border thin-rule rounded">
-              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-                <path
-                  d="M 35 18 L 50 12 L 62 18 L 70 30 L 78 42 L 82 55 L 80 70 L 70 82 L 58 88 L 48 82 L 38 78 L 30 65 L 24 50 L 22 35 Z"
-                  fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="0.4" strokeDasharray="0.8 0.8"/>
-              </svg>
-              <svg className="absolute inset-0 w-full h-full">
-                {cityNodes.map((c, i) => {
-                  const next = cityNodes[(i + 1) % cityNodes.length];
-                  return (
-                    <line key={i}
-                      x1={`${c.x * 100}%`} y1={`${c.y * 100}%`}
-                      x2={`${next.x * 100}%`} y2={`${next.y * 100}%`}
-                      stroke="currentColor" strokeOpacity={active === i || active === (i+1)%cityNodes.length ? 0.6 : 0.18}
-                      strokeWidth={1} strokeDasharray="4 4"/>
-                  );
-                })}
-              </svg>
-              {cityNodes.map((c, i) => (
-                <button key={c.name}
-                  onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                  style={{ left: `${c.x * 100}%`, top: `${c.y * 100}%` }}>
-                  <motion.div
-                    className="rounded-full bg-foreground"
-                    animate={{ scale: active === i ? 1.5 : 1 }}
-                    transition={{ duration: 0.15 }}
-                    style={{ width: 10, height: 10 }}
-                  />
-                  <div className={`absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap text-[12px] tabular ${active === i ? "text-ink" : "text-muted-foreground"}`}>
+            <div className="relative h-[230px] bg-[color:var(--paper)] border thin-rule rounded overflow-hidden">
+              <img src={images.paddle} alt="Paddle City Open weekend tournament" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 p-3 flex flex-wrap content-end gap-2">
+                {cityNodes.map((c, i) => (
+                  <button key={c.name}
+                    onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
+                    className={`text-[12px] tabular px-2 py-1 rounded border thin-rule bg-background/80 backdrop-blur ${active === i ? "text-ink border-foreground/40" : "text-muted-foreground"}`}>
                     {c.name} · {c.events} events
-                  </div>
-                </button>
-              ))}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="text-[12px] text-muted-foreground mt-3">
               2 events per city · 8 events annually · Sat–Sun · existing courts — no infrastructure ownership.
