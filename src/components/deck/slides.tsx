@@ -574,7 +574,7 @@ export function S04() {
 
 export function S05() {
   return (
-    <div className="text-[1.15em] flex flex-col h-full">
+    <>
       <SlideHeader tag="05 · TNPPL · Investment & Returns"
         title="What you put in. What you get back."
       />
