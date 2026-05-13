@@ -949,14 +949,14 @@ function ExpandList({ items }: { items: { Icon: typeof Sparkles; t: string; s: s
 export function S10() {
   return (
     <>
-      <SlideHeader tag="10 · Intercollege Pickleball Tournament · Opportunity"
-        title="Intercollege Pickleball Tournament — Chennai & Bangalore."
-        sub="2-day event · 4-court venue · zero entry fees · sponsorship & CSR funded · in association with TNPA."
+      <SlideHeader tag="10 · Opportunity 04 · Intercollege Pickleball Tournament"
+        title="Build the Grassroots. Own the Next Generation."
+        sub="Intercollege Pickleball Tournament — Chennai & Bangalore · in partnership with TNPA."
         logoKey="school" logoLabel="Intercollege Tournament"
       />
       <Grid12>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
-          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[280px] bg-muted flex items-center justify-center">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[260px] bg-muted flex items-center justify-center">
             <img src={images.school} alt="Intercollege pickleball tournament" className="w-full h-full object-cover grayscale-[0.3] saturate-50" loading="lazy"/>
           </div>
           <div className="border thin-rule rounded-md p-5 grid grid-cols-3 gap-4">
@@ -964,15 +964,27 @@ export function S10() {
             <Stat label="Courts" value="4" sub="per venue" />
             <Stat label="Days" value="2" sub="weekend event" />
           </div>
+          <TakeawayList
+            title="Why colleges say yes"
+            items={[
+              { Icon: Heart, t: "Zero cost to participate.", s: "No entry fee. No financial burden on the institution." },
+              { Icon: Landmark, t: "Goes on the sports record.", s: "Official tournament under TNPA — counts on college sports résumés." },
+              { Icon: Trophy, t: "Medals & trophies.", s: "Recognition for winners, exposure to a fast-growing pro sport." },
+            ]}
+          />
         </div>
 
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">What it is</div>
+          <div className="border thin-rule rounded-md p-5 text-[15px] text-ink leading-relaxed">
+            A 2-day structured pickleball tournament for colleges across Chennai and Bangalore. Each college sends a team of 4 players. No entry fee. All revenue comes from sponsorship and CSR funds.
+          </div>
           <div className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">How it works · click to expand</div>
           <ExpandList items={[
-            { Icon: GraduationCap, t: "Colleges send 4-player teams", s: "Each participating college fields a team of 4 players. No college pays an entry fee — the tournament is free for institutions, removing every barrier to participation." },
-            { Icon: Handshake, t: "TNPA partnership", s: "Run in association with the Tamil Nadu Pickleball Association — instant credibility, technical officials, and an established player & coach network across both cities." },
-            { Icon: Briefcase, t: "Sponsorship & CSR funded", s: "100% of revenue comes from title sponsorship, category sponsors and corporate CSR funds — youth sport, education, fitness brands and CSR mandates all line up for grassroots tie-ups." },
-            { Icon: Trophy, t: "Medals & trophies, no cash prize", s: "Recognition over cash — medals, trophies and college bragging rights. Keeps the spirit collegiate, the costs disciplined, and the brand association clean for sponsors." },
+            { Icon: GraduationCap, t: "College tie-ups", s: "Partner with top colleges across Chennai and Bangalore. Invite each to send a 4-player team. Zero financial burden on institutions — participation is fully sponsored." },
+            { Icon: Trophy, t: "Tournament format", s: "4 courts · 2-day event · structured league format with finals on Day 2. Run with TNPA-certified officials and a clean broadcast-ready production." },
+            { Icon: Award, t: "Prizes — no cash", s: "Medals, trophies and recognition only. Keeps the event brand-safe, institution-friendly, and clean for CSR & education sponsors." },
+            { Icon: Handshake, t: "Official partnership — TNPA", s: "Tamil Nadu Pickleball Association co-hosts the tournament — lending institutional credibility, officials and an established college network from day one." },
           ]}/>
         </div>
       </Grid12>
