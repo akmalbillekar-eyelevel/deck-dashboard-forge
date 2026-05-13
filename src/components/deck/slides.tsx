@@ -681,6 +681,18 @@ export function S08() {
         sub="Four cities. Recurring annual. Sponsorship-driven. Each city is an independent sports property — premium corporate demographic, asset-light, first-mover."
         logoKey="cppl" logoLabel="CPPL"
         />
+        <AboutGrid
+          label="About the league"
+          items={[
+            { Icon: Building2, t: "Corporate league IP", s: "India's first multi-city Corporate Pickleball League — own the format, not just an event." },
+            { Icon: MapPin, t: "4 cities", s: "Chennai · Bangalore · Hyderabad · Mumbai — each an independent property." },
+            { Icon: Repeat, t: "Recurring annual", s: "Sponsorship-driven format built for repeat revenue every year." },
+            { Icon: Briefcase, t: "Premium audience", s: "Targets corporate teams and decision-makers — high CPM demographic." },
+            { Icon: Sparkles, t: "Asset-light", s: "Uses existing courts. Zero infrastructure investment." },
+            { Icon: Flag, t: "First-mover", s: "Own the IP from Season 1 — the category-defining brand." },
+          ]}
+        />
+
         <Grid12>
           <div className="col-span-5 flex flex-col gap-5">
             <div className="border thin-rule rounded-md overflow-hidden h-[340px]">
