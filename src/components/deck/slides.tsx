@@ -626,7 +626,7 @@ export function S05() {
           />
         </div>
       </Grid12>
-    </div>
+    </>
   );
 }
 
