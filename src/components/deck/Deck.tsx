@@ -72,6 +72,13 @@ export function Deck() {
         </AnimatePresence>
       </div>
 
+      {/* Slide counter — top-right (small) */}
+      <div className="fixed top-3 right-5 z-30 text-[10px] tabular tracking-[0.18em] uppercase text-muted-foreground select-none pointer-events-none">
+        <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
+        <span className="mx-1.5 opacity-40">/</span>
+        <span>{String(total).padStart(2, "0")}</span>
+      </div>
+
       {/* Slide counter bottom-right */}
       <div className="fixed bottom-5 right-6 z-30 text-[12px] tabular tracking-[0.16em] uppercase text-muted-foreground select-none">
         <span className="text-ink">{String(i + 1).padStart(2, "0")}</span>
