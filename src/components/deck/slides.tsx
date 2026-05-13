@@ -246,7 +246,7 @@ export function S03() {
     <>
       <SlideHeader
         tag="Portfolio Overview"
-        title="Six ways to diversify S For Sport."
+        title="Opportunities to diversify S For Sport."
         sub="Four asset classes. Six independent plays. One brand getting bigger from every direction."
       />
       <div className="border-t thin-rule">
