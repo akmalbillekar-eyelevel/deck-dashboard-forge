@@ -637,73 +637,73 @@ export function S06() {
     <>
       <SlideHeader tag="06 · CPL · Opportunity"
         title="Be a founding owner of India's first Celebrity Pickleball League."
-        sub="Celebrity Pickleball League (CPL) — Season 1 · October 2026."
+        sub="CPL — Season 1 · October 2026."
         logoKey="cpl" logoLabel="CPL"
       />
-      <AboutGrid
-        label="Who is behind CPL"
-        items={[
-          { Icon: Star, t: "Organised by ATP", s: "All Things Pickleball — India's most comprehensive pickleball ecosystem." },
-          { Icon: Trophy, t: "Format creators", s: "Queen of the Court · Masters · Aspiring Aces — proprietary play formats." },
-          { Icon: Sparkles, t: "WPPL organisers", s: "Built India's first Women's Premier Pickleball League." },
-          { Icon: Layers, t: "Unified platform", s: "Coaching · events · retail · infrastructure · content — all under one roof." },
-          { Icon: ShieldCheck, t: "Quality benchmark", s: "Sets the professionalism standard across Indian pickleball." },
-          { Icon: BadgeCheck, t: "End-to-end run by ATP", s: "Production, broadcast, operations and content — ATP handles all of it." },
-        ]}
-      />
-
       <Grid12>
-        <div className="col-span-5 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[260px]">
+        <div className="col-span-5 flex flex-col gap-4">
+          <div className="border thin-rule rounded-md overflow-hidden flex-1 min-h-[280px]">
             <img src={images.cpl} alt="CPL stage" className="w-full h-full object-cover grayscale-[0.4] saturate-50" loading="lazy"/>
           </div>
-          <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">What is CPL</div>
-            <p className="mt-2 text-[15px] leading-relaxed text-ink/90">
-              India's first <span className="font-medium">IPL-style celebrity pickleball league</span> — built for entertainment, content and national media coverage. Bollywood stars, cricketers and sports personalities compete across <span className="font-medium tabular">6 franchise teams</span>.
-            </p>
-            <div className="mt-4 grid grid-cols-3 gap-4 border-t thin-rule pt-4">
-              <Stat label="Founding slots" value="6" sub="nationwide" />
-              <Stat label="Teams" value="6" sub="franchise" />
-              <Stat label="Window" value="10–11d" sub="per season" />
-            </div>
+          <div className="border thin-rule rounded-md p-5 grid grid-cols-3 gap-4">
+            <Stat label="Founding slots" value="6" sub="nationwide" />
+            <Stat label="Teams" value="6" sub="franchise" />
+            <Stat label="Window" value="10–11d" sub="per season" />
           </div>
         </div>
 
-        <div className="col-span-7 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-3 border-b thin-rule text-[12px] uppercase tracking-[0.16em] text-muted-foreground">
-              Your team — how it works
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Who's behind CPL</div>
+            <div className="grid grid-cols-3 gap-x-5 gap-y-3">
+              {[
+                { Icon: Star, t: "ATP", s: "All Things Pickleball — India's ecosystem builder." },
+                { Icon: Trophy, t: "Format creators", s: "Queen of the Court · Masters · Aces." },
+                { Icon: Sparkles, t: "WPPL organisers", s: "India's first Women's Premier Pickleball League." },
+                { Icon: Layers, t: "Unified platform", s: "Coaching · events · retail · content." },
+                { Icon: ShieldCheck, t: "Quality benchmark", s: "Sets pro standards across India." },
+                { Icon: BadgeCheck, t: "End-to-end run", s: "Production · broadcast · ops · content." },
+              ].map(({ Icon, t, s }) => (
+                <div key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div>
+                    <div className="text-[13px] font-medium text-ink leading-tight">{t}</div>
+                    <div className="text-[12px] text-muted-foreground leading-snug mt-0.5">{s}</div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="grid grid-cols-12 px-5 py-2.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
-              <div className="col-span-4">Element</div>
-              <div className="col-span-8">Detail</div>
-            </div>
-            {[
-              ["Your role", "Captain — the face, the owner, the story."],
-              ["Your team", "You + 2–3 celebrities you invite + 1 professional player."],
-              ["Pro player", "Provided by ATP."],
-              ["Time commitment", "10–11 days per season."],
-            ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-12 px-5 py-3 text-[15px] border-t thin-rule">
-                <div className="col-span-4 text-muted-foreground">{k}</div>
-                <div className="col-span-8 text-ink">{v}</div>
-              </div>
-            ))}
           </div>
 
           <div className="border thin-rule rounded-md p-5">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">The commercial opportunity</div>
-            <ul className="space-y-3">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Your team</div>
+            <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 text-[14px]">
               {[
-                ["Sponsors follow celebrity reach.", "The bigger your team, the higher your sponsorship value."],
-                ["10–11 days of content.", "Year-round monetisation — clips, reels, behind-the-scenes, brand integrations."],
-                ["Founding price ends with Season 1.", "Subsequent seasons are priced against established franchise value."],
-                ["Only 6 slots.", "Scarcity drives franchise appreciation from Season 2 onwards."],
-              ].map(([t, s]) => (
-                <li key={t} className="flex gap-3 border-t thin-rule pt-3 first:border-t-0 first:pt-0">
-                  <Sparkles className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
-                  <div className="text-[14px] leading-snug">
+                ["Your role", "Captain — face, owner, story."],
+                ["Your team", "You + 2–3 celebs + 1 pro."],
+                ["Pro player", "Provided by ATP."],
+                ["Time", "10–11 days / season."],
+              ].map(([k, v]) => (
+                <div key={k} className="flex gap-3 border-t thin-rule pt-2">
+                  <span className="text-muted-foreground w-[90px] shrink-0 text-[12px] uppercase tracking-[0.12em] mt-0.5">{k}</span>
+                  <span className="text-ink">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why founding matters</div>
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
+              {[
+                { Icon: Users, t: "Sponsors follow stars.", s: "Bigger team = bigger ticket." },
+                { Icon: Repeat, t: "10–11 days of content.", s: "Year-round monetisation." },
+                { Icon: Star, t: "Founding price ends S1.", s: "S2+ tracks franchise value." },
+                { Icon: Sparkles, t: "Only 6 slots.", s: "Scarcity drives appreciation." },
+              ].map(({ Icon, t, s }) => (
+                <li key={t} className="flex gap-3 border-t thin-rule pt-2.5">
+                  <Icon className="h-4 w-4 mt-1 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                  <div className="text-[13px] leading-snug">
                     <span className="text-ink font-medium">{t}</span>{" "}
                     <span className="text-muted-foreground">{s}</span>
                   </div>
