@@ -651,47 +651,91 @@ export function S06() {
 /* ---------- 07 CPL Investment ---------- */
 
 export function S07() {
-  const years = ["Year 1", "Year 2", "Year 3"];
-  const base = [22, 38, 65];
-  const [pinned, setPinned] = useState<number | null>(null);
-  const ticket = 30;
-  const recovery = base.map((v) => v * (ticket / 30));
-  const moic = 1.0 + (ticket / 30) * 2.2;
-  const irr = 38 + (ticket - 30) * 0.5;
-  const coc = 0.85 + (ticket - 30) * 0.018;
   return (
     <>
       <SlideHeader tag="07 · CPL · Investment & Returns"
-        title="₹30L. One payment. This founding price never exists again."
-        sub="Benchmarks: CCL → ₹50 Cr/season after 14 seasons. MLP → $200K to $13M in four years (65×). CPL Season 1 is the ground floor of that trajectory."
+        title="What you put in. What you get back."
+        sub="₹30L founding franchise fee · one payment · Season 1 only. Six slots nationwide."
       />
       <Grid12>
-        <div className="col-span-8 flex flex-col gap-6">
+        <div className="col-span-7 flex flex-col gap-6">
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-4">Your investment</div>
+            {[
+              ["Founding franchise fee", "₹30 Lakhs"],
+              ["What it covers", "Complete franchise — branding, identity, operations, broadcast."],
+              ["Price lock", "This price will never be available after Season 1."],
+            ].map(([k, v], i) => (
+              <div key={k} className={`grid grid-cols-12 gap-4 border-t thin-rule py-3 text-[15px] ${i === 0 ? "items-baseline" : ""}`}>
+                <div className={`col-span-4 ${i === 2 ? "text-ink font-medium" : "text-muted-foreground"}`}>{k}</div>
+                <div className={`col-span-8 tabular ${i === 0 ? "text-ink font-medium text-[18px]" : ""}`}>{v}</div>
+              </div>
+            ))}
+          </div>
+
           <div className="border thin-rule rounded-md">
-            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Cash recovery trajectory</div>
-              <div className="text-[12px] text-muted-foreground tabular">Pin a horizon</div>
+            <div className="px-5 py-3 border-b thin-rule text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Your returns</div>
+            <div className="grid grid-cols-12 px-5 py-2.5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground border-b thin-rule">
+              <div className="col-span-6">Revenue source</div>
+              <div className="col-span-3 text-right">Minimum</div>
+              <div className="col-span-3 text-right">Maximum</div>
             </div>
-            <div className="px-5 pt-4"><Sparkline values={recovery} focus={pinned} /></div>
-            <HeatStrip years={years} values={recovery} pinned={pinned} onPin={setPinned} />
-          </div>
-          <div className="grid grid-cols-3 gap-6">
-            <Stat label="Team sponsorship" value="₹15–30L" sub="per season" />
-            <Stat label="Content monetisation" value="Ongoing" sub="ATP-managed" />
-            <Stat label="Franchise appreciation" value="2–3×" sub="by Season 3" />
-          </div>
-          <div className="border thin-rule rounded-md p-5 text-[15px] text-muted-foreground">
-            <span className="text-foreground">Six slots. Once gone, the founding price is gone.</span> Subsequent seasons will be priced against established franchise value, not the founding round.
+            {[
+              ["General team sponsorship", "₹15L", "₹30L"],
+              ["Franchise appreciation", "2× by S3", "3× by S3"],
+              ["Personal brand & media value", "₹10L", "₹25L"],
+              ["Content monetisation", "Ongoing — reels, YouTube, brand collabs", "—"],
+              ["Total cash recovery — Year 1", "₹15L", "₹30L"],
+            ].map(([k, a, b], i, arr) => {
+              const isTotal = i === arr.length - 1;
+              const isContent = i === arr.length - 2;
+              return (
+                <div key={k} className={`grid grid-cols-12 px-5 py-3 text-[15px] border-t thin-rule ${isTotal ? "bg-muted/20" : ""}`}>
+                  <div className={`col-span-6 ${isTotal ? "text-ink font-medium" : "text-muted-foreground"}`}>{k}</div>
+                  {isContent ? (
+                    <div className="col-span-6 text-[14px] text-muted-foreground italic">{a}</div>
+                  ) : (
+                    <>
+                      <div className={`col-span-3 text-right tabular ${isTotal ? "text-ink font-medium" : ""}`}>{a}</div>
+                      <div className={`col-span-3 text-right tabular ${isTotal ? "text-ink font-medium" : ""}`}>{b}</div>
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-        <div className="col-span-4 flex flex-col gap-5">
+
+        <div className="col-span-5 flex flex-col gap-5">
           <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — 3-year horizon</div>
-            <div className="mt-5 space-y-5">
-              <div className="flex items-end justify-between"><span className="text-[14px] text-muted-foreground">MOIC</span><Tween value={moic} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">IRR</span><Tween value={irr} format={(v) => `${v.toFixed(1)}%`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">Cash-on-cash</span><Tween value={coc} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Founding price · locked</div>
+            <div className="mt-4 flex items-end justify-between">
+              <span className="text-[14px] text-muted-foreground">One payment</span>
+              <span className="text-[56px] font-medium tabular tracking-tight leading-none">₹30L</span>
             </div>
+            <div className="mt-5 grid grid-cols-3 gap-4 border-t thin-rule pt-5">
+              <Stat label="Slots" value="6" sub="nationwide" />
+              <Stat label="Window" value="10–11d" sub="per season" />
+              <Stat label="Appreciation" value="2–3×" sub="by Season 3" />
+            </div>
+          </div>
+
+          <div className="border thin-rule rounded-md p-5">
+            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground mb-3">Why the founding round matters</div>
+            <ul className="space-y-3 text-[14px]">
+              <li className="flex gap-3 border-t thin-rule pt-3">
+                <Sparkles className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                <span><span className="text-ink font-medium">Six slots.</span> <span className="text-muted-foreground">Once gone, the founding price is gone.</span></span>
+              </li>
+              <li className="flex gap-3 border-t thin-rule pt-3">
+                <TrendingUp className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                <span><span className="text-ink font-medium">Benchmarks.</span> <span className="text-muted-foreground">CCL → ₹50 Cr/season after 14 seasons. MLP → $200K to $13M in four years (65×).</span></span>
+              </li>
+              <li className="flex gap-3 border-t thin-rule pt-3">
+                <Star className="h-4 w-4 mt-0.5 text-[color:var(--slate-tone)] shrink-0" strokeWidth={1.5} />
+                <span><span className="text-ink font-medium">Ground floor.</span> <span className="text-muted-foreground">Season 2+ pricing tracks established franchise value, not the founding round.</span></span>
+              </li>
+            </ul>
           </div>
         </div>
       </Grid12>
