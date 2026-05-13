@@ -1154,33 +1154,40 @@ export function S13() {
         { label: "ROI", value: "~55%", sub: "break-even Event 5–6", strong: true },
       ]}/>
       <Grid12>
-        <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <ReturnsTable
-            title="Per event — investment vs revenue"
-            cols={["Line", "Cost", "Revenue"]}
+        <div className="col-span-7 grid grid-cols-2 gap-4 min-h-0 content-start">
+          <InvestTable
+            title="Per event — costs"
             rows={[
-              { k: "Venue / court hire", a: "₹2–2.5L", b: "—" },
-              { k: "Branding & production", a: "₹1.5L", b: "—" },
-              { k: "Staff & logistics", a: "₹1.5L", b: "—" },
-              { k: "Prize money", a: "₹3L", b: "—" },
-              { k: "Digital & social", a: "₹0.5L", b: "—" },
-              { k: "Entry fees (150 pairs × ₹3,000)", a: "—", b: "₹4.5L" },
-              { k: "Title sponsor", a: "—", b: "₹5L" },
-              { k: "Category sponsors (×3)", a: "—", b: "₹3L" },
-              { k: "Equipment / paddle stall", a: "—", b: "₹1.5L" },
-              { k: "Total per event", a: "₹9L", b: "₹14L", total: true },
+              { k: "Venue / court hire", v: "₹2–2.5L" },
+              { k: "Branding & production", v: "₹1.5L" },
+              { k: "Staff & logistics", v: "₹1.5L" },
+              { k: "Prize money", v: "₹3L" },
+              { k: "Digital & social", v: "₹0.5L" },
+              { k: "Total cost", v: "₹9L", strong: true },
             ]}
           />
-          <ReturnsTable
-            title="Scale it up"
-            cols={["Line", "Per event", "8 events (Y1)"]}
+          <InvestTable
+            title="Per event — revenue"
             rows={[
-              { k: "Investment", a: "₹9L", b: "₹72L" },
-              { k: "Revenue", a: "₹14L", b: "₹1.12 Cr" },
-              { k: "Net profit", a: "₹5L", b: "~₹40L", total: true },
-              { k: "ROI", a: "~55%", b: "~55%", total: true },
+              { k: "Entry fees (150 × ₹3,000)", v: "₹4.5L" },
+              { k: "Title sponsor", v: "₹5L" },
+              { k: "Category sponsors (×3)", v: "₹3L" },
+              { k: "Equipment / paddle stall", v: "₹1.5L" },
+              { k: "Total revenue", v: "₹14L", strong: true },
             ]}
           />
+          <div className="col-span-2">
+            <ReturnsTable
+              title="Scale it up"
+              cols={["Line", "Per event", "8 events (Y1)"]}
+              rows={[
+                { k: "Investment", a: "₹9L", b: "₹72L" },
+                { k: "Revenue", a: "₹14L", b: "₹1.12 Cr" },
+                { k: "Net profit", a: "₹5L", b: "~₹40L", total: true },
+                { k: "ROI", a: "~55%", b: "~55%", total: true },
+              ]}
+            />
+          </div>
         </div>
         <div className="col-span-5 flex flex-col gap-4 min-h-0">
           <HorizonPicker
