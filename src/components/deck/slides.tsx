@@ -118,13 +118,6 @@ export function S01() {
 
 /* ---------- 02 Big Picture ---------- */
 
-const growthData = [
-  { year: 2020, mlp: 0.2, ccl: 12 },
-  { year: 2021, mlp: 1.1, ccl: 18 },
-  { year: 2022, mlp: 4.5, ccl: 28 },
-  { year: 2023, mlp: 9, ccl: 38 },
-  { year: 2024, mlp: 13, ccl: 50 },
-];
 
 function AnimatedHeadline({ text }: { text: string }) {
   return (
