@@ -816,6 +816,18 @@ export function S10() {
         sub="Structured annual league for schools and colleges. City leagues feed regional finals feed a national championship. The player pipeline for the entire S4 ecosystem."
         logoKey="school" logoLabel="Inter-School League"
       />
+      <AboutGrid
+        label="About the league"
+        items={[
+          { Icon: GraduationCap, t: "Schools & colleges", s: "Structured annual league across institutions in 4 cities." },
+          { Icon: Building2, t: "City leagues", s: "Four city events form the base of the player pipeline." },
+          { Icon: Trophy, t: "Regional finals", s: "Four regional rounds crown qualifiers from each city." },
+          { Icon: Award, t: "National championship", s: "One marquee final caps the season — the showcase event." },
+          { Icon: Sparkles, t: "Talent pipeline", s: "Feeds CPPL, Paddle City Open and the entire S4 ecosystem." },
+          { Icon: Heart, t: "CSR-friendly", s: "Unlocks education, FMCG, youth-wellness sponsors that won't touch pro sports." },
+        ]}
+      />
+
       <Grid12>
         <div className="col-span-7 flex flex-col gap-6">
           <div className="border thin-rule rounded-md p-6">
