@@ -58,12 +58,12 @@ export function S01() {
         <span className="text-[13px] tracking-[0.18em] uppercase text-muted-foreground tabular">2026</span>
       </div>
       <div>
-        <div className="text-[18px] tracking-[0.2em] uppercase text-muted-foreground mb-8">The Portfolio</div>
-        <h1 className="text-[140px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1500px]">
-          Six plays to build<br/>India's pickleball<br/>empire.
+        <div className="text-[18px] tracking-[0.2em] uppercase text-muted-foreground mb-8">The Playbook</div>
+        <h1 className="text-[160px] leading-[0.95] font-medium tracking-[-0.035em] text-ink max-w-[1600px]">
+          The S4 Sports<br/>Playbook.
         </h1>
-        <p className="mt-10 text-[26px] text-muted-foreground font-light max-w-[900px]">
-          Prepared exclusively for Director Atlee. A confidential assessment of six interlocking opportunities across franchise, league, and arena economics.
+        <p className="mt-10 text-[32px] text-muted-foreground font-light max-w-[1100px]">
+          Every League. Every Arena. Every City.
         </p>
       </div>
       <div className="flex items-end justify-between text-[14px] tabular">
