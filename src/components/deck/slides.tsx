@@ -904,55 +904,61 @@ export function S08() {
 /* ---------- 09 CPPL ROI ---------- */
 
 export function S09() {
-  const years = ["Yr 1", "Yr 2", "Yr 3"];
-  const base = [126, 165, 210];
-  const [pinned, setPinned] = useState<number | null>(null);
-  const ticket = 154;
-  const recovery = base.map((v) => v * (ticket / 154));
-  const moic = 1 + (ticket / 154) * 1.4;
-  const irr = 65 + (ticket - 154) * 0.05;
-  const coc = 0.82 + (ticket - 154) * 0.002;
   return (
     <>
       <SlideHeader tag="09 · CPPL · Investment & Returns"
         title="A high-margin sports IP built for recurring revenue."
-        sub="Per city: ₹70–80L revenue · ₹38.5L expenses. Four cities combined: ₹2.8–3.2 Cr revenue, ₹1.54 Cr expenses, ₹1.26–1.66 Cr net. ROI 80–108%+."
+        sub="Per city ₹70–80L revenue · ₹38.5L expenses. Four cities combined: ₹1.26–1.66 Cr net every year."
       />
+      <KpiStrip items={[
+        { label: "Per-city opex", value: "₹38.5L", sub: "fixed cost base" },
+        { label: "Per-city revenue", value: "₹70–80L", sub: "team sales + sponsorship" },
+        { label: "Per-city net", value: "₹31.5–41.5L", sub: "annual" },
+        { label: "ROI", value: "80–108%+", sub: "annualised", strong: true },
+      ]}/>
       <Grid12>
-        <div className="col-span-8 flex flex-col gap-6">
-          <div className="border thin-rule rounded-md">
-            <div className="px-5 py-4 flex items-center justify-between border-b thin-rule">
-              <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Net profit — 3-year heat strip</div>
-              <div className="text-[12px] text-muted-foreground tabular">₹L · pin to inspect</div>
-            </div>
-            <div className="px-5 pt-4"><Sparkline values={recovery} focus={pinned} /></div>
-            <HeatStrip years={years} values={recovery} pinned={pinned} onPin={setPinned} />
-          </div>
-          <div className="grid grid-cols-5 gap-4">
-            {[
-              ["Production", "₹15L"],
-              ["Prize pool", "₹15L"],
-              ["Branding", "₹5L"],
-              ["Management", "₹2L"],
-              ["Venue", "₹1.5L"],
-            ].map(([k, v]) => (
-              <div key={k} className="border thin-rule rounded-md p-4">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{k}</div>
-                <div className="text-[24px] font-medium tabular mt-1">{v}</div>
-              </div>
-            ))}
-          </div>
-          <div className="text-[15px] text-muted-foreground">This is not an event. It's a sports IP business with recurring annual revenue across four cities.</div>
+        <div className="col-span-7 flex flex-col gap-4 min-h-0">
+          <InvestTable
+            title="Per-city expenses (₹38.5L)"
+            rows={[
+              { k: "Production", v: "₹15L" },
+              { k: "Prize pool", v: "₹15L" },
+              { k: "Branding & marketing", v: "₹5L" },
+              { k: "Management", v: "₹2L" },
+              { k: "Venue", v: "₹1.5L" },
+              { k: "Total per city", v: "₹38.5L", strong: true },
+            ]}
+          />
+          <ReturnsTable
+            title="Per-city economics"
+            cols={["Line item", "Min", "Max"]}
+            rows={[
+              { k: "Team sales (8–10 corporates)", a: "₹40L", b: "₹50L" },
+              { k: "Sponsorship stack", a: "₹30L", b: "₹30L" },
+              { k: "Revenue", a: "₹70L", b: "₹80L", total: true },
+              { k: "Less: opex", a: "(₹38.5L)", b: "(₹38.5L)" },
+              { k: "Net per city", a: "₹31.5L", b: "₹41.5L", total: true },
+            ]}
+          />
         </div>
-        <div className="col-span-4 flex flex-col gap-5">
-          <div className="border thin-rule rounded-md p-6">
-            <div className="text-[12px] uppercase tracking-[0.16em] text-muted-foreground">Projected — annualised</div>
-            <div className="mt-5 space-y-5">
-              <div className="flex items-end justify-between"><span className="text-[14px] text-muted-foreground">MOIC</span><Tween value={moic} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">IRR</span><Tween value={irr} format={(v) => `${v.toFixed(1)}%`} className="text-[44px] font-medium tabular" /></div>
-              <div className="flex items-end justify-between border-t thin-rule pt-5"><span className="text-[14px] text-muted-foreground">Cash-on-cash</span><Tween value={coc} format={(v) => `${v.toFixed(2)}×`} className="text-[44px] font-medium tabular" /></div>
-            </div>
-          </div>
+        <div className="col-span-5 flex flex-col gap-4 min-h-0">
+          <HorizonPicker
+            label="4-city net — pick a year"
+            points={[
+              { label: "Year 1", value: 126, sub: "Launch year — 4 cities live." },
+              { label: "Year 2", value: 165, sub: "Sponsorship deepens · team retention." },
+              { label: "Year 3", value: 210, sub: "Mature pricing across all cities." },
+            ]}
+            format={(v) => `₹${(v/100).toFixed(2)} Cr`}
+          />
+          <TakeawayList
+            title="Why it's an IP, not an event"
+            items={[
+              { Icon: Repeat, t: "Annual recurring.", s: "Same model · same cities · every year." },
+              { Icon: Briefcase, t: "Premium audience.", s: "Corporate teams = high-CPM sponsorship." },
+              { Icon: TrendingUp, t: "Add cities yearly.", s: "Scales without re-architecture." },
+            ]}
+          />
         </div>
       </Grid12>
     </>
