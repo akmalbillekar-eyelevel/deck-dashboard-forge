@@ -997,39 +997,43 @@ export function S10() {
 export function S11() {
   return (
     <>
-      <SlideHeader tag="11 · Intercollege Pickleball Tournament · Investment & Returns"
-        title="₹11L in. ₹20L sponsorship out. Per city."
+      <SlideHeader tag="11 · Opportunity 04 · Investment Detail"
+        title="Minimum Investment. Maximum Reach."
+        sub="₹11L in. ₹20L sponsorship out. Per city · 2-day event."
       />
       <KpiStrip items={[
+        { label: "Total investment", value: "₹11L", sub: "all-in event cost" },
         { label: "Sponsorship revenue", value: "₹20L", sub: "title + category + CSR" },
-        { label: "Total expenses", value: "₹11L", sub: "all-in event cost" },
         { label: "Net profit / city", value: "₹9L", sub: "per 2-day event" },
         { label: "ROI", value: "~82%", sub: "single edition", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
           <ReturnsTable
-            title="Per city — economics"
-            cols={["Line", "Cost", "Revenue"]}
+            title="Investment breakdown · per city"
+            cols={["Expense", "Amount", ""]}
             rows={[
-              { k: "Venue (4 courts · 2 days)", a: "₹1.5L", b: "—" },
-              { k: "Marketing & outreach", a: "₹2.5L", b: "—" },
-              { k: "Setup & production", a: "₹2L", b: "—" },
-              { k: "Trophies & medals", a: "₹1L", b: "—" },
-              { k: "Misc · contingencies", a: "₹4L", b: "—" },
-              { k: "Sponsorship & CSR (title + category)", a: "—", b: "₹20L" },
-              { k: "Total per city", a: "₹11L", b: "₹20L", total: true },
-              { k: "Net profit", a: "₹9L", b: "₹9L", total: true },
+              { k: "Venue & court setup", a: "₹1.5L", b: "" },
+              { k: "Marketing", a: "₹2.5L", b: "" },
+              { k: "Setup & production", a: "₹2L", b: "" },
+              { k: "Trophies & medals", a: "₹1L", b: "" },
+              { k: "Staff & volunteers", a: "₹1L", b: "" },
+              { k: "Equipment & balls", a: "₹1L", b: "" },
+              { k: "Photography & content", a: "₹1L", b: "" },
+              { k: "Contingency", a: "₹1L", b: "" },
+              { k: "Total investment", a: "₹11L", b: "", total: true },
             ]}
           />
           <ReturnsTable
-            title="Scale it up"
-            cols={["Line", "1 city", "2 cities"]}
+            title="Revenue & returns"
+            cols={["Line", "Amount", ""]}
             rows={[
-              { k: "Investment", a: "₹11L", b: "₹22L" },
-              { k: "Revenue", a: "₹20L", b: "₹40L" },
-              { k: "Net profit", a: "₹9L", b: "₹18L", total: true },
-              { k: "ROI", a: "~82%", b: "~82%", total: true },
+              { k: "Sponsorship revenue", a: "₹20L", b: "" },
+              { k: "CSR funds", a: "Supplementary", b: "" },
+              { k: "Total revenue", a: "₹20L", b: "", total: true },
+              { k: "Total expenses", a: "₹11L", b: "" },
+              { k: "Net profit", a: "₹9L", b: "", total: true },
+              { k: "ROI", a: "~82%", b: "", total: true },
             ]}
           />
         </div>
