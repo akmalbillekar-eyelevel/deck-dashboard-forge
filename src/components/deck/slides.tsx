@@ -1199,37 +1199,41 @@ export function S13() {
   return (
     <>
       <SlideHeader tag="13 · Paddle City Open · Investment & Returns"
-        title="Low risk. Real returns."
-        sub="₹9L per event · 8 events Year 1 = ₹72L. Net ~₹40L Year 1. Break-even after event 5–6."
+        title="What You Put In. What You Get Back."
+        sub="Opportunity 05 · Investment Detail — ₹9L per event · 8 events · ~55% Year 1 ROI."
       />
       <KpiStrip items={[
-        { label: "Total Year-1 in", value: "₹72L", sub: "₹9L × 8 events", strong: true },
-        { label: "Per-event revenue", value: "₹14L", sub: "fees + sponsorship + F&B" },
-        { label: "Year-1 net", value: "~₹40L", sub: "after all costs" },
-        { label: "Break-even", value: "Event 5–6", sub: "cumulative" },
+        { label: "Investment / event", value: "₹9L", sub: "all-in cost" },
+        { label: "Revenue / event", value: "₹14L", sub: "fees + sponsors" },
+        { label: "Year 1 net", value: "~₹40L", sub: "after 8 events" },
+        { label: "ROI", value: "~55%", sub: "break-even Event 5–6", strong: true },
       ]}/>
       <Grid12>
         <div className="col-span-7 flex flex-col gap-4 min-h-0">
-          <InvestTable
-            title="Per-event expenses (₹9L)"
+          <ReturnsTable
+            title="Per event — investment vs revenue"
+            cols={["Line", "Cost", "Revenue"]}
             rows={[
-              { k: "Venue", v: "₹2.25L" },
-              { k: "Prize pool", v: "₹3L" },
-              { k: "Branding", v: "₹1.5L" },
-              { k: "Staff", v: "₹1.5L" },
-              { k: "Digital", v: "₹0.5L" },
-              { k: "Total per event × 8", v: "₹72L", strong: true },
+              { k: "Venue / court hire", a: "₹2–2.5L", b: "—" },
+              { k: "Branding & production", a: "₹1.5L", b: "—" },
+              { k: "Staff & logistics", a: "₹1.5L", b: "—" },
+              { k: "Prize money", a: "₹3L", b: "—" },
+              { k: "Digital & social", a: "₹0.5L", b: "—" },
+              { k: "Entry fees (150 pairs × ₹3,000)", a: "—", b: "₹4.5L" },
+              { k: "Title sponsor", a: "—", b: "₹5L" },
+              { k: "Category sponsors (×3)", a: "—", b: "₹3L" },
+              { k: "Equipment / paddle stall", a: "—", b: "₹1.5L" },
+              { k: "Total per event", a: "₹9L", b: "₹14L", total: true },
             ]}
           />
           <ReturnsTable
-            title="Per-event economics"
-            cols={["Line item", "Min", "Max"]}
+            title="Scale it up"
+            cols={["Line", "Per event", "8 events (Y1)"]}
             rows={[
-              { k: "Entry fees (150–250 pairs)", a: "₹4L", b: "₹5L" },
-              { k: "Sponsorship", a: "₹3L", b: "₹5L" },
-              { k: "F&B + merch", a: "₹1L", b: "₹2L" },
-              { k: "Revenue per event", a: "₹8L", b: "₹14L", total: true },
-              { k: "Net (vs ₹9L cost)", a: "(₹1L)", b: "₹5L", total: true },
+              { k: "Investment", a: "₹9L", b: "₹72L" },
+              { k: "Revenue", a: "₹14L", b: "₹1.12 Cr" },
+              { k: "Net profit", a: "₹5L", b: "~₹40L", total: true },
+              { k: "ROI", a: "~55%", b: "~55%", total: true },
             ]}
           />
         </div>
@@ -1237,17 +1241,17 @@ export function S13() {
           <HorizonPicker
             label="Cumulative net — pick an event"
             points={[
-              { label: "Event 1", value: -2, sub: "Launch — first event runs at a small loss." },
-              { label: "Event 4", value: 18, sub: "Sponsorship momentum kicks in." },
-              { label: "Event 8", value: 40, sub: "Year closes profitable." },
+              { label: "Event 1", value: 5, sub: "₹5L per event from event one." },
+              { label: "Event 5–6", value: 27, sub: "Break-even on full ₹72L outlay." },
+              { label: "Event 8 (Y1)", value: 40, sub: "Year closes at ~₹40L net · ~55% ROI." },
             ]}
           />
           <TakeawayList
             title="Year 2 upside"
             items={[
-              { Icon: TrendingUp, t: "Title sponsorship.", s: "Hits ₹8–10L/event → annual net jumps to ₹70–80L." },
-              { Icon: Sparkles, t: "Sponsorship is upside.", s: "Entry fees alone cover operating costs." },
-              { Icon: MapPin, t: "City scale.", s: "Bangalore & Mumbai can hit 200–250+ pairs." },
+              { Icon: TrendingUp, t: "Title sponsorship grows.", s: "₹8–10L per event once brand recognition builds." },
+              { Icon: Sparkles, t: "Annual net jumps.", s: "Year 2 net climbs to ₹70–80L on the same 8-event base." },
+              { Icon: MapPin, t: "Pair-count upside.", s: "Bangalore & Mumbai can hit 200–250+ pairs per event." },
             ]}
           />
         </div>
