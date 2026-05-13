@@ -273,7 +273,7 @@ export function S03() {
       </div>
 
       <div className="mt-8">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they connect</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-4">How they diversify the brand</div>
         <div className="grid grid-cols-4 gap-5">
           {connections.map(({ Icon, k, v }) => (
             <div key={k} className="border thin-rule rounded-md p-5 flex flex-col gap-2">
