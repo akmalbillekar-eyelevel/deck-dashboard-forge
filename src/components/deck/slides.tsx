@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart, Line, ResponsiveContainer, XAxis, YAxis,
-  PieChart, Pie, Cell,
+  LineChart, Line, ResponsiveContainer,
 } from "recharts";
 import { Tween } from "./Tween";
 import { Landmark, ShieldCheck, Globe2, Trophy, Building2, BadgeCheck, Star, Users, Sparkles, CalendarDays, MapPin, Repeat, Briefcase, Flag, GraduationCap, Award, Heart, Handshake, Layers, TrendingUp, Dumbbell } from "lucide-react";
